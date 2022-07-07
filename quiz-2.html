@@ -251,7 +251,7 @@
                 e.preventDefault();
                 fetch(scriptURL, { method: "POST", body: new FormData(form) })
                     .then((response) => Submitted())
-                    .catch((error) => errorAlert());
+                    .catch((error) => duplicatedAlert());
             });
             function WelcomeAgent() {
                 document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent");
@@ -294,7 +294,7 @@
                         Loading.style.display = "block";
                         fetch(scriptURL, { method: "POST", body: new FormData(form) })
                             .then((response) => timeOutSubmitted())
-                            .catch((error) => errorAlert());
+                            .catch((error) => timeOutduplicatedAlert());
                     }
                 }, 1000);
                 sessionStorage.removeItem("quizNumber");
@@ -331,12 +331,17 @@
             function timeOutSubmitted() {
                 evaluationQ.style.display = "none";
                 Timer.style.display = "none";
-                document.getElementById("TimeOut").innerHTML = "Sorry, Time Out!";
+                document.getElementById("TimeOut").innerHTML = "Sorry, Time is Out!, Submitted!";
             }
-            function errorAlert() {
+            function duplicatedAlert() {
                 evaluationQ.style.display = "none";
                 Timer.style.display = "none";
                 document.getElementById("TimeOut").innerHTML = "Not allowed to submit this quiz multiple times!";
+            }
+            function timeOutduplicatedAlert() {
+                evaluationQ.style.display = "none";
+                Timer.style.display = "none";
+                document.getElementById("TimeOut").innerHTML = "Sorry, Time is Out!, Submitted before!";
             }
             function nextPrev(n) {
                 let am = document.getElementById("Area-Manager").value;
