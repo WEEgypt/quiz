@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=0.9,user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Info Evaluation Test</title>
+        <link rel="icon" href="icon.png" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="transformer.js"></script>
+    </head>
+    <body onload="WelcomeAgent()">
+        <br />
+        <h1>Info Evaluation Test</h1>
+        <p class="Month">June 2022</p>
+        <form method="post" name="InfoEvaluation" id="InfoEvaluation">
+            <div class="tab" id="evaluationB" style="display: block;">
+                <p class="Welcome" id="Welcome"><br /></p>
+                <img src="transparentIcon.png" alt="We Logo" />
+                <br />
+                <input type="text" name="Quiz-Number" id="quizNumber" value="quiz-1" style="display: none;" />
+                <input type="text" name="Submission-Time" id="submissionTime" style="display: none;" />
+                <input type="text" name="Agent-Name" id="agentName" style="display: none;" />
+                <input type="text" name="Quiz-Result" id="quizResult" style="display: none;" />
+                <br />
+                <label>Area Manager:</label>
+                <select id="Area-Manager" name="Area-Manager">
+                    <option value="" selected disabled hidden>Area Manager</option>
+                    <option value="Eslam Gomaa">Eslam Gomaa</option>
+                    <option value="Mahmoud Abdelsattar">Mahmoud Abdelsattar</option>
+                    <option value="Mahmoud Aboelmagd">Mahmoud Aboelmagd</option>
+                    <option value="Mohamed Gamal">Mohamed Gamal</option>
+                    <option value="Mustafa Galal">Mustafa Galal</option>
+                    <option value="Aswan">Aswan</option>
+                </select>
+                <br />
+                <br />
+                <label>Store Name:</label>
+                <select id="Store-Name" name="Store-Name">
+                    <option value="" selected disabled hidden>Store</option>
+                    <option value="اخميم - البحري">اخميم - البحري</option>
+                    <option value="ادفو - ابو شيخ">ادفو - ابو شيخ</option>
+                    <option value="ارمنت الحيط - الاقصر">ارمنت الحيط - الاقصر</option>
+                    <option value="أسوان - الاشارة">أسوان - الاشارة</option>
+                    <option value="أسوان - كوم امبو">أسوان - كوم امبو</option>
+                    <option value="أسوان - منطقة العقاد">أسوان - منطقة العقاد</option>
+                    <option value="الاقصر- اسنا">الاقصر- اسنا</option>
+                    <option value="الاقصر - المحطة">الاقصر - المحطة</option>
+                    <option value="الشارع الجديد اسوان">الشارع الجديد اسوان</option>
+                    <option value="المخبز الالي سوهاج">المخبز الالي سوهاج</option>
+                    <option value="المدينة المنورة - الاقصر">المدينة المنورة - الاقصر</option>
+                    <option value="المراغة - سوهاج">المراغة - سوهاج</option>
+                    <option value="المراغة 2 - سوهاج">المراغة 2 - سوهاج</option>
+                    <option value="جرجا - شارع المحطة">جرجا - شارع المحطة</option>
+                    <option value="جزيرة البعيرات - الاقصر">جزيرة البعيرات - الاقصر</option>
+                    <option value="دار السلام - سوهاج">دار السلام - سوهاج</option>
+                    <option value="دشنا - بو مناع">دشنا - بو مناع</option>
+                    <option value="دشنا -ش المحطة">دشنا -ش المحطة</option>
+                    <option value="سوهاج-البلينا">سوهاج-البلينا</option>
+                    <option value="سوهاج - جرجا 2">سوهاج - جرجا 2</option>
+                    <option value="سوهاج - جهينة">سوهاج - جهينة</option>
+                    <option value="سوهاج - شارع 15">سوهاج - شارع 15</option>
+                    <option value="سوهاج - طما2">سوهاج - طما2</option>
+                    <option value="سوهاج - طهطا 2">سوهاج - طهطا 2</option>
+                    <option value="سوهاج البلينا">سوهاج البلينا</option>
+                    <option value="ش ابطال التحرير">ش ابطال التحرير</option>
+                    <option value="ش الجمهورية -قنا">ش الجمهورية -قنا</option>
+                    <option value="ش الجمهوريه - بيت الرحمه">ش الجمهوريه - بيت الرحمه</option>
+                    <option value="ش العروبة-دراو">ش العروبة-دراو</option>
+                    <option value="ش بورسعيد - طهطا">ش بورسعيد - طهطا</option>
+                    <option value="ش سعد زغلول - المنشأه">ش سعد زغلول - المنشأه</option>
+                    <option value="ش مارس - نجع حمادى">ش مارس - نجع حمادى</option>
+                    <option value="شارع التليفزيون">شارع التليفزيون</option>
+                    <option value="شارع المركز-ابو تشت">شارع المركز-ابو تشت</option>
+                    <option value="شرق النيل - سوهاج">شرق النيل - سوهاج</option>
+                    <option value="طما -  ش أسيوط سوهاج">طما -  ش أسيوط سوهاج</option>
+                    <option value="قفط - قنا">قفط - قنا</option>
+                    <option value="قنا- نقاده">قنا- نقاده</option>
+                    <option value="قنا - الشئون">قنا - الشئون</option>
+                    <option value="قنا - المناعي">قنا - المناعي</option>
+                    <option value="قنا -ش خور الحليمى">قنا -ش خور الحليمى</option>
+                    <option value="قوص-طريق النصر">قوص-طريق النصر</option>
+                    <option value="قوص - حجازة قبلي">قوص - حجازة قبلي</option>
+                    <option value="مجمع المحاكم - سوهاج">مجمع المحاكم - سوهاج</option>
+                    <option value="ميدان الشهيد- برج الأطباء">ميدان الشهيد- برج الأطباء</option>
+                    <option value="نادي التجديف - سوهاج">نادي التجديف - سوهاج</option>
+                </select>
+            </div>
+            <p class="Submitted" id="Submitted"></p>
+            <p class="TimeOut" id="TimeOut"></p>
+            <p class="Timer" id="Timer" style="display: none;">( 10:00 )</p>
+            <div id="evaluationQ" style="display: block;">
+                <div id="tab1" class="tab">
+                    <br />
+                    <br />
+                    <p>1. In the Kix tariff, a number of ………… will be deducted when sending 1 SMS to any network.</p>
+                    <input name="Q-1" type="radio" value="A" />
+                    <label>1 unit</label><br />
+                    <input name="Q-1" type="radio" value="B" />
+                    <label>5 units</label><br />
+                    <input name="Q-1" type="radio" value="C" />
+                    <label>3 units</label>
+                    <input id="correct1" type="hidden" value="B" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab2" class="tab">
+                    <br />
+                    <br />
+                    <p>2. CST can get double the package (calls and internet) for a period of 3 months when subscribing to his Control Tazbeet tariff.</p>
+                    <input name="Q-2" type="radio" value="A" />
+                    <label>True</label><br />
+                    <input name="Q-2" type="radio" value="B" />
+                    <label>False</label><br />
+                    <input id="correct2" type="hidden" value="B" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab3" class="tab">
+                    <br />
+                    <br />
+                    <p>3. The number of group minutes that the customer gets when subscribing to the package ( We Mix 165) is ………… .</p>
+                    <input name="Q-3" type="radio" value="A" />
+                    <label>1500</label><br />
+                    <input name="Q-3" type="radio" value="B" />
+                    <label>500</label><br />
+                    <input name="Q-3" type="radio" value="C" />
+                    <label>250</label>
+                    <input id="correct3" type="hidden" value="C" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab4" class="tab">
+                    <br />
+                    <br />
+                    <p>4. The code of consumption limit for indigo tariff is ……… .</p>
+                    <input name="Q-4" type="radio" value="A" />
+                    <label>*880#</label><br />
+                    <input name="Q-4" type="radio" value="B" />
+                    <label>*881#</label><br />
+                    <input name="Q-4" type="radio" value="C" />
+                    <label>*883#</label>
+                    <input id="correct4" type="hidden" value="C" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab5" class="tab">
+                    <br />
+                    <br />
+                    <p>5. In Ahlaweya tariff, the case of using a bundle or non-renewal, CST will be charged for ……… per minute and SMS for all networks and landline or MBs.</p>
+                    <input name="Q-5" type="radio" value="A" />
+                    <label>15 PT</label><br />
+                    <input name="Q-5" type="radio" value="B" />
+                    <label>19 PT</label><br />
+                    <input name="Q-5" type="radio" value="C" />
+                    <label>14 PT</label>
+                    <input id="correct5" type="hidden" value="A" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab6" class="tab">
+                    <br />
+                    <br />
+                    <p>6. CST can get a double package offer for 3 months in case he buys a new line on his We Club tariff.</p>
+                    <input name="Q-6" type="radio" value="A" />
+                    <label>True</label><br />
+                    <input name="Q-6" type="radio" value="B" />
+                    <label>False</label><br />
+                    <input id="correct6" type="hidden" value="B" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab7" class="tab">
+                    <br />
+                    <br />
+                    <p>7. The priority of using the home internet in the event that an Indigo customer adds an additional package is ……… .</p>
+                    <input name="Q-7" type="radio" value="A" />
+                    <label>Basic package first</label><br />
+                    <input name="Q-7" type="radio" value="B" />
+                    <label>Extra package first</label><br />
+                    <input id="correct7" type="hidden" value="A" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab8" class="tab">
+                    <br />
+                    <br />
+                    <p>8. The maximum limit for daily cash-out is ……… for we wallet.</p>
+                    <input name="Q-8" type="radio" value="A" />
+                    <label>100000 LE</label><br />
+                    <input name="Q-8" type="radio" value="B" />
+                    <label>30000 LE</label><br />
+                    <input name="Q-8" type="radio" value="C" />
+                    <label>50000 LE</label>
+                    <input id="correct8" type="hidden" value="B" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab9" class="tab">
+                    <br />
+                    <br />
+                    <p>9. The number of local minutes that a foreign CST gets when subscribing to the Mobile Egypt 100 package is ……… .</p>
+                    <input name="Q-9" type="radio" value="A" />
+                    <label>60 min</label><br />
+                    <input name="Q-9" type="radio" value="B" />
+                    <label>120 min</label><br />
+                    <input name="Q-9" type="radio" value="C" />
+                    <label>20 min</label>
+                    <input id="correct9" type="hidden" value="C" />
+                    <br />
+                    <br />
+                </div>
+                <div id="tab10" class="tab">
+                    <br />
+                    <br />
+                    <p>10. With the Back & Gain offer, all mobile barred and suspended customers can reactivate their lines or replace their SIM cards for free and enjoy 1500 units that can be used to call any network.</p>
+                    <input name="Q-10" type="radio" value="A" />
+                    <label>True</label><br />
+                    <input name="Q-10" type="radio" value="B" />
+                    <label>False</label><br />
+                    <input id="correct10" type="hidden" value="B" />
+                    <br />
+                    <br />
+                </div>
+                <input style="display: none;" id="submit" type="submit" value="Submit" />
+                <div id="BtnRow" style="overflow: auto;">
+                    <div>
+                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    </div>
+                </div>
+                <div id="Loading" style="display: none;" class="loader"></div>
+            </div>
+        </form>
+        <br />
+        <br />
+        <script>
+            document.getElementById("InfoEvaluation").onkeypress = function (e) {
+                var key = e.charCode || e.keyCode || 0;
+                if (key == 13) {
+                    e.preventDefault();
+                }
+            };
+            const scriptURL = "https://script.google.com/macros/s/AKfycbx8ZEXCdw7YH14SHzmVP9QXFIYgb1Ro556zLwrC2j2s7JfNE3y1SiNY04c3YqPRYz8/exec";
+            const form = document.forms["InfoEvaluation"];
+            form.addEventListener("submit", (e) => {
+                quizResult();
+                document.getElementById("submit").disabled = true;
+                BtnRow.style.display = "none";
+                Loading.style.display = "block";
+                e.preventDefault();
+                fetch(scriptURL, { method: "POST", body: new FormData(form) })
+                    .then((response) => Submitted())
+                    .catch((error) => errorAlert());
+            });
+            function WelcomeAgent() {
+                document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent");
+                document.getElementById("agentName").value = sessionStorage.getItem("agent");
+                document.getElementById("submissionTime").value = new Date().toLocaleString();
+                var quizNumber = document.getElementById("quizNumber").value;
+                if (sessionStorage.getItem("quizNumber") != quizNumber) {
+                    window.open("index.html", "_self");
+                }
+            }
+            function NextTransform() {
+                gsap.from("#tab1", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab2", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab3", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab4", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab5", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab6", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab7", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab8", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab9", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#tab10", { duration: 0.2, xPercent: 50, opacity: 0 });
+            }
+            function Start() {
+                var countDownDate = new Date().getTime() + 601000;
+                var x = setInterval(function () {
+                    var now = new Date().getTime();
+                    var distance = countDownDate - now;
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    }
+                    if (seconds < 10) {
+                        seconds = "0" + seconds;
+                    }
+                    document.getElementById("Timer").innerHTML = "( " + minutes + ":" + seconds + " )";
+                    if (distance < 0) {
+                        clearInterval(x);
+                        Timer.style.display = "none";
+                        Loading.style.display = "block";
+                        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+                            .then((response) => timeOutSubmitted())
+                            .catch((error) => errorAlert());
+                    }
+                }, 1000);
+                sessionStorage.removeItem("quizNumber");
+            }
+            var currentTab = 0;
+            showTab(currentTab);
+            function showTab(n) {
+                var x = document.getElementsByClassName("tab");
+                x[n].style.display = "block";
+                if (n == 0) {
+                    document.getElementById("prevBtn").style.display = "none";
+                    Timer.style.display = "none";
+                    document.getElementById("nextBtn").innerHTML = "Start";
+                } else if (n == 1 && Timer.style.display == "none") {
+                    document.getElementById("nextBtn").innerHTML = "Next";
+                    Timer.style.display = "block";
+                    Start();
+                } else if (n == 1) {
+                    document.getElementById("prevBtn").style.display = "none";
+                    document.getElementById("nextBtn").innerHTML = "Next";
+                } else if (n == x.length - 1) {
+                    document.getElementById("nextBtn").innerHTML = "Submit";
+                } else {
+                    document.getElementById("prevBtn").style.display = "inline";
+                    document.getElementById("nextBtn").innerHTML = "Next";
+                }
+            }
+            function Submitted() {
+                evaluationQ.style.display = "none";
+                Timer.style.display = "none";
+                TimeOut.style.display = "none";
+                document.getElementById("Submitted").innerHTML = "Submitted Successfully, Thank You.";
+            }
+            function timeOutSubmitted() {
+                evaluationQ.style.display = "none";
+                Timer.style.display = "none";
+                document.getElementById("TimeOut").innerHTML = "Sorry, Time Out!";
+            }
+            function errorAlert() {
+                evaluationQ.style.display = "none";
+                Timer.style.display = "none";
+                document.getElementById("TimeOut").innerHTML = "Not allowed to submit this quiz multiple times!";
+            }
+            function nextPrev(n) {
+                let am = document.getElementById("Area-Manager").value;
+                let sn = document.getElementById("Store-Name").value;
+                if (am == "") {
+                    document.getElementById("Area-Manager").focus();
+                    return false;
+                } else if (sn == "") {
+                    document.getElementById("Store-Name").focus();
+                    return false;
+                }
+                if (
+                    (n == 1 && currentTab == 1 && document.querySelector('input[name="Q-1"]:checked') == null) ||
+                    (n == 1 && currentTab == 2 && document.querySelector('input[name="Q-2"]:checked') == null) ||
+                    (n == 1 && currentTab == 3 && document.querySelector('input[name="Q-3"]:checked') == null) ||
+                    (n == 1 && currentTab == 4 && document.querySelector('input[name="Q-4"]:checked') == null) ||
+                    (n == 1 && currentTab == 5 && document.querySelector('input[name="Q-5"]:checked') == null) ||
+                    (n == 1 && currentTab == 6 && document.querySelector('input[name="Q-6"]:checked') == null) ||
+                    (n == 1 && currentTab == 7 && document.querySelector('input[name="Q-7"]:checked') == null) ||
+                    (n == 1 && currentTab == 8 && document.querySelector('input[name="Q-8"]:checked') == null) ||
+                    (n == 1 && currentTab == 9 && document.querySelector('input[name="Q-9"]:checked') == null) ||
+                    (n == 1 && currentTab == 10 && document.querySelector('input[name="Q-10"]:checked') == null)
+                ) {
+                    alert("You must answer all questions!");
+                    return false;
+                }
+                var x = document.getElementsByClassName("tab");
+                x[currentTab].style.display = "none";
+                currentTab = currentTab + n;
+                if (currentTab >= x.length) {
+                    document.getElementById("submit").click();
+                    return false;
+                }
+                showTab(currentTab);
+                NextTransform();
+            }
+            function quizResult() {
+                var answer1 = document.querySelector("input[type='radio'][name=Q-1]:checked").value;
+                var correct1 = document.getElementById("correct1").value;
+                if (answer1 == correct1) {
+                    answer1 = parseInt(1);
+                } else {
+                    answer1 = parseInt(0);
+                }
+                var answer2 = document.querySelector("input[type='radio'][name=Q-2]:checked").value;
+                var correct2 = document.getElementById("correct2").value;
+                if (answer2 == correct2) {
+                    answer2 = parseInt(1);
+                } else {
+                    answer2 = parseInt(0);
+                }
+                var answer3 = document.querySelector("input[type='radio'][name=Q-3]:checked").value;
+                var correct3 = document.getElementById("correct3").value;
+                if (answer3 == correct3) {
+                    answer3 = parseInt(1);
+                } else {
+                    answer3 = parseInt(0);
+                }
+                var answer4 = document.querySelector("input[type='radio'][name=Q-4]:checked").value;
+                var correct4 = document.getElementById("correct4").value;
+                if (answer4 == correct4) {
+                    answer4 = parseInt(1);
+                } else {
+                    answer4 = parseInt(0);
+                }
+                var answer5 = document.querySelector("input[type='radio'][name=Q-5]:checked").value;
+                var correct5 = document.getElementById("correct5").value;
+                if (answer5 == correct5) {
+                    answer5 = parseInt(1);
+                } else {
+                    answer5 = parseInt(0);
+                }
+                var answer6 = document.querySelector("input[type='radio'][name=Q-6]:checked").value;
+                var correct6 = document.getElementById("correct6").value;
+                if (answer6 == correct6) {
+                    answer6 = parseInt(1);
+                } else {
+                    answer6 = parseInt(0);
+                }
+                var answer7 = document.querySelector("input[type='radio'][name=Q-7]:checked").value;
+                var correct7 = document.getElementById("correct7").value;
+                if (answer7 == correct7) {
+                    answer7 = parseInt(1);
+                } else {
+                    answer7 = parseInt(0);
+                }
+                var answer8 = document.querySelector("input[type='radio'][name=Q-8]:checked").value;
+                var correct8 = document.getElementById("correct8").value;
+                if (answer8 == correct8) {
+                    answer8 = parseInt(1);
+                } else {
+                    answer8 = parseInt(0);
+                }
+                var answer9 = document.querySelector("input[type='radio'][name=Q-9]:checked").value;
+                var correct9 = document.getElementById("correct9").value;
+                if (answer9 == correct9) {
+                    answer9 = parseInt(1);
+                } else {
+                    answer9 = parseInt(0);
+                }
+                var answer10 = document.querySelector("input[type='radio'][name=Q-10]:checked").value;
+                var correct10 = document.getElementById("correct10").value;
+                if (answer10 == correct10) {
+                    answer10 = parseInt(1);
+                } else {
+                    answer10 = parseInt(0);
+                }
+                document.getElementById("quizResult").value = answer1 + answer2 + answer3 + answer4 + answer5 + answer6 + answer7 + answer8 + answer9 + answer10;
+            }
+        </script>
+    </body>
+</html>

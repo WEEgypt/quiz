@@ -1,0 +1,119 @@
+:root {
+    --bg: #fff;
+    --color: #000;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #000;
+        --color: #fff;
+    }
+}
+body {
+    background-color: var(--bg);
+    font-family: "Times New Roman", Times, serif;
+    margin: auto;
+    width: 380px;
+    color: var(--color);
+    text-size-adjust: none;
+}
+h1 {
+    text-align: center;
+}
+p {
+    font-size: 22px;
+}
+label {
+    font-size: 18px;
+    padding-left: 2px;
+    line-height: 1.3em;
+    vertical-align: sub;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+input[type="number"],
+input[type="password"],
+input[type="text"] {
+    width: 232px;
+    height: 1.5em;
+    float: right;
+}
+input[type="submit"] {
+    float: right;
+    display: inline;
+    margin: 10px;
+    padding: 0.6em;
+}
+input[type="radio"] {
+    vertical-align: sub;
+}
+button {
+    float: right;
+    display: inline;
+    margin: 10px;
+    padding: 0.6em;
+}
+select {
+    width: 240px;
+    height: 2em;
+    float: right;
+}
+.tab {
+    display: none;
+}
+.Timer {
+    text-align: center;
+    font-size: 24px;
+    color: red;
+}
+.Welcome {
+    color: red;
+    font-size: 22px;
+    font-style: oblique;
+    text-align: center;
+}
+.TimeOut {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+}
+.Submitted {
+    font-size: 18px;
+    text-align: center;
+}
+.Month {
+    text-align: center;
+}
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
