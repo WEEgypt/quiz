@@ -64,27 +64,28 @@ select {
 .tab {
     display: none;
 }
-.Timer {
+.timer {
     text-align: center;
     font-size: 24px;
     color: red;
 }
-.Welcome {
-    color: red;
+.welcome {
+    color: #6c4389;
     font-size: 22px;
     font-style: oblique;
     text-align: center;
 }
-.AlertBar {
-    color: red;
+.alertBar {
+    color: orangered;
     font-size: 20px;
     text-align: center;
 }
-.Submitted {
+.submitted {
+    color: forestgreen;
     font-size: 20px;
     text-align: center;
 }
-.Month {
+.month {
     text-align: center;
 }
 .loader {
