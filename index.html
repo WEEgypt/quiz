@@ -94,9 +94,9 @@
             }
         </style>
     </head>
-    <body onload="Check()">
-        <p style="display: block;">New quiz will be available later</p>
-        <div style="display: none;" class="protected">
+    <body onload="Focus()">
+        <p style="display: none;">New quiz will be available later</p>
+        <div style="display: block;" class="protected">
             <div class="protected__alert" id="alert">User Name or Password Is Incorrect</div>
             <div class="protected__content">
                 <h1 class="protected__content__heading">Login to continue</h1>
@@ -257,10 +257,8 @@
                     (username == "admin" && password == "")
                 ) {
                     sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    var randomNum = Math.floor(Math.random() * 5) + 1;
-                    var randomQuiz = "quiz-" + randomNum;
-                    sessionStorage.setItem("quizNumber", randomQuiz);
-                    window.open(randomQuiz + ".html", "_self");
+                    sessionStorage.setItem("login", "valid");
+                    window.open("quiz.html", "_self");
                 } else {
                     document.getElementById("alert").style.display = "block";
                 }
@@ -270,13 +268,8 @@
                     Login();
                 }
             }
-            function Check() {
-                if (sessionStorage.getItem("quizNumber") !== null) {
-                    var randomQuiz = sessionStorage.getItem("quizNumber");
-                    window.open(randomQuiz + ".html", "_self");
-                } else {
-                    document.getElementById("agent").focus();
-                }
+            function Focus() {
+                document.getElementById("agent").focus();
             }
         </script>
     </body>

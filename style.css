@@ -75,13 +75,13 @@ select {
     font-style: oblique;
     text-align: center;
 }
-.TimeOut {
+.AlertBar {
     color: red;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
 }
 .Submitted {
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
 }
 .Month {
