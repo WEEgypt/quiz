@@ -254,7 +254,7 @@
                 if (sessionStorage.getItem("login") !== "valid") {
                     window.open("index.html", "_self");
                 } else {
-                    document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent");
+                    document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ",<br />You can access this quiz one-time only, so if you're ready, choose your Store & Area manager then click Start.";
                     document.getElementById("AgentName").value = sessionStorage.getItem("agent");
                     document.getElementById("Attend").value = sessionStorage.getItem("agent");
                 }
