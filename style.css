@@ -70,8 +70,8 @@ select {
     color: red;
 }
 .welcome {
-    color: tomato;
-    line-height: 18px;
+    color: red;
+    line-height: 1em;
     font-size: 20px;
     font-style: oblique;
     text-align: center;
