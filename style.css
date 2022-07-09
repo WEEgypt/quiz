@@ -44,6 +44,7 @@ button {
     height: 28px;
     float: right;
     margin: 10px;
+    color: #fff;
 }
 select {
     height: 24px;
