@@ -36,14 +36,13 @@ img {
 input[type="radio"] {
     vertical-align: sub;
 }
+
 button {
-    float: right;
-    display: inline;
-    margin: 10px;
-    width: 74px;
-    height: 32px;
-    border: 1px solid #555
-    border-radius: 1%;
+    color: var(--color);
+    background-color: #6c4389;
+    border: 1px solid #6c4389;
+    width: 70px;
+    height: 28px;
 }
 select {
     height: 24px;
