@@ -40,8 +40,8 @@ button {
     float: right;
     display: inline;
     margin: 10px;
-    width: 100px;
-    height: 40px;
+    width: 80px;
+    height: 24px;
 }
 select {
     height: 24px;
@@ -60,7 +60,7 @@ select {
     font-size: 16px;
     text-align: center;
     font-family: sans-serif;
-    margin-bottom: 8px;
+    margin-bottom: unset;
 }
 .timer {
     color: red;
