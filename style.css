@@ -43,6 +43,7 @@ button {
     border: 1px solid #6c4389;
     width: 70px;
     height: 28px;
+    float: right;
 }
 select {
     height: 24px;
