@@ -1,11 +1,13 @@
 :root {
-    --bg: #fff;
+    --bg: #faf5fd;
     --color: #000;
+    --selBg: #e9e3ed;
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #000;
+        --bg: #10021a;
         --color: #fff;
+        --selBg: #08010c;
     }
 }
 body {
@@ -45,6 +47,10 @@ button {
 select {
     height: 24px;
     width: 280px;
+    padding-left: 2px;
+    border-radius: 4px;
+    background: var(--selBg);
+    color: var(--color);
 }
 .tab {
     display: none;
@@ -72,7 +78,7 @@ select {
     text-align: center;
 }
 .submitted {
-    color: blue;
+    color: #555;
     font-size: 20px;
     text-align: center;
 }
