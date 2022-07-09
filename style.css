@@ -26,7 +26,6 @@ label {
     font-size: 18px;
     padding-left: 2px;
     line-height: 1.3em;
-    vertical-align: sub;
 }
 img {
     display: block;
@@ -57,32 +56,36 @@ button {
     padding: 0.6em;
 }
 select {
-    width: 240px;
-    height: 2em;
-    float: right;
+    height: 28px;
+    width: 280px;
 }
 .tab {
     display: none;
 }
-.timer {
-    text-align: center;
-    font-size: 24px;
-    color: red;
-}
 .welcome {
     color: red;
-    line-height: 1em;
-    font-size: 20px;
+    font-size: 22px;
+    text-align: center;
     font-style: oblique;
+}
+.choose {
+    font-size: 16px;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 8px;
+}
+.timer {
+    color: red;
+    font-size: 24px;
     text-align: center;
 }
 .alertBar {
-    color: orangered;
+    color: red;
     font-size: 20px;
     text-align: center;
 }
 .submitted {
-    color: forestgreen;
+    color: #555;
     font-size: 20px;
     text-align: center;
 }

@@ -18,15 +18,15 @@
             <input type="text" name="Attend-Time" id="AttendTime" style="display: none;" />
         </form>
         <form method="post" name="InfoEvaluation" id="InfoEvaluation">
-            <div class="tab" style="display: block;">
+            <div class="tab" style="display: block; text-align: center;">
                 <p class="welcome" id="Welcome"><br /></p>
                 <img src="transparentIcon.png" alt="We Logo" />
                 <br />
+                <p class="choose">Choose your Store & Area Manager:</p>
                 <input type="text" name="Submission-Time" id="SubmissionTime" style="display: none;" />
                 <input type="text" name="Agent-Name" id="AgentName" style="display: none;" />
                 <input type="text" name="Quiz-Result" id="QuizResult" style="display: none;" />
                 <br />
-                <label>Area Manager:</label>
                 <select name="Area-Manager" id="AreaManager">
                     <option value="" selected disabled hidden>Area Manager</option>
                     <option value="Eslam Gomaa">Eslam Gomaa</option>
@@ -38,7 +38,6 @@
                 </select>
                 <br />
                 <br />
-                <label>Store Name:</label>
                 <select name="Store-Name" id="StoreName">
                     <option value="" selected disabled hidden>Store</option>
                     <option value="اخميم - البحري">اخميم - البحري</option>
@@ -217,6 +216,7 @@
                 </div>
                 <input style="display: none;" id="submit" type="submit" value="Submit" />
                 <br />
+                <br />
                 <div id="BtnRow" style="overflow: auto;">
                     <div>
                         <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
@@ -254,7 +254,7 @@
                 if (sessionStorage.getItem("login") !== "valid") {
                     window.open("index.html", "_self");
                 } else {
-                    document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ",<br />You can access this quiz one-time only, so if you're ready, choose your Store & Area manager then click Start.";
+                    document.getElementById("Welcome").innerHTML = "Good Luck, " + sessionStorage.getItem("agent");
                     document.getElementById("AgentName").value = sessionStorage.getItem("agent");
                     document.getElementById("Attend").value = sessionStorage.getItem("agent");
                 }
@@ -386,6 +386,16 @@
                 if (currentTab >= x.length) {
                     document.getElementById("submit").click();
                     return false;
+                }
+                if (currentTab == 1 && Timer.style.display == "none") {
+                    let text = "You can access this quiz one-time only, Ready?";
+                    if (confirm(text) == true) {
+                        showTab(currentTab);
+                    } else {
+                        currentTab = currentTab - n;
+                        showTab(currentTab);
+                        return false;
+                    }
                 }
                 showTab(currentTab);
                 NextTransform();
