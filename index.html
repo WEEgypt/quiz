@@ -274,7 +274,7 @@
                 document.getElementById("Attend").value = sessionStorage.getItem("agent");
             }
             function Start() {
-                var countDownDate = new Date().getTime() + 601000;
+                var countDownDate = new Date().getTime() + 6010;
                 var x = setInterval(function () {
                     var now = new Date().getTime();
                     var distance = countDownDate - now;
@@ -288,6 +288,7 @@
                     }
                     document.getElementById("Timer").innerHTML = "( " + minutes + ":" + seconds + " )";
                     if (distance < 0) {
+                        GetQuizResult();
                         clearInterval(x);
                         Timer.style.display = "none";
                         Loading.style.display = "block";
@@ -419,61 +420,61 @@
                 gsap.from("#Tab10", { duration: 0.2, xPercent: 50, opacity: 0 });
             }
             function GetQuizResult() {
-                var A1 = document.querySelector("input[type='radio'][name=Q-1]:checked").value;
+                var A1 = document.querySelector("input[type='radio'][name=Q-1]:checked")?.value;
                 if (A1 == "B") {
                     A1 = parseInt(1);
                 } else {
                     A1 = parseInt(0);
                 }
-                var A2 = document.querySelector("input[type='radio'][name=Q-2]:checked").value;
+                var A2 = document.querySelector("input[type='radio'][name=Q-2]:checked")?.value;
                 if (A2 == "B") {
                     A2 = parseInt(1);
                 } else {
                     A2 = parseInt(0);
                 }
-                var A3 = document.querySelector("input[type='radio'][name=Q-3]:checked").value;
+                var A3 = document.querySelector("input[type='radio'][name=Q-3]:checked")?.value;
                 if (A3 == "C") {
                     A3 = parseInt(1);
                 } else {
                     A3 = parseInt(0);
                 }
-                var A4 = document.querySelector("input[type='radio'][name=Q-4]:checked").value;
+                var A4 = document.querySelector("input[type='radio'][name=Q-4]:checked")?.value;
                 if (A4 == "C") {
                     A4 = parseInt(1);
                 } else {
                     A4 = parseInt(0);
                 }
-                var A5 = document.querySelector("input[type='radio'][name=Q-5]:checked").value;
+                var A5 = document.querySelector("input[type='radio'][name=Q-5]:checked")?.value;
                 if (A5 == "A") {
                     A5 = parseInt(1);
                 } else {
                     A5 = parseInt(0);
                 }
-                var A6 = document.querySelector("input[type='radio'][name=Q-6]:checked").value;
+                var A6 = document.querySelector("input[type='radio'][name=Q-6]:checked")?.value;
                 if (A6 == "B") {
                     A6 = parseInt(1);
                 } else {
                     A6 = parseInt(0);
                 }
-                var A7 = document.querySelector("input[type='radio'][name=Q-7]:checked").value;
+                var A7 = document.querySelector("input[type='radio'][name=Q-7]:checked")?.value;
                 if (A7 == "A") {
                     A7 = parseInt(1);
                 } else {
                     A7 = parseInt(0);
                 }
-                var A8 = document.querySelector("input[type='radio'][name=Q-8]:checked").value;
+                var A8 = document.querySelector("input[type='radio'][name=Q-8]:checked")?.value;
                 if (A8 == "B") {
                     A8 = parseInt(1);
                 } else {
                     A8 = parseInt(0);
                 }
-                var A9 = document.querySelector("input[type='radio'][name=Q-9]:checked").value;
+                var A9 = document.querySelector("input[type='radio'][name=Q-9]:checked")?.value;
                 if (A9 == "C") {
                     A9 = parseInt(1);
                 } else {
                     A9 = parseInt(0);
                 }
-                var A10 = document.querySelector("input[type='radio'][name=Q-10]:checked").value;
+                var A10 = document.querySelector("input[type='radio'][name=Q-10]:checked")?.value;
                 if (A10 == "B") {
                     A10 = parseInt(1);
                 } else {
