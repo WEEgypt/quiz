@@ -17,6 +17,8 @@
 *:before {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
 }
 
 html {
@@ -79,6 +81,7 @@ select:focus {
     position: absolute;
     height: 100%;
     padding: 10px;
+    min-width: 320px;
 }
 .tab {
     display: none;

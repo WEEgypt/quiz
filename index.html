@@ -310,20 +310,25 @@
                     document.getElementById("prevBtn").style.display = "none";
                     Timer.style.display = "none";
                     document.getElementById("nextBtn").innerHTML = "Start";
+                    document.getElementById("nextBtn").style.width = "280px";
                 } else if (n == 1 && Timer.style.display == "none") {
                     document.getElementById("nextBtn").innerHTML = "Next";
                     Timer.style.display = "block";
                     Start();
                     document.getElementById("AttendTime").value = new Date().toLocaleString();
                     fetch(attendanceScriptURL, { method: "POST", body: new FormData(attendanceForm) }).catch((error) => DuplicatedAlert());
+                    document.getElementById("nextBtn").style.width = "70px";
                 } else if (n == 1) {
                     document.getElementById("prevBtn").style.display = "none";
                     document.getElementById("nextBtn").innerHTML = "Next";
+                    document.getElementById("nextBtn").style.width = "70px";
                 } else if (n == x.length - 1) {
                     document.getElementById("nextBtn").innerHTML = "Submit";
+                    document.getElementById("nextBtn").style.width = "70px";
                 } else {
                     document.getElementById("prevBtn").style.display = "inline";
                     document.getElementById("nextBtn").innerHTML = "Next";
+                    document.getElementById("nextBtn").style.width = "70px";
                 }
             }
             function nextPrev(n) {
