@@ -364,7 +364,7 @@
                     return false;
                 }
                 if (currentTab == 1 && Timer.style.display == "none") {
-                    let text = "You can access this quiz one-time only, are you ready?";
+                    let text = "You can access this quiz one-time only, are you ready now?";
                     if (confirm(text) == true) {
                         showTab(currentTab);
                     } else {
@@ -383,7 +383,7 @@
                 AlertBar.style.display = "none";
                 Submitted.style.display = "block";
                 document.getElementById("Submitted").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Submitted").innerHTML = "Your answers has been successfully submitted, Thank you.";
+                document.getElementById("Submitted").innerHTML = "Your answers have been submitted, Thank you.";
             }
             function SubmitError() {
                 clearInterval(interval);
