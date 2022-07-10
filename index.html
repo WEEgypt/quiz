@@ -10,7 +10,7 @@
         <script src="transformer.js"></script>
     </head>
     <body>
-        <p style="display: none;">New quiz will be available later</p>
+        <p id="noQuiz" style="display: none;">New quiz will be available later</p>
         <div id="loginDiv" style="display: none;" class="protected">
             <div class="protected__alert" id="alert">User Name or Password Is Incorrect</div>
             <div class="protected__content">
@@ -241,7 +241,8 @@
         </div>
         <script>
             if (sessionStorage.getItem("agent") == null) {
-                loginDiv.style.display = "block";
+                noQuiz.style.display = "block";
+                loginDiv.style.display = "none";
                 mainDiv.style.display = "none";
                 document.getElementById("agent").focus();
             } else {
