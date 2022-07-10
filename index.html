@@ -86,7 +86,7 @@
                         <option value="شارع التليفزيون">شارع التليفزيون</option>
                         <option value="شارع المركز-ابو تشت">شارع المركز-ابو تشت</option>
                         <option value="شرق النيل - سوهاج">شرق النيل - سوهاج</option>
-                        <option value="طما -  ش أسيوط سوهاج">طما -  ش أسيوط سوهاج</option>
+                        <option value="طما -  ش أسيوط سوهاج">طما -  ش أسيوط سوهاج</option>
                         <option value="قفط - قنا">قفط - قنا</option>
                         <option value="قنا- نقاده">قنا- نقاده</option>
                         <option value="قنا - الشئون">قنا - الشئون</option>
@@ -99,7 +99,6 @@
                         <option value="نادي التجديف - سوهاج">نادي التجديف - سوهاج</option>
                     </select>
                 </div>
-                <p class="submitted" id="Submitted" style="display: none;"></p>
                 <p class="alertBar" id="AlertBar" style="display: none;"></p>
                 <p class="timer" id="Timer" style="display: none;">( 10:00 )</p>
                 <div id="TheQuiz" style="display: block;">
@@ -380,10 +379,9 @@
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
-                AlertBar.style.display = "none";
-                Submitted.style.display = "block";
-                document.getElementById("Submitted").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Submitted").innerHTML = "Your answers have been submitted, Thank you.";
+                AlertBar.style.display = "block";
+                document.getElementById("AlertBar").style.padding = "50px 0px 0px 0px";
+                document.getElementById("AlertBar").innerHTML = "Your answers have been submitted, Thank you.";
             }
             function SubmitError() {
                 clearInterval(interval);

@@ -109,12 +109,6 @@ select:focus {
     text-align: center;
 }
 .alertBar {
-    color: red;
-    font-size: 20px;
-    text-align: center;
-    min-width: 320px;
-}
-.submitted {
     color: #555;
     font-size: 20px;
     text-align: center;
@@ -127,12 +121,12 @@ select:focus {
     min-width: 320px;
 }
 .protected__content {
-    padding: 20px 20px 60px 20px;
+    padding: 14px 20px 60px 20px;
 }
 .protected__content__heading {
     font-size: 16px;
     font-weight: 500;
-    margin: 0 0 12px;
+    margin: 0px 0px 10px 0px;
     line-height: 1;
     text-align: left;
     padding: 4px 0px 16px 4px;
@@ -141,7 +135,7 @@ select:focus {
     display: none;
     border-bottom: 1px solid transparent;
     border-radius: 3px 3px 0 0;
-    padding: 14px 24px;
+    padding: 18px 24px;
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
