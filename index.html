@@ -10,7 +10,7 @@
         <script src="transformer.js"></script>
     </head>
     <body>
-        <p id="noQuiz" style="display: none;">New quiz will be available later</p>
+        <p id="noQuiz" style="display: none;">Available only every month, from the 20th to the 23rd.</p>
         <div id="loginDiv" style="display: none;" class="protected">
             <div class="protected__alert" id="alert">User Name or Password Is Incorrect</div>
             <div class="protected__content">
@@ -240,13 +240,21 @@
             <br />
         </div>
         <script>
-            if (sessionStorage.getItem("agent") == null) {
-                noQuiz.style.display = "block";
-                loginDiv.style.display = "none";
-                mainDiv.style.display = "none";
-                document.getElementById("agent").focus();
+            var day = new Date().getDate();
+            if (day == 20 || day == 21 || day == 22 || day == 23) {
+                check();
             } else {
-                WelcomeAgent();
+                noQuiz.style.display = "block";
+                mainDiv.style.display = "none";
+            }
+            function check() {
+                if (sessionStorage.getItem("agent") == null) {
+                    loginDiv.style.display = "block";
+                    mainDiv.style.display = "none";
+                    document.getElementById("agent").focus();
+                } else {
+                    WelcomeAgent();
+                }
             }
             document.getElementById("InfoEvaluation").onkeypress = function (e) {
                 var key = e.charCode || e.keyCode || 0;

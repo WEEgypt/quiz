@@ -77,6 +77,17 @@ select {
 select:focus {
     outline-style: auto;
 }
+#noQuiz {
+    color: #6c4389;
+    border: double;
+    padding: 24px;
+    font-size: x-large;
+    max-width: 80%;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: 600;
+    font-family: monospace;
+}
 #mainDiv {
     position: absolute;
     height: 100%;
