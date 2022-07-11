@@ -108,13 +108,14 @@ select:focus {
     font-size: 24px;
     text-align: center;
 }
-.notification {
+.notifications {
     color: #555;
     font-size: 20px;
     text-align: center;
     min-width: 320px;
 }
 .protected {
+    position: absolute;
     background-color: var(--protected);
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
     border-radius: 3px;
@@ -171,7 +172,7 @@ select:focus {
 .protected__content__btn:hover {
     background-color: #7a5099;
 }
-.later {
+.unavailable {
     color: #555;
     padding: 24px 24px 0 24px;
     font-size: 12px;

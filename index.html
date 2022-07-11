@@ -12,7 +12,7 @@
     <body>
         <div id="noQuiz" style="display: none;">
             <img src="transparentIcon.png" alt="We Logo" />
-            <p class="later">Available only from 20th to 23rd.</p>
+            <p class="unavailable">Available only from 20th to 23rd.</p>
         </div>
         <div id="loginDiv" style="display: none;" class="protected">
             <div class="protected__alert" id="alert">User Name or Password Is Incorrect</div>
@@ -102,7 +102,7 @@
                         <option value="نادي التجديف - سوهاج">نادي التجديف - سوهاج</option>
                     </select>
                 </div>
-                <p class="notification" id="Notification" style="display: none;"></p>
+                <p class="notifications" id="Notifications" style="display: none;"></p>
                 <p class="timer" id="Timer" style="display: none;">( 10:00 )</p>
                 <div id="TheQuiz" style="display: block;">
                     <div id="Tab1" class="tab">
@@ -244,13 +244,13 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day == 20 || day == 21 || day == 22 || day == 23) {
-                check();
+            if (day == 12 || day == 20 || day == 21 || day == 22 || day == 23) {
+                Check();
             } else {
                 noQuiz.style.display = "block";
                 mainDiv.style.display = "none";
             }
-            function check() {
+            function Check() {
                 if (sessionStorage.getItem("agent") == null) {
                     loginDiv.style.display = "block";
                     mainDiv.style.display = "none";
@@ -258,6 +258,11 @@
                 } else {
                     WelcomeAgent();
                 }
+            }
+            function WelcomeAgent() {
+                document.getElementById("Welcome").innerHTML = "Good Luck, " + sessionStorage.getItem("agent");
+                document.getElementById("AgentName").value = sessionStorage.getItem("agent");
+                document.getElementById("Attend").value = sessionStorage.getItem("agent");
             }
             document.getElementById("InfoEvaluation").onkeypress = function (e) {
                 var key = e.charCode || e.keyCode || 0;
@@ -280,11 +285,6 @@
                     .then((response) => QuizSubmitted())
                     .catch((error) => SubmitError());
             });
-            function WelcomeAgent() {
-                document.getElementById("Welcome").innerHTML = "Good Luck, " + sessionStorage.getItem("agent");
-                document.getElementById("AgentName").value = sessionStorage.getItem("agent");
-                document.getElementById("Attend").value = sessionStorage.getItem("agent");
-            }
             function Start() {
                 var countDownDate = new Date().getTime() + 601000;
                 var x = setInterval(function () {
@@ -392,32 +392,32 @@
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
-                Notification.style.display = "block";
-                document.getElementById("Notification").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Notification").innerHTML = "Your answers have been submitted.";
+                Notifications.style.display = "block";
+                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").innerHTML = "Your answers have been submitted.";
             }
             function SubmitError() {
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
-                Notification.style.display = "block";
-                document.getElementById("Notification").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Notification").innerHTML = "Sorry, Something went wrong!";
+                Notifications.style.display = "block";
+                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").innerHTML = "Sorry, Something went wrong!";
             }
             function TimeOutSubmitted() {
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
-                Notification.style.display = "block";
-                document.getElementById("Notification").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Notification").innerHTML = "Time out!, Your answers have been submitted!";
+                Notifications.style.display = "block";
+                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").innerHTML = "Time out!, Your answers have been submitted!";
             }
             function DuplicatedAlert() {
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
-                Notification.style.display = "block";
-                document.getElementById("Notification").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Notification").innerHTML = "Not allowed to submit this quiz multiple times!";
+                Notifications.style.display = "block";
+                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
             }
             function NextTransform() {
                 gsap.from("#Tab1", { duration: 0.2, xPercent: 50, opacity: 0 });
