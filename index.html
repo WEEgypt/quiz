@@ -15,10 +15,10 @@
             <p class="unavailable">Available only from 20th to 23rd.</p>
         </div>
         <div id="loginDiv" style="display: none;" class="protected">
-            <div class="protected__alert" id="alert">User Name or Password Is Incorrect</div>
+            <div class="protected__alert" id="alert">Username or Password Is Incorrect</div>
             <div class="protected__content">
                 <h1 class="protected__content__heading">Login to continue</h1>
-                <input class="protected__content__input" id="agent" type="text" placeholder="agent name" onkeypress="PressEnterToLogin()" />
+                <input class="protected__content__input" id="agent" type="text" placeholder="username" onkeypress="PressEnterToLogin()" />
                 <input class="protected__content__input" id="password" type="password" placeholder="password" onkeypress="PressEnterToLogin()" />
                 <button onclick="Login()" id="button" type="button" class="protected__content__btn">Continue</button>
             </div>
@@ -103,10 +103,10 @@
                     </select>
                 </div>
                 <p class="notifications" id="Notifications" style="display: none;"></p>
+                <br />
                 <p class="timer" id="Timer" style="display: none;">( 10:00 )</p>
                 <div id="TheQuiz" style="display: block;">
                     <div id="Tab1" class="tab">
-                        <br />
                         <br />
                         <p>1. In the Kix tariff, a number of ………… will be deducted when sending 1 SMS to any network.</p>
                         <input name="Q-1" type="radio" value="A" />
@@ -120,7 +120,6 @@
                     </div>
                     <div id="Tab2" class="tab">
                         <br />
-                        <br />
                         <p>2. CST can get double the package (calls and internet) for a period of 3 months when subscribing to his Control Tazbeet tariff.</p>
                         <input name="Q-2" type="radio" value="A" />
                         <label>True</label><br />
@@ -130,7 +129,6 @@
                         <br />
                     </div>
                     <div id="Tab3" class="tab">
-                        <br />
                         <br />
                         <p>3. The number of group minutes that the customer gets when subscribing to the package ( We Mix 165) is ………… .</p>
                         <input name="Q-3" type="radio" value="A" />
@@ -144,7 +142,6 @@
                     </div>
                     <div id="Tab4" class="tab">
                         <br />
-                        <br />
                         <p>4. The code of consumption limit for indigo tariff is ……… .</p>
                         <input name="Q-4" type="radio" value="A" />
                         <label>*880#</label><br />
@@ -156,7 +153,6 @@
                         <br />
                     </div>
                     <div id="Tab5" class="tab">
-                        <br />
                         <br />
                         <p>5. In Ahlaweya tariff, the case of using a bundle or non-renewal, CST will be charged for ……… per minute and SMS for all networks and landline or MBs.</p>
                         <input name="Q-5" type="radio" value="A" />
@@ -170,7 +166,6 @@
                     </div>
                     <div id="Tab6" class="tab">
                         <br />
-                        <br />
                         <p>6. CST can get a double package offer for 3 months in case he buys a new line on his We Club tariff.</p>
                         <input name="Q-6" type="radio" value="A" />
                         <label>True</label><br />
@@ -181,7 +176,6 @@
                     </div>
                     <div id="Tab7" class="tab">
                         <br />
-                        <br />
                         <p>7. The priority of using the home internet in the event that an Indigo customer adds an additional package is ……… .</p>
                         <input name="Q-7" type="radio" value="A" />
                         <label>Basic package first</label><br />
@@ -191,7 +185,6 @@
                         <br />
                     </div>
                     <div id="Tab8" class="tab">
-                        <br />
                         <br />
                         <p>8. The maximum limit for daily cash-out is ……… for we wallet.</p>
                         <input name="Q-8" type="radio" value="A" />
@@ -205,7 +198,6 @@
                     </div>
                     <div id="Tab9" class="tab">
                         <br />
-                        <br />
                         <p>9. The number of local minutes that a foreign CST gets when subscribing to the Mobile Egypt 100 package is ……… .</p>
                         <input name="Q-9" type="radio" value="A" />
                         <label>60 min</label><br />
@@ -217,7 +209,6 @@
                         <br />
                     </div>
                     <div id="Tab10" class="tab">
-                        <br />
                         <br />
                         <p>10. With the Back & Gain offer, all mobile barred and suspended customers can reactivate their lines or replace their SIM cards for free and enjoy 1500 units that can be used to call any network.</p>
                         <input name="Q-10" type="radio" value="A" />
@@ -244,7 +235,7 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day == 12 || day == 20 || day == 21 || day == 22 || day == 23) {
+            if (day == 20 || day == 21 || day == 22 || day == 23) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
