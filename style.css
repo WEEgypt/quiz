@@ -77,17 +77,6 @@ select {
 select:focus {
     outline-style: auto;
 }
-#noQuiz {
-    color: #6c4389;
-    border: double;
-    padding: 24px;
-    font-size: x-large;
-    max-width: 80%;
-    text-align: center;
-    line-height: 1.4;
-    font-weight: 600;
-    font-family: monospace;
-}
 #mainDiv {
     position: absolute;
     height: 100%;
@@ -119,7 +108,7 @@ select:focus {
     font-size: 24px;
     text-align: center;
 }
-.alertBar {
+.notification {
     color: #555;
     font-size: 20px;
     text-align: center;
@@ -181,6 +170,16 @@ select:focus {
 }
 .protected__content__btn:hover {
     background-color: #7a5099;
+}
+.later {
+    color: #555;
+    padding: 34px 24px 0 24px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: 600;
+    font-family: monospace;
+    margin: auto;
 }
 .loader {
     position: absolute;
