@@ -32,7 +32,7 @@
                 <input type="text" name="Attend-Time" id="AttendTime" style="display: none;" />
             </form>
             <form method="post" name="InfoEvaluation" id="InfoEvaluation">
-                <div class="tab" style="display: block; text-align: center;">
+                <div class="tab" id="StartDiv" style="display: block; text-align: center;">
                     <p class="welcome" id="Welcome"><br /></p>
                     <img src="transparentIcon.png" alt="We Logo" />
                     <br />
@@ -226,8 +226,8 @@
                             <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                         </div>
                     </div>
-                    <div id="Loading" style="display: none;" class="loader"></div>
                 </div>
+                <div id="Loading" style="display: none;" class="loader"></div>
             </form>
             <br />
             <br />
@@ -265,9 +265,11 @@
             const scriptURL = "https://script.google.com/macros/s/AKfycbzp1E8AlLFVpX1ld217M4kIPadfXQg4Jy5DMtKlIIWIHB2X7EjFqgGNDQsvT5a6N5ePeg/exec?sheetName=Evaluation";
             const form = document.forms["InfoEvaluation"];
             form.addEventListener("submit", (e) => {
+                clearInterval(interval);
                 GetQuizResult();
                 document.getElementById("submit").disabled = true;
                 BtnRow.style.display = "none";
+                Timer.style.display = "none";
                 Loading.style.display = "block";
                 e.preventDefault();
                 document.getElementById("SubmissionTime").value = new Date().toLocaleString();
@@ -290,9 +292,11 @@
                     }
                     document.getElementById("Timer").innerHTML = "( " + minutes + ":" + seconds + " )";
                     if (distance < 0) {
-                        GetQuizResult();
                         clearInterval(x);
-                        Timer.style.display = "none";
+                        GetQuizResult();
+                        document.getElementById("Timer").innerHTML = "( 00:00 )";
+                        document.getElementById("Timer").style.webkitFilter = "opacity(0.5)";
+                        document.getElementById("TheQuiz").style.webkitFilter = "opacity(0.5)";
                         Loading.style.display = "block";
                         document.getElementById("SubmissionTime").value = new Date().toLocaleString();
                         fetch(scriptURL, { method: "POST", body: new FormData(form) })
@@ -317,8 +321,6 @@
                     document.getElementById("nextBtn").innerHTML = "Next";
                     Timer.style.display = "block";
                     Start();
-                    document.getElementById("AttendTime").value = new Date().toLocaleString();
-                    fetch(attendanceScriptURL, { method: "POST", body: new FormData(attendanceForm) }).catch((error) => DuplicatedAlert());
                     document.getElementById("nextBtn").style.width = "70px";
                 } else if (n == 1) {
                     document.getElementById("prevBtn").style.display = "none";
@@ -368,7 +370,15 @@
                 if (currentTab == 1 && Timer.style.display == "none") {
                     let text = "You can access this quiz one-time only, are you ready now?";
                     if (confirm(text) == true) {
+                        currentTab = currentTab - n;
                         showTab(currentTab);
+                        document.getElementById("StartDiv").style.webkitFilter = "opacity(0.5)";
+                        document.getElementById("TheQuiz").style.webkitFilter = "opacity(0.5)";
+                        Loading.style.display = "block";
+                        document.getElementById("AttendTime").value = new Date().toLocaleString();
+                        fetch(attendanceScriptURL, { method: "POST", body: new FormData(attendanceForm) })
+                            .then((response) => StartQuiz(n))
+                            .catch((error) => StartQuizError());
                     } else {
                         currentTab = currentTab - n;
                         showTab(currentTab);
@@ -378,7 +388,25 @@
                 showTab(currentTab);
                 NextTransform();
             }
+            function StartQuiz(n) {
+                Loading.style.display = "none";
+                document.getElementById("StartDiv").style.webkitFilter = "none";
+                document.getElementById("TheQuiz").style.webkitFilter = "none";
+                var x = document.getElementsByClassName("tab");
+                x[currentTab].style.display = "none";
+                currentTab = currentTab + n;
+                showTab(currentTab);
+            }
+            function StartQuizError() {
+                Loading.style.display = "none";
+                StartDiv.style.display = "none";
+                TheQuiz.style.display = "none";
+                Notifications.style.display = "block";
+                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
+            }
             function QuizSubmitted() {
+                Loading.style.display = "none";
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
@@ -387,6 +415,7 @@
                 document.getElementById("Notifications").innerHTML = "Your answers have been submitted.";
             }
             function SubmitError() {
+                Loading.style.display = "none";
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
@@ -395,19 +424,12 @@
                 document.getElementById("Notifications").innerHTML = "Sorry, Something went wrong!";
             }
             function TimeOutSubmitted() {
+                Loading.style.display = "none";
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
                 Notifications.style.display = "block";
                 document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
                 document.getElementById("Notifications").innerHTML = "Time out!, Your answers have been submitted!";
-            }
-            function DuplicatedAlert() {
-                clearInterval(interval);
-                TheQuiz.style.display = "none";
-                Timer.style.display = "none";
-                Notifications.style.display = "block";
-                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
             }
             function NextTransform() {
                 gsap.from("#Tab1", { duration: 0.2, xPercent: 50, opacity: 0 });
