@@ -70,6 +70,8 @@ select {
     height: 24px;
     width: 280px;
     padding-left: 2px;
+    float: left;
+    margin-left: 10px;
 }
 select:focus {
     outline-style: auto;
