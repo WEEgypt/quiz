@@ -102,7 +102,7 @@
                         <option value="نادي التجديف - سوهاج">نادي التجديف - سوهاج</option>
                     </select>
                 </div>
-                <p class="notifications" id="Notifications" style="display: none;"></p>
+                <div class="notifications"><p id="Notifications" style="display: none;"></p></div>
                 <p class="timer" id="Timer" style="display: none;">( 10:00 )</p>
                 <div id="TheQuiz" style="display: block;">
                     <div id="Tab1" class="tab">
@@ -402,7 +402,7 @@
                 Loading.style.display = "none";
                 StartDiv.style.display = "none";
                 TheQuiz.style.display = "none";
-                Notifications.style.display = "inline-block";
+                Notifications.style.display = "block";
                 document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
                 document.getElementById("Notifications").style.color = "red";
                 document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
