@@ -110,8 +110,6 @@ select:focus {
 }
 .notifications {
     font-size: 20px;
-    text-align: center;
-    min-width: 300px;
 }
 .protected {
     position: absolute;
