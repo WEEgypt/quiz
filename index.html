@@ -402,8 +402,8 @@
                 Loading.style.display = "none";
                 StartDiv.style.display = "none";
                 TheQuiz.style.display = "none";
-                Notifications.style.display = "block";
-                
+                Notifications.style.display = "inline-block";
+                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
                 document.getElementById("Notifications").style.color = "red";
                 document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
             }
