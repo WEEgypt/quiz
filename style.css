@@ -112,7 +112,6 @@ select:focus {
     color: #555;
     font-size: 20px;
     text-align: center;
-    min-width: 360px;
 }
 .protected {
     position: absolute;
