@@ -71,7 +71,7 @@ select {
     width: 280px;
     padding-left: 2px;
     float: left;
-    margin-left: 10px;
+    margin: 0px 0px 14px 10px;
 }
 select:focus {
     outline-style: auto;
@@ -109,9 +109,9 @@ select:focus {
     margin: 46px 0px 0px 0px;
 }
 .notifications {
-    color: #555;
     font-size: 20px;
     text-align: center;
+    min-width: 300px;
 }
 .protected {
     position: absolute;

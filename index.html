@@ -220,6 +220,7 @@
                     <input style="display: none;" id="submit" type="submit" value="Submit" />
                     <br />
                     <br />
+                    <br />
                     <div id="BtnRow" style="overflow: auto;">
                         <div>
                             <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
@@ -403,6 +404,7 @@
                 TheQuiz.style.display = "none";
                 Notifications.style.display = "block";
                 document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").style.color = "red";
                 document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
             }
             function QuizSubmitted() {
@@ -412,6 +414,7 @@
                 Timer.style.display = "none";
                 Notifications.style.display = "block";
                 document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").style.color = "green";
                 document.getElementById("Notifications").innerHTML = "Your answers have been submitted.";
             }
             function SubmitError() {
@@ -421,6 +424,7 @@
                 Timer.style.display = "none";
                 Notifications.style.display = "block";
                 document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
+                document.getElementById("Notifications").style.color = "red";
                 document.getElementById("Notifications").innerHTML = "Sorry, Something went wrong!";
             }
             function TimeOutSubmitted() {
@@ -429,7 +433,8 @@
                 Timer.style.display = "none";
                 Notifications.style.display = "block";
                 document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
-                document.getElementById("Notifications").innerHTML = "Time out!, Your answers have been submitted!";
+                document.getElementById("Notifications").style.color = "orange";
+                document.getElementById("Notifications").innerHTML = "Time out!, Submitted!";
             }
             function NextTransform() {
                 gsap.from("#Tab1", { duration: 0.2, xPercent: 50, opacity: 0 });
