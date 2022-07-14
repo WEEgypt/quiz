@@ -24,9 +24,11 @@
             </div>
         </div>
         <div id="mainDiv" style="display: block;">
+			<div id="Header">
             <br />
             <h1>Info Evaluation Test</h1>
             <p class="month">July 2022</p>
+			</div>
             <form method="post" name="Attendance" id="Attendance">
                 <input type="text" name="Attend" id="Attend" style="display: none;" />
                 <input type="text" name="Attend-Time" id="AttendTime" style="display: none;" />
@@ -269,6 +271,7 @@
                 clearInterval(interval);
                 GetQuizResult();
                 document.getElementById("submit").disabled = true;
+				Header.style.display = "none";
                 BtnRow.style.display = "none";
                 Timer.style.display = "none";
                 Loading.style.display = "block";
@@ -400,39 +403,39 @@
             }
             function StartQuizError() {
                 Loading.style.display = "none";
+				Header.style.display = "none";
                 StartDiv.style.display = "none";
                 TheQuiz.style.display = "none";
                 Notifications.style.display = "block";
-                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
                 document.getElementById("Notifications").style.color = "red";
                 document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
             }
             function QuizSubmitted() {
                 Loading.style.display = "none";
+				Header.style.display = "none";
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
                 Notifications.style.display = "block";
-                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
                 document.getElementById("Notifications").style.color = "green";
                 document.getElementById("Notifications").innerHTML = "Your answers have been submitted.";
             }
             function SubmitError() {
                 Loading.style.display = "none";
+				Header.style.display = "none";
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
                 Notifications.style.display = "block";
-                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
                 document.getElementById("Notifications").style.color = "red";
                 document.getElementById("Notifications").innerHTML = "Sorry, Something went wrong!";
             }
             function TimeOutSubmitted() {
                 Loading.style.display = "none";
+				Header.style.display = "none";
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
                 Notifications.style.display = "block";
-                document.getElementById("Notifications").style.padding = "50px 0px 0px 0px";
                 document.getElementById("Notifications").style.color = "orange";
                 document.getElementById("Notifications").innerHTML = "Time out!, Submitted!";
             }
