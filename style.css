@@ -36,10 +36,6 @@ body {
     justify-content: center;
     min-height: 100%;
 }
-.seconddev {
-	width: -webkit-fill-available;
-	width: -moz-available;
-}
 h1 {
     text-align: center;
 }
@@ -86,6 +82,10 @@ select:focus {
     padding: 0px 30px 0px 30px;
     min-width: 360px;
     max-width: 720px;
+}
+#TheQuiz {
+	width: -webkit-fill-available;
+	width: -moz-available;
 }
 .tab {
     display: none;
