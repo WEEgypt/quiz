@@ -35,6 +35,8 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100%;
+}
+.seconddev {
 	width: -webkit-fill-available;
 	width: -moz-available;
 }
