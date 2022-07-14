@@ -82,8 +82,7 @@ select:focus {
     padding: 0px 30px 0px 30px;
     min-width: 360px;
     max-width: 720px;
-	width: -webkit-fill-available;
-	width: -moz-available;
+    width: auto;
 }
 .tab {
     display: none;
