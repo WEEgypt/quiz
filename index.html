@@ -24,11 +24,11 @@
             </div>
         </div>
         <div id="mainDiv" style="display: block;">
-			<div id="Header">
-            <br />
-            <h1>Info Evaluation Test</h1>
-            <p class="month">July 2022</p>
-			</div>
+            <div id="Header">
+                <br />
+                <h1>Info Evaluation Test</h1>
+                <p class="month">July 2022</p>
+            </div>
             <form method="post" name="Attendance" id="Attendance">
                 <input type="text" name="Attend" id="Attend" style="display: none;" />
                 <input type="text" name="Attend-Time" id="AttendTime" style="display: none;" />
@@ -237,7 +237,7 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day == 14 || day == 21 || day == 22 || day == 23) {
+            if (day == 20 || day == 21 || day == 22 || day == 23) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
@@ -271,7 +271,7 @@
                 clearInterval(interval);
                 GetQuizResult();
                 document.getElementById("submit").disabled = true;
-				Header.style.display = "none";
+                Header.style.display = "none";
                 BtnRow.style.display = "none";
                 Timer.style.display = "none";
                 Loading.style.display = "block";
@@ -394,6 +394,7 @@
             }
             function StartQuiz(n) {
                 Loading.style.display = "none";
+                Header.style.display = "none";
                 document.getElementById("StartDiv").style.webkitFilter = "none";
                 document.getElementById("TheQuiz").style.webkitFilter = "none";
                 var x = document.getElementsByClassName("tab");
@@ -403,7 +404,7 @@
             }
             function StartQuizError() {
                 Loading.style.display = "none";
-				Header.style.display = "none";
+                Header.style.display = "none";
                 StartDiv.style.display = "none";
                 TheQuiz.style.display = "none";
                 Notifications.style.display = "block";
@@ -412,7 +413,6 @@
             }
             function QuizSubmitted() {
                 Loading.style.display = "none";
-				Header.style.display = "none";
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
@@ -422,7 +422,6 @@
             }
             function SubmitError() {
                 Loading.style.display = "none";
-				Header.style.display = "none";
                 clearInterval(interval);
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
@@ -432,7 +431,6 @@
             }
             function TimeOutSubmitted() {
                 Loading.style.display = "none";
-				Header.style.display = "none";
                 TheQuiz.style.display = "none";
                 Timer.style.display = "none";
                 Notifications.style.display = "block";

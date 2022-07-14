@@ -34,7 +34,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
 }
 h1 {
     text-align: center;
@@ -77,8 +76,8 @@ select:focus {
     outline-style: auto;
 }
 #mainDiv {
-	width: -webkit-fill-available;
-	width: -moz-available;
+    width: -webkit-fill-available;
+    width: -moz-available;
     max-width: 720px;
     height: 100%;
     padding: 0px 30px 0px 30px;
