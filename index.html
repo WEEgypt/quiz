@@ -14,7 +14,7 @@
             <img src="transparentIcon.png" alt="We Logo" />
             <p class="unavailable">Available only from 20th to 23rd.</p>
         </div>
-        <div id="loginDiv" style="display: none;" class="protected">
+        <div id="loginDiv" style="display: block;" class="protected">
             <div class="protected__alert" id="alert">Username or Password Is Incorrect</div>
             <div class="protected__content">
                 <h1 class="protected__content__heading">Login to continue</h1>
@@ -23,7 +23,7 @@
                 <button onclick="Login()" id="button" type="button" class="protected__content__btn">Login</button>
             </div>
         </div>
-        <div id="mainDiv" style="display: block;">
+        <div id="mainDiv" style="display: none;">
             <div id="Header">
                 <br />
                 <h1>Info Evaluation Test</h1>
@@ -239,15 +239,15 @@
                 Check();
             } else {
                 noQuiz.style.display = "block";
-                mainDiv.style.display = "none";
+                loginDiv.style.display = "none";
             }
             function Check() {
-                if (sessionStorage.getItem("agent") == null) {
-                    loginDiv.style.display = "block";
-                    mainDiv.style.display = "none";
-                    document.getElementById("agent").focus();
-                } else {
+                if (sessionStorage.getItem("agent") !== null) {
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
                     WelcomeAgent();
+                } else {
+                    document.getElementById("agent").focus();
                 }
             }
             function WelcomeAgent() {
