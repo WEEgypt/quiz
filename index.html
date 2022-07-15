@@ -224,10 +224,8 @@
                     <br />
                     <br />
                     <div id="BtnRow" style="overflow: auto;">
-                        <div>
-                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                        </div>
+						<button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+						<button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                     </div>
                 </div>
                 <div id="Loading" style="display: none;" class="loader"></div>
@@ -237,7 +235,7 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day == 20 || day == 21 || day == 22 || day == 23) {
+            if (day == 15 || day == 21 || day == 22 || day == 23) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
@@ -326,17 +324,21 @@
                     Timer.style.display = "block";
                     Start();
                     document.getElementById("nextBtn").style.width = "70px";
+                    document.getElementById("mainDiv").style.width = "inherit";
                 } else if (n == 1) {
                     document.getElementById("prevBtn").style.display = "none";
                     document.getElementById("nextBtn").innerHTML = "Next";
                     document.getElementById("nextBtn").style.width = "70px";
+                    document.getElementById("mainDiv").style.width = "inherit";
                 } else if (n == x.length - 1) {
                     document.getElementById("nextBtn").innerHTML = "Submit";
                     document.getElementById("nextBtn").style.width = "70px";
+                    document.getElementById("mainDiv").style.width = "inherit";
                 } else {
                     document.getElementById("prevBtn").style.display = "inline";
                     document.getElementById("nextBtn").innerHTML = "Next";
                     document.getElementById("nextBtn").style.width = "70px";
+                    document.getElementById("mainDiv").style.width = "inherit";
                 }
             }
             function nextPrev(n) {
