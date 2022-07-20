@@ -12,7 +12,7 @@
     <body>
         <div id="noQuiz" style="display: none;">
             <img src="transparentIcon.png" alt="We Logo" />
-            <p class="unavailable">Available only from 20th to 23rd.</p>
+            <p class="unavailable">Available only from 23rd to 25th.</p>
         </div>
         <div id="loginDiv" style="display: block;" class="protected">
             <div class="protected__alert" id="alert">Username or Password Is Incorrect</div>
@@ -235,7 +235,7 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day == 20 || day == 21 || day == 22 || day == 23) {
+            if (day == 23 || day == 24 || day == 25) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
@@ -412,7 +412,7 @@
                 document.getElementById("mainDiv").style.width = "inherit";
                 Notifications.style.display = "block";
                 document.getElementById("Notifications").style.color = "red";
-                document.getElementById("Notifications").innerHTML = "Not allowed to submit this quiz multiple times!";
+                document.getElementById("Notifications").innerHTML = "Not allowed to access this quiz multiple times!";
             }
             function QuizSubmitted() {
                 Loading.style.display = "none";
