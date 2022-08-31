@@ -12,7 +12,7 @@
     <body>
         <div id="noQuiz" style="display: none;">
             <img src="transparentIcon.png" alt="We Logo" />
-            <p class="unavailable">Available only from 30th to 31th.</p>
+            <p class="unavailable">The next quiz will be published soon.</p>
         </div>
         <div id="loginDiv" style="display: block;" class="protected">
             <div class="protected__alert" id="alert">Username or Password Is Incorrect</div>
@@ -231,7 +231,7 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day == 30 || day == 31) {
+            if (day == 30 || day == 31 || day == 1 || day == 2 || day == 3 || day == 4) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
