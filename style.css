@@ -61,20 +61,6 @@ button {
     float: right;
     margin: 10px;
 }
-select {
-    color: var(--color);
-    background-color: var(--selBg);
-    border-color: var(--color);
-    border-radius: 4px;
-    height: 24px;
-    width: 280px;
-    padding-left: 2px;
-    float: left;
-    margin: 0px 0px 14px 10px;
-}
-select:focus {
-    outline-style: auto;
-}
 #mainDiv {
     width: 360px;
     margin: auto;
@@ -83,18 +69,12 @@ select:focus {
 .tab {
     display: none;
 }
-.welcome {
-    color: red;
-    font-size: 20px;
-    text-align: center;
-    font-style: oblique;
-}
 .month {
     text-align: center;
 }
-.choose {
+.welcome {
     font-size: 12px;
-    text-align: left;
+    text-align: center;
     font-family: sans-serif;
     margin-bottom: unset;
     padding-left: 10px;
