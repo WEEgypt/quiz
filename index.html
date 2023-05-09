@@ -27,7 +27,7 @@
             <div id="Header">
                 <br />
                 <h1>Info Evaluation Test</h1>
-                <p class="month">April 2023</p>
+                <p class="month">May 2023</p>
             </div>
             <form method="post" name="Attendance" id="Attendance">
                 <input type="text" name="Attend" id="Attend" style="display: none;" />
@@ -36,6 +36,7 @@
             <form method="post" name="InfoEvaluation" id="InfoEvaluation">
                 <div class="tab" id="StartDiv" style="display: block;">
                     <img src="icon.png" alt="We Logo" />
+                    <br />
                     <p class="welcome" id="Welcome"><br /></p>
                     <input type="text" name="Submission-Time" id="SubmissionTime" style="display: none;" />
                     <input type="text" name="Agent-Name" id="AgentName" style="display: none;" />
@@ -44,7 +45,7 @@
                     <input type="text" name="Quiz-Result" id="QuizResult" style="display: none;" />
                 </div>
                 <p class="notifications" id="Notifications" style="display: none;"></p>
-                <p class="timer" id="Timer" style="display: none;">( 10:00 )</p>
+                <p class="timer" id="Timer" style="display: none;">( 15:00 )</p>
                 <div id="TheQuiz" style="display: block;">
                     <div id="Tab1" class="tab">
                         <br />
@@ -174,7 +175,7 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day == 8 || day == 9 || day == 10) {
+            if (day >= 6 && day <= 25) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
@@ -190,7 +191,7 @@
                 }
             }
             function WelcomeAgent() {
-                document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ", This quiz consists of 10 questions, with 10 minutes time frame, only one attempt available.";
+                document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 15 Minutes time frame, <br /> only One attempt available.";
                 document.getElementById("AgentName").value = sessionStorage.getItem("agent");
                 document.getElementById("AreaManager").value = sessionStorage.getItem("area");
                 document.getElementById("StoreName").value = sessionStorage.getItem("store");
@@ -203,10 +204,10 @@
                 }
             };
             const attendanceScriptURL = "https://script.google.com/macros/s/AKfycbzp1E8AlLFVpX1ld217M4kIPadfXQg4Jy5DMtKlIIWIHB2X7EjFqgGNDQsvT5a6N5ePeg/exec?sheetName=Attendance";
+            const quizScriptURL = "https://script.google.com/macros/s/AKfycbzp1E8AlLFVpX1ld217M4kIPadfXQg4Jy5DMtKlIIWIHB2X7EjFqgGNDQsvT5a6N5ePeg/exec?sheetName=Evaluation";
             const attendanceForm = document.forms["Attendance"];
-            const scriptURL = "https://script.google.com/macros/s/AKfycbzp1E8AlLFVpX1ld217M4kIPadfXQg4Jy5DMtKlIIWIHB2X7EjFqgGNDQsvT5a6N5ePeg/exec?sheetName=Evaluation";
-            const form = document.forms["InfoEvaluation"];
-            form.addEventListener("submit", (e) => {
+            const quizForm = document.forms["InfoEvaluation"];
+            quizForm.addEventListener("submit", (e) => {
                 clearInterval(interval);
                 GetQuizResult();
                 document.getElementById("submit").disabled = true;
@@ -216,12 +217,12 @@
                 Loading.style.display = "block";
                 e.preventDefault();
                 document.getElementById("SubmissionTime").value = new Date().toLocaleString();
-                fetch(scriptURL, { method: "POST", body: new FormData(form) })
+                fetch(quizScriptURL, { method: "POST", body: new FormData(quizForm) })
                     .then((response) => QuizSubmitted())
                     .catch((error) => SubmitError());
             });
             function Start() {
-                var countDownDate = new Date().getTime() + 601000;
+                var countDownDate = new Date().getTime() + 901500;
                 var x = setInterval(function () {
                     var now = new Date().getTime();
                     var distance = countDownDate - now;
@@ -242,7 +243,7 @@
                         document.getElementById("TheQuiz").style.webkitFilter = "opacity(0.5)";
                         Loading.style.display = "block";
                         document.getElementById("SubmissionTime").value = new Date().toLocaleString();
-                        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+                        fetch(quizScriptURL, { method: "POST", body: new FormData(quizForm) })
                             .then((response) => TimeOutSubmitted())
                             .catch((error) => SubmitError());
                     }
@@ -454,31 +455,99 @@
                 for (var i = 0; i < passwordInput.length; i++) {
                     password = Math.abs(~~((password << 5) - password + passwordInput.charCodeAt(i)));
                 }
-                if ((username == "mohamed.a.abobkr" && password == "1259008218") || (username == "admin" && password == "")) {
+                if (username == "admin" && password == "") {
+                    var randomAgent = document.getElementById("agent").value + Math.floor(Math.random() * 100);
+                    sessionStorage.setItem("agent", randomAgent);
+                    sessionStorage.setItem("area", "---");
+                    sessionStorage.setItem("store", "---");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if ((username == "fr.renada.kamil" && password == "1516411219") || (username == "fr.alyyy.mhmudd" && password == "688750895") || (username == "fr.abdelrhmn.khdry" && password == "2041632277")) {
                     sessionStorage.setItem("agent", document.getElementById("agent").value);
                     sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "Sharq Elnil - Sohag");
+                    sessionStorage.setItem("store", "اخميم - البحري");
                     loginDiv.style.display = "none";
                     mainDiv.style.display = "block";
                     WelcomeAgent();
-                } else if ((username == "mohamed.a.abobkr1" && password == "1259008218") || (username == "admin1" && password == "")) {
+                } else if ((username == "fr.ibrahiem.ramadaan" && password == "1569267188") || (username == "fr.ahmedd.asaaad " && password == "1788172909") || (username == "fr.yustina.wasfi" && password == "455859184")) {
                     sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa1");
-                    sessionStorage.setItem("store", "Sharq Elnil1 - Sohag");
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "ش الجمهوريه - بيت الرحمه");
                     loginDiv.style.display = "none";
                     mainDiv.style.display = "block";
                     WelcomeAgent();
-                } else if ((username == "mohamed.a.abobkr2" && password == "1259008218") || (username == "admin2" && password == "")) {
+                } else if (
+                    (username == "fr.hdeer.osama" && password == "1632110231") ||
+                    (username == "fr.abdelrhman.assim" && password == "1438168127") ||
+                    (username == "fr.amiraa.refaat" && password == "2052832285") ||
+                    (username == "fr.ossama.gamal" && password == "79756642") ||
+                    (username == "fr.alaa.mhfuzz" && password == "1482786456")
+                ) {
                     sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa2");
-                    sessionStorage.setItem("store", "Sharq Elnil2 - Sohag");
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "جرجا - شارع المحطة");
                     loginDiv.style.display = "none";
                     mainDiv.style.display = "block";
                     WelcomeAgent();
-                } else if ((username == "mohamed.a.abobkr3" && password == "1259008218") || (username == "admin3" && password == "")) {
+                } else if ((username == "fr.entsar.abdelrady" && password == "1752087860") || (username == "fr.merrna.milad" && password == "336411498") || (username == "fr.mina.bushra" && password == "1368653269")) {
                     sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa3");
-                    sessionStorage.setItem("store", "Sharq Elnil3 - Sohag");
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "سوهاج-البلينا");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if ((username == "fr.ahmd.mhaamid" && password == "1720905036") || (username == "fr.ahmed.hythem" && password == "1722147216") || (username == "fr.mosstafa.elsayeh" && password == "1576767692")) {
+                    sessionStorage.setItem("agent", document.getElementById("agent").value);
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "ميدان الشهيد- برج الأطباء");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if ((username == "fr.ebrhim.khlff" && password == "1676311386") || (username == "fr.saffaa.eldaba" && password == "221008092") || (username == "fr.wlaa.hbeshi" && password == "1169913012")) {
+                    sessionStorage.setItem("agent", document.getElementById("agent").value);
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "دار السلام - سوهاج");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if ((username == "fr.boula.gerrecce" && password == "1212127362") || (username == "fr.ahmed.erfan" && password == "1722143252") || (username == "fr.yasmin.abdo" && password == "1912844419")) {
+                    sessionStorage.setItem("agent", document.getElementById("agent").value);
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "ش سعد زغلول - المنشأه");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if ((username == "fr.ndaa.okashaa" && password == "140577684") || (username == "fr.mariaan.alfyi" && password == "1104074522") || (username == "fr.rwan.hmzaa" && password == "2064561523")) {
+                    sessionStorage.setItem("agent", document.getElementById("agent").value);
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "نادي التجديف - سوهاج");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if (
+                    (username == "fr.marina.naguib" && password == "421299665") ||
+                    (username == "fr.besadaa.mouraad" && password == "1583070704") ||
+                    (username == "fr.toqa.khtb" && password == "937939739") ||
+                    (username == "fr.asmaaa.mhmadd" && password == "460957214")
+                ) {
+                    sessionStorage.setItem("agent", document.getElementById("agent").value);
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "شرق النيل - سوهاج");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if ((username == "fr.madouna.gergs " && password == "835121300") || (username == "fr.mhhmd.ihsaan" && password == "1850276818") || (username == "fr.kerlios.gaad" && password == "545501178")) {
+                    sessionStorage.setItem("agent", document.getElementById("agent").value);
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "سوهاج البلينا");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if ((username == "fr.loraa.micheeal" && password == "789270008") || (username == "fr.doha.ghreb" && password == "984199097") || (username == "fr.muna.muntsr" && password == "691448842")) {
+                    sessionStorage.setItem("agent", document.getElementById("agent").value);
+                    sessionStorage.setItem("area", "Eslam Gomaa");
+                    sessionStorage.setItem("store", "سوهاج - جرجا 2");
                     loginDiv.style.display = "none";
                     mainDiv.style.display = "block";
                     WelcomeAgent();

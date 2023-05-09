@@ -50,12 +50,12 @@ label {
 img {
     display: block;
     margin: auto;
-    width: 200px;
+    width: 180px;
 }
 button {
     color: #fff;
-    background-color: #6c4389;
-    border: 1px solid #6c4389;
+    background-color: #5b2c92;
+    border: 1px solid #5b2c92;
     width: 70px;
     height: 28px;
     float: right;
@@ -73,9 +73,9 @@ button {
     text-align: center;
 }
 .welcome {
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 1.4em;
     text-align: center;
-    font-family: sans-serif;
     margin-bottom: unset;
     padding-left: 10px;
 }
@@ -128,10 +128,10 @@ button {
 }
 .protected__content__input:focus {
     outline: none;
-    border-color: #6c4389;
+    border-color: #5b2c92;
 }
 .protected__content__btn {
-    background-color: #6c4389;
+    background-color: #5b2c92;
     border-radius: 3px;
     cursor: pointer;
     border: none;
