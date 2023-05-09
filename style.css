@@ -38,6 +38,7 @@ body {
 }
 h1 {
     text-align: center;
+    color: #5b2c92;
 }
 p {
     font-size: 22px;
@@ -50,7 +51,7 @@ label {
 img {
     display: block;
     margin: auto;
-    width: 180px;
+    width: 160px;
 }
 button {
     color: #fff;
@@ -105,6 +106,7 @@ button {
     line-height: 1;
     text-align: left;
     padding: 4px 0px 16px 4px;
+    color: var(--color);
 }
 .protected__alert {
     display: none;
