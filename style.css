@@ -61,6 +61,7 @@ button {
     height: 28px;
     float: right;
     margin: 10px;
+    cursor: pointer;
 }
 #mainDiv {
     width: 360px;
@@ -194,4 +195,5 @@ button {
     right: 15px;
     top: 15px;
     color: #5b2c92;
+    cursor: pointer;
 }
