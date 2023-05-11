@@ -165,7 +165,7 @@ button {
     z-index: 1;
     width: 100px;
     height: 100px;
-    margin: -60px 0 0 -60px;
+    margin: -50px 0 0 -50px;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #3498db;
@@ -187,4 +187,11 @@ button {
     100% {
         transform: rotate(360deg);
     }
+}
+#logout {
+    all: unset;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    color: #5b2c92;
 }
