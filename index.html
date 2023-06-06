@@ -184,7 +184,8 @@
         </div>
         <script>
             var day = new Date().getDate();
-            if (day >= 6 && day <= 27) {
+            var month = new Date().getMonth() + 1;
+            if (day <= 28 && month == 5) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
