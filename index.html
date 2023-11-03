@@ -28,19 +28,18 @@
                 <br />
                 <button type="button" id="logout" onclick="Logout()">Logout</button>
                 <h1>Info Evaluation Test</h1>
-                <p class="month">May 2023</p>
+                <p class="month" id="Month"></p>
             </div>
             <form method="post" name="Attendance" id="Attendance">
-                <input type="text" name="Attend" id="Attend" style="display: none;" />
-                <input type="text" name="Attend-Time" id="AttendTime" style="display: none;" />
+                <input type="text" name="Agent-Name" id="AgentNameAttend" style="display: none;" />
             </form>
             <form method="post" name="InfoEvaluation" id="InfoEvaluation">
                 <div class="tab" id="StartDiv" style="display: block;">
                     <img src="icon.png" alt="We Logo" />
                     <br />
                     <p class="welcome" id="Welcome"><br /></p>
-                    <input type="text" name="Submission-Time" id="SubmissionTime" style="display: none;" />
                     <input type="text" name="Agent-Name" id="AgentName" style="display: none;" />
+                    <input type="text" name="Submission-Time" id="SubmissionTime" style="display: none;" />
                     <input type="text" name="Area-Manager" id="AreaManager" style="display: none;" />
                     <input type="text" name="Store-Name" id="StoreName" style="display: none;" />
                     <input type="text" name="Quiz-Result" id="QuizResult" style="display: none;" />
@@ -58,6 +57,7 @@
                         <input name="Q-1" type="radio" value="C" />
                         <label>- 6500-1-185</label><br />
                         <br />
+                        <input type="text" id="A-1" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab2" class="tab">
@@ -70,6 +70,7 @@
                         <input name="Q-2" type="radio" value="C" />
                         <label>- غير متاح</label><br />
                         <br />
+                        <input type="text" id="A-2" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab3" class="tab">
@@ -82,6 +83,7 @@
                         <input name="Q-3" type="radio" value="C" />
                         <label>- 19777</label>
                         <br />
+                        <input type="text" id="A-3" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab4" class="tab">
@@ -94,6 +96,7 @@
                         <input name="Q-4" type="radio" value="B" />
                         <label>- #888*</label><br />
                         <br />
+                        <input type="text" id="A-4" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab5" class="tab">
@@ -106,6 +109,7 @@
                         <input name="Q-5" type="radio" value="C" />
                         <label>- UP to 80 Mbps – 350 L.E</label>
                         <br />
+                        <input type="text" id="A-5" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab6" class="tab">
@@ -118,6 +122,7 @@
                         <input name="Q-6" type="radio" value="C" />
                         <label>- 7 Giga - 50 Giga</label><br />
                         <br />
+                        <input type="text" id="A-6" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab7" class="tab">
@@ -130,6 +135,7 @@
                         <input name="Q-7" type="radio" value="C" />
                         <label>- 13000 Units – 29000 Giga</label><br />
                         <br />
+                        <input type="text" id="A-7" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab8" class="tab">
@@ -142,6 +148,7 @@
                         <input name="Q-8" type="radio" value="C" />
                         <label>- 1500</label><br />
                         <br />
+                        <input type="text" id="A-8" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab9" class="tab">
@@ -154,6 +161,7 @@
                         <input name="Q-9" type="radio" value="C" />
                         <label>- 500 M - 22.5 Giga</label>
                         <br />
+                        <input type="text" id="A-9" value="A" style="display: none;" />
                         <br />
                     </div>
                     <div id="Tab10" class="tab">
@@ -166,10 +174,10 @@
                         <input name="Q-10" type="radio" value="C" />
                         <label>- 19قرش</label><br />
                         <br />
+                        <input type="text" id="A-10" value="A" style="display: none;" />
                         <br />
                     </div>
                     <input style="display: none;" id="submit" type="submit" value="Submit" />
-                    <br />
                     <br />
                     <br />
                     <div id="BtnRow" style="overflow: auto;">
@@ -184,8 +192,7 @@
         </div>
         <script>
             var day = new Date().getDate();
-            var month = new Date().getMonth() + 1;
-            if (day <= 28 && month == 5) {
+            if (day <= 26) {
                 Check();
             } else {
                 noQuiz.style.display = "block";
@@ -200,12 +207,57 @@
                     document.getElementById("agent").focus();
                 }
             }
+            function PressEnterToLogin() {
+                if (event.which == 13 || event.keyCode == 13) {
+                    Login();
+                }
+            }
             function WelcomeAgent() {
+                var month = new Date().getMonth() + 1;
+                var year = new Date().getFullYear();
+
+                if (month == 1) {
+                    month = "January";
+                }
+                if (month == 2) {
+                    month = "February";
+                }
+                if (month == 3) {
+                    month = "March";
+                }
+                if (month == 4) {
+                    month = "April";
+                }
+                if (month == 5) {
+                    month = "May";
+                }
+                if (month == 6) {
+                    month = "June";
+                }
+                if (month == 7) {
+                    month = "July";
+                }
+                if (month == 8) {
+                    month = "August";
+                }
+                if (month == 9) {
+                    month = "September";
+                }
+                if (month == 10) {
+                    month = "October";
+                }
+                if (month == 11) {
+                    month = "November";
+                }
+                if (month == 12) {
+                    month = "December";
+                }
+                document.getElementById("Month").innerHTML = month + " " + year;
                 document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 10 Minutes time frame, <br /> only One attempt available.";
+                document.getElementById("AgentNameAttend").value = sessionStorage.getItem("agent");
                 document.getElementById("AgentName").value = sessionStorage.getItem("agent");
                 document.getElementById("AreaManager").value = sessionStorage.getItem("area");
                 document.getElementById("StoreName").value = sessionStorage.getItem("store");
-                document.getElementById("Attend").value = sessionStorage.getItem("agent");
             }
             function Logout() {
                 sessionStorage.removeItem("agent");
@@ -217,9 +269,9 @@
                     e.preventDefault();
                 }
             };
-            const attendanceScriptURL = "https://script.google.com/macros/s/AKfycbzp1E8AlLFVpX1ld217M4kIPadfXQg4Jy5DMtKlIIWIHB2X7EjFqgGNDQsvT5a6N5ePeg/exec?sheetName=Attendance";
-            const quizScriptURL = "https://script.google.com/macros/s/AKfycbzp1E8AlLFVpX1ld217M4kIPadfXQg4Jy5DMtKlIIWIHB2X7EjFqgGNDQsvT5a6N5ePeg/exec?sheetName=Evaluation";
+            const attendanceScriptURL = "https://script.google.com/macros/s/AKfycbzp1E8AlLFVpX1ld217M4kIPadfXQg4Jy5DMtKlIIWIHB2X7EjFqgGNDQsvT5a6N5ePeg/exec?sheetName=Evaluation";
             const attendanceForm = document.forms["Attendance"];
+            const quizScriptURL = "https://script.google.com/macros/s/AKfycbxyaAjYqYYcATlfMycLbcGhyCocZWLBOA-YhAxr5P1GAiyiM2KULMMVG_fXu_Dh5gc_6A/exec?sheetName=Evaluation";
             const quizForm = document.forms["InfoEvaluation"];
             quizForm.addEventListener("submit", (e) => {
                 clearInterval(interval);
@@ -230,7 +282,7 @@
                 Timer.style.display = "none";
                 Loading.style.display = "block";
                 e.preventDefault();
-                document.getElementById("SubmissionTime").value = new Date().toLocaleString();
+                document.getElementById("SubmissionTime").value = new Date().toLocaleString("en-EG");
                 fetch(quizScriptURL, { method: "POST", body: new FormData(quizForm) })
                     .then((response) => QuizSubmitted())
                     .catch((error) => SubmitError());
@@ -256,7 +308,7 @@
                         document.getElementById("Timer").style.webkitFilter = "opacity(0.5)";
                         document.getElementById("TheQuiz").style.webkitFilter = "opacity(0.5)";
                         Loading.style.display = "block";
-                        document.getElementById("SubmissionTime").value = new Date().toLocaleString();
+                        document.getElementById("SubmissionTime").value = new Date().toLocaleString("en-EG");
                         fetch(quizScriptURL, { method: "POST", body: new FormData(quizForm) })
                             .then((response) => TimeOutSubmitted())
                             .catch((error) => SubmitError());
@@ -328,7 +380,6 @@
                         document.getElementById("StartDiv").style.webkitFilter = "opacity(0.5)";
                         document.getElementById("TheQuiz").style.webkitFilter = "opacity(0.5)";
                         Loading.style.display = "block";
-                        document.getElementById("AttendTime").value = new Date().toLocaleString();
                         fetch(attendanceScriptURL, { method: "POST", body: new FormData(attendanceForm) })
                             .then((response) => StartQuiz(n))
                             .catch((error) => StartQuizError());
@@ -401,61 +452,61 @@
             }
             function GetQuizResult() {
                 var A1 = document.querySelector("input[type='radio'][name=Q-1]:checked")?.value;
-                if (A1 == "B") {
+                if (A1 == document.getElementById("A-1").value) {
                     A1 = parseInt(1);
                 } else {
                     A1 = parseInt(0);
                 }
                 var A2 = document.querySelector("input[type='radio'][name=Q-2]:checked")?.value;
-                if (A2 == "C") {
+                if (A2 == document.getElementById("A-2").value) {
                     A2 = parseInt(1);
                 } else {
                     A2 = parseInt(0);
                 }
                 var A3 = document.querySelector("input[type='radio'][name=Q-3]:checked")?.value;
-                if (A3 == "A") {
+                if (A3 == document.getElementById("A-3").value) {
                     A3 = parseInt(1);
                 } else {
                     A3 = parseInt(0);
                 }
                 var A4 = document.querySelector("input[type='radio'][name=Q-4]:checked")?.value;
-                if (A4 == "A") {
+                if (A4 == document.getElementById("A-4").value) {
                     A4 = parseInt(1);
                 } else {
                     A4 = parseInt(0);
                 }
                 var A5 = document.querySelector("input[type='radio'][name=Q-5]:checked")?.value;
-                if (A5 == "B") {
+                if (A5 == document.getElementById("A-5").value) {
                     A5 = parseInt(1);
                 } else {
                     A5 = parseInt(0);
                 }
                 var A6 = document.querySelector("input[type='radio'][name=Q-6]:checked")?.value;
-                if (A6 == "C") {
+                if (A6 == document.getElementById("A-6").value) {
                     A6 = parseInt(1);
                 } else {
                     A6 = parseInt(0);
                 }
                 var A7 = document.querySelector("input[type='radio'][name=Q-7]:checked")?.value;
-                if (A7 == "C") {
+                if (A7 == document.getElementById("A-7").value) {
                     A7 = parseInt(1);
                 } else {
                     A7 = parseInt(0);
                 }
                 var A8 = document.querySelector("input[type='radio'][name=Q-8]:checked")?.value;
-                if (A8 == "B") {
+                if (A8 == document.getElementById("A-8").value) {
                     A8 = parseInt(1);
                 } else {
                     A8 = parseInt(0);
                 }
                 var A9 = document.querySelector("input[type='radio'][name=Q-9]:checked")?.value;
-                if (A9 == "A") {
+                if (A9 == document.getElementById("A-9").value) {
                     A9 = parseInt(1);
                 } else {
                     A9 = parseInt(0);
                 }
                 var A10 = document.querySelector("input[type='radio'][name=Q-10]:checked")?.value;
-                if (A10 == "B") {
+                if (A10 == document.getElementById("A-10").value) {
                     A10 = parseInt(1);
                 } else {
                     A10 = parseInt(0);
@@ -567,11 +618,6 @@
                     WelcomeAgent();
                 } else {
                     document.getElementById("alert").style.display = "block";
-                }
-            }
-            function PressEnterToLogin() {
-                if (event.which == 13 || event.keyCode == 13) {
-                    Login();
                 }
             }
         </script>

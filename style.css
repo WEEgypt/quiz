@@ -73,6 +73,8 @@ button {
 }
 .month {
     text-align: center;
+    font-size: 18px;
+    padding: 16px 0px 0px 0px;
 }
 .welcome {
     font-size: 14px;
