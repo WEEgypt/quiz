@@ -46,7 +46,7 @@
                     <input type="text" name="Quiz-Result" id="QuizResult" style="display: none;" />
                 </div>
                 <p class="notifications" id="Notifications" style="display: none;"></p>
-                <p class="timer" id="Timer" style="display: none;">( 60:00 )</p>
+                <p class="timer" id="Timer" style="display: none;">( 30:00 )</p>
                 <div id="TheQuiz" style="display: block;">
                     <div id="Tab1" class="tab">
                         <br />
@@ -264,7 +264,7 @@
                     month = "December";
                 }
                 document.getElementById("Month").innerHTML = month + " " + year;
-                document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 60 Minutes time frame, <br /> only One attempt available.";
+                document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 30 Minutes time frame, <br /> only One attempt available.";
                 document.getElementById("AttendanceAgentName").value = sessionStorage.getItem("agent");
                 document.getElementById("AttendanceTime").value = new Date().toLocaleString("en-EG");
                 document.getElementById("AgentName").value = sessionStorage.getItem("agent");
@@ -300,7 +300,7 @@
                     .catch((error) => SubmitError());
             });
             function Start() {
-                var countDownDate = new Date().getTime() + 3601000;
+                var countDownDate = new Date().getTime() + 1800500;
                 var x = setInterval(function () {
                     var now = new Date().getTime();
                     var distance = countDownDate - now;
