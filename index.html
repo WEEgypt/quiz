@@ -31,7 +31,8 @@
                 <p class="month" id="Month"></p>
             </div>
             <form method="post" name="Attendance" id="Attendance">
-                <input type="text" name="Agent-Name" id="AgentNameAttend" style="display: none;" />
+                <input type="text" name="Agent-Name" id="AttendanceAgentName" style="display: none;" />
+                <input type="text" name="Attendance-Time" id="AttendanceTime" style="display: none;" />
             </form>
             <form method="post" name="InfoEvaluation" id="InfoEvaluation">
                 <div class="tab" id="StartDiv" style="display: block;">
@@ -264,7 +265,8 @@
                 }
                 document.getElementById("Month").innerHTML = month + " " + year;
                 document.getElementById("Welcome").innerHTML = "Welcome " + sessionStorage.getItem("agent") + ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 60 Minutes time frame, <br /> only One attempt available.";
-                document.getElementById("AgentNameAttend").value = sessionStorage.getItem("agent");
+                document.getElementById("AttendanceAgentName").value = sessionStorage.getItem("agent");
+                document.getElementById("AttendanceTime").value = new Date().toLocaleString("en-EG");
                 document.getElementById("AgentName").value = sessionStorage.getItem("agent");
                 document.getElementById("AreaManager").value = sessionStorage.getItem("area");
                 document.getElementById("StoreName").value = sessionStorage.getItem("store");
@@ -279,8 +281,8 @@
                     e.preventDefault();
                 }
             };
-            const NewRowScriptURL = "https://script.google.com/macros/s/AKfycbyHOYfslLmR1WvtpcwHDP2-66TIkIMAlvesAL6HUne6_K_tkTyKue-rUty9lBIYyB-J/exec?sheetName=Results&Row=New";
-            const SameRowScriptURL = "https://script.google.com/macros/s/AKfycbyHOYfslLmR1WvtpcwHDP2-66TIkIMAlvesAL6HUne6_K_tkTyKue-rUty9lBIYyB-J/exec?sheetName=Results&Row=New";
+            const AttendanceScriptURL = "https://script.google.com/macros/s/AKfycbx72CmDl5BFQhdaNAX181i_zFYAsBYr3Yj_xe6mWDwZLwGdWxb6I2J8a_Y7vqAyTLDE/exec?sheetName=Attendance";
+            const QuizScriptURL = "https://script.google.com/macros/s/AKfycbx72CmDl5BFQhdaNAX181i_zFYAsBYr3Yj_xe6mWDwZLwGdWxb6I2J8a_Y7vqAyTLDE/exec?sheetName=Results";
             const attendanceForm = document.forms["Attendance"];
             const quizForm = document.forms["InfoEvaluation"];
             quizForm.addEventListener("submit", (e) => {
@@ -293,7 +295,7 @@
                 Loading.style.display = "block";
                 e.preventDefault();
                 document.getElementById("SubmissionTime").value = new Date().toLocaleString("en-EG");
-                fetch(SameRowScriptURL, { method: "POST", body: new FormData(quizForm) })
+                fetch(QuizScriptURL, { method: "POST", body: new FormData(quizForm) })
                     .then((response) => QuizSubmitted())
                     .catch((error) => SubmitError());
             });
@@ -319,7 +321,7 @@
                         document.getElementById("TheQuiz").style.webkitFilter = "opacity(0.5)";
                         Loading.style.display = "block";
                         document.getElementById("SubmissionTime").value = new Date().toLocaleString("en-EG");
-                        fetch(SameRowScriptURL, { method: "POST", body: new FormData(quizForm) })
+                        fetch(QuizScriptURL, { method: "POST", body: new FormData(quizForm) })
                             .then((response) => TimeOutSubmitted())
                             .catch((error) => SubmitError());
                     }
@@ -390,7 +392,7 @@
                         document.getElementById("StartDiv").style.webkitFilter = "opacity(0.5)";
                         document.getElementById("TheQuiz").style.webkitFilter = "opacity(0.5)";
                         Loading.style.display = "block";
-                        fetch(NewRowScriptURL, { method: "POST", body: new FormData(attendanceForm) })
+                        fetch(AttendanceScriptURL, { method: "POST", body: new FormData(attendanceForm) })
                             .then((response) => StartQuiz(n))
                             .catch((error) => StartQuizError());
                     } else {
@@ -627,17 +629,26 @@
                     mainDiv.style.display = "block";
                     WelcomeAgent();
                 } else if (
-                    (username == "Ahmed1" && password == "1867378749") ||
-                    (username == "Ahmed2" && password == "1867378749") ||
-                    (username == "Dina" && password == "1867378749") ||
-                    (username == "Esraa" && password == "1867378749") ||
-                    (username == "Maab" && password == "1867378749") ||
-                    (username == "Mariam" && password == "1867378749") ||
-                    (username == "Shaimaa" && password == "1867378749") ||
-                    (username == "Mona" && password == "1867378749") ||
-                    (username == "Samer" && password == "1867378749") ||
-                    (username == "Salma" && password == "1867378749") ||
-                    (username == "Rana" && password == "1867378749")
+                    (username == "1" && password == "2018522823") ||
+                    (username == "2" && password == "2018522823") ||
+                    (username == "3" && password == "2018522823") ||
+                    (username == "4" && password == "2018522823") ||
+                    (username == "5" && password == "2018522823") ||
+                    (username == "6" && password == "2018522823") ||
+                    (username == "7" && password == "2018522823") ||
+                    (username == "8" && password == "2018522823") ||
+                    (username == "9" && password == "2018522823") ||
+                    (username == "10" && password == "2018522823") ||
+                    (username == "11" && password == "2018522823") ||
+                    (username == "12" && password == "2018522823") ||
+                    (username == "13" && password == "2018522823") ||
+                    (username == "14" && password == "2018522823") ||
+                    (username == "15" && password == "2018522823") ||
+                    (username == "16" && password == "2018522823") ||
+                    (username == "17" && password == "2018522823") ||
+                    (username == "18" && password == "2018522823") ||
+                    (username == "19" && password == "2018522823") ||
+                    (username == "20" && password == "2018522823")
                 ) {
                     sessionStorage.setItem("agent", document.getElementById("agent").value);
                     sessionStorage.setItem("area", "Eslam Gomaa");
