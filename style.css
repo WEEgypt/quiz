@@ -1,14 +1,12 @@
 :root {
-    --bg: #faf5fd;
+    --bg: #fff;
     --color: #000;
-    --selBg: #e9e3ed;
-    --protected: #fff;
+    --protected: #faf5fd;
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #10021a;
+        --bg: #000;
         --color: #fff;
-        --selBg: #08010c;
         --protected: #2d3737;
     }
 }
@@ -105,7 +103,7 @@ button {
 .protected__content__heading {
     font-size: 16px;
     font-weight: 500;
-    margin: 0px 0px 10px 0px;
+    margin: 6px 0px 10px 0px;
     line-height: 1;
     text-align: left;
     padding: 4px 0px 16px 4px;
@@ -141,7 +139,7 @@ button {
     cursor: pointer;
     border: none;
     color: #fff;
-    padding: 10px 14px;
+    padding: 12px 14px;
     font-weight: 500;
     font-size: 16px;
     width: 100px;
@@ -202,4 +200,22 @@ button {
 .QuestionNo {
     text-align: center;
     font-size: 20px;
+}
+@font-face {
+    font-family: "FontAwesome";
+    src: url("Fonts/fontawesome-webfont.woff?v=4.7.0");
+    src: url("Fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("Fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("Fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.fa-sign-out:before {
+    content: "\f08b";
 }

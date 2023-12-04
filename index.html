@@ -26,7 +26,7 @@
         <div id="mainDiv" style="display: none;">
             <div id="Header">
                 <br />
-                <button type="button" id="logout" onclick="Logout()">Logout</button>
+                <button type="button" id="logout" onclick="Logout()"><i class="fa fa-sign-out" style="font-size: 28px; color: #5b2c92;"></i></button>
                 <h1>Info Evaluation Test</h1>
                 <p class="month" id="Month"></p>
             </div>
@@ -281,8 +281,9 @@
                     e.preventDefault();
                 }
             };
-            const AttendanceScriptURL = "https://script.google.com/macros/s/AKfycbx72CmDl5BFQhdaNAX181i_zFYAsBYr3Yj_xe6mWDwZLwGdWxb6I2J8a_Y7vqAyTLDE/exec?sheetName=Attendance";
-            const QuizScriptURL = "https://script.google.com/macros/s/AKfycbx72CmDl5BFQhdaNAX181i_zFYAsBYr3Yj_xe6mWDwZLwGdWxb6I2J8a_Y7vqAyTLDE/exec?sheetName=Results";
+            const ScriptURL = "https://script.google.com/macros/s/AKfycbx72CmDl5BFQhdaNAX181i_zFYAsBYr3Yj_xe6mWDwZLwGdWxb6I2J8a_Y7vqAyTLDE/exec";
+            const AttendanceScriptURL = ScriptURL + "?sheetName=Attendance";
+            const QuizScriptURL = ScriptURL + "?sheetName=Results";
             const attendanceForm = document.forms["Attendance"];
             const quizForm = document.forms["InfoEvaluation"];
             quizForm.addEventListener("submit", (e) => {
