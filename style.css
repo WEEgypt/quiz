@@ -201,6 +201,11 @@ button {
     text-align: center;
     font-size: 20px;
 }
+.footer {
+    text-align: center;
+    font-size: 9px;
+    padding-top: 8px;
+}
 @font-face {
     font-family: "FontAwesome";
     src: url("Fonts/fontawesome-webfont.woff?v=4.7.0");
