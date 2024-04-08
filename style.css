@@ -151,9 +151,6 @@ button {
 .protected__content__btn:hover {
     background-color: #7a5099;
 }
-select:focus {
-    outline-style: auto;
-}
 .unavailable {
     color: #555;
     padding: 24px 24px 0 24px;
