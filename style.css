@@ -128,6 +128,8 @@ button {
     width: 100%;
     border-radius: 3px;
     margin-bottom: 12px;
+	background-color: #fff;
+	height: 45px;
 }
 .protected__content__input:focus {
     outline: none;
@@ -148,6 +150,9 @@ button {
 }
 .protected__content__btn:hover {
     background-color: #7a5099;
+}
+select:focus {
+    outline-style: auto;
 }
 .unavailable {
     color: #555;
