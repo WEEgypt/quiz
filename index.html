@@ -15,11 +15,36 @@
             <p class="unavailable">The next quiz will be published soon.</p>
         </div>
         <div id="loginDiv" style="display: block;" class="protected">
-            <div class="protected__alert" id="alert">Username or Password Is Incorrect</div>
+            <div class="protected__alert" id="alert1">Enter Your BSS Username</div>
+            <div class="protected__alert" id="alert2">Choose Your Store Name</div>
             <div class="protected__content">
                 <h1 class="protected__content__heading">Login to continue</h1>
-                <input class="protected__content__input" id="agent" type="text" placeholder="username" onkeypress="PressEnterToLogin()" />
-                <input class="protected__content__input" id="password" type="password" placeholder="password" onkeypress="PressEnterToLogin()" />
+                <input class="protected__content__input" id="agent" type="text" placeholder="BSS Username" onkeypress="PressEnterToLogin()" />
+                <select class="protected__content__input" name="Store" id="store" onkeypress="PressEnterToLogin()">
+                    <option value="" selected disabled hidden>Store Name</option>
+                    <option value="Eslam Gomaa">شرق النيل</option>
+                    <option value="Mostafa Galal">شارع 15</option>
+                    <option value="Eslam Gomaa">نادى التجديف</option>
+                    <option value="Eslam Gomaa">بيت الرحمه</option>
+                    <option value="Mostafa Galal">الشهيد</option>
+                    <option value="Mostafa Galal">المخبز الآلي</option>
+                    <option value="Mostafa Galal">مجمع المحاكم</option>
+                    <option value="Eslam Gomaa">اخميم</option>
+                    <option value="Eslam Gomaa">المنشاه</option>
+                    <option value="Mostafa Galal">دار السلام</option>
+                    <option value="Eslam Gomaa">جرجا - المصريه جروب</option>
+                    <option value="Mostafa Galal">جرجا - فيوتشر</option>
+                    <option value="Mostafa Galal">البلينا - تليكوم</option>
+                    <option value="Mostafa Galal">البلينا - فيوتشر</option>
+                    <option value="Eslam Gomaa">المراغه - المصريه جروب</option>
+                    <option value="Eslam Gomaa">المراغه - فيوتشر</option>
+                    <option value="Eslam Gomaa">طما - فيوتشر</option>
+                    <option value="Eslam Gomaa">طما - كافريج</option>
+                    <option value="Eslam Gomaa">طهطا - المصريه جروب</option>
+                    <option value="Mostafa Galal">طهطا - فيوتشر</option>
+                    <option value="Mostafa Galal">جهينه</option>
+                    <option value="Eslam Gomaa">برديس</option>
+                </select>
                 <button onclick="Login()" id="button" type="button" class="protected__content__btn">Login</button>
             </div>
         </div>
@@ -41,8 +66,8 @@
                     <p class="welcome" id="Welcome"><br /></p>
                     <input type="text" name="Agent-Name" id="AgentName" style="display: none;" />
                     <input type="text" name="Submission-Time" id="SubmissionTime" style="display: none;" />
-                    <input type="text" name="Area-Manager" id="AreaManager" style="display: none;" />
                     <input type="text" name="Store-Name" id="StoreName" style="display: none;" />
+                    <input type="text" name="Area-Manager" id="AreaManager" style="display: none;" />
                     <input type="text" name="Quiz-Result" id="QuizResult" style="display: none;" />
                 </div>
                 <p class="notifications" id="Notifications" style="display: none;"></p>
@@ -227,6 +252,39 @@
                     Login();
                 }
             }
+            function Login() {
+                var username = document.getElementById("agent").value.replace(/ /gi, "");
+                var store = document.getElementById("store").options[document.getElementById("store").selectedIndex].text;
+                var area = document.getElementById("store").value;
+                if (username == "admin") {
+                    var randomAgent = document.getElementById("agent").value + Math.floor(Math.random() * 100);
+                    sessionStorage.setItem("agent", randomAgent);
+                    sessionStorage.setItem("store", "---");
+                    sessionStorage.setItem("area", "---");
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if (username !== "admin" && username !== "" && store !== "Store Name") {
+                    sessionStorage.setItem("agent", username);
+                    sessionStorage.setItem("store", store);
+                    sessionStorage.setItem("area", area);
+                    loginDiv.style.display = "none";
+                    mainDiv.style.display = "block";
+                    WelcomeAgent();
+                } else if (username == "") {
+                    document.getElementById("alert1").style.display = "block";
+                    document.getElementById("alert2").style.display = "none";
+                } else {
+                    document.getElementById("alert1").style.display = "none";
+                    document.getElementById("alert2").style.display = "block";
+                }
+            }
+            function Logout() {
+                sessionStorage.removeItem("agent");
+                sessionStorage.removeItem("store");
+                sessionStorage.removeItem("area");
+                location.reload();
+            }
             function WelcomeAgent() {
                 footer.style.display = "block";
                 var month = new Date().getMonth() + 1;
@@ -272,12 +330,8 @@
                 document.getElementById("AttendanceAgentName").value = sessionStorage.getItem("agent");
                 document.getElementById("AttendanceTime").value = new Date().toLocaleString("en-EG");
                 document.getElementById("AgentName").value = sessionStorage.getItem("agent");
-                document.getElementById("AreaManager").value = sessionStorage.getItem("area");
                 document.getElementById("StoreName").value = sessionStorage.getItem("store");
-            }
-            function Logout() {
-                sessionStorage.removeItem("agent");
-                location.reload();
+                document.getElementById("AreaManager").value = sessionStorage.getItem("area");
             }
             document.getElementById("InfoEvaluation").onkeypress = function (e) {
                 var key = e.charCode || e.keyCode || 0;
@@ -334,6 +388,8 @@
                 }, 1000);
                 window.interval = x;
                 sessionStorage.removeItem("agent");
+                sessionStorage.removeItem("store");
+                sessionStorage.removeItem("area");
             }
             var currentTab = 0;
             showTab(currentTab);
@@ -462,18 +518,6 @@
                 document.getElementById("Notifications").innerHTML = "Time out!, Submitted!";
                 footer.style.display = "none";
             }
-            function NextTransform() {
-                gsap.from("#Tab1", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab2", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab3", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab4", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab5", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab6", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab7", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab8", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab9", { duration: 0.2, xPercent: 50, opacity: 0 });
-                gsap.from("#Tab10", { duration: 0.2, xPercent: 50, opacity: 0 });
-            }
             function GetQuizResult() {
                 var A1 = document.querySelector("input[type='radio'][name=Q-1]:checked")?.value;
                 if (A1 == document.getElementById("A-1").value) {
@@ -537,146 +581,17 @@
                 }
                 document.getElementById("QuizResult").value = A1 + A2 + A3 + A4 + A5 + A6 + A7 + A8 + A9 + A10;
             }
-            function Login() {
-                var username = document.getElementById("agent").value;
-                var passwordInput = document.getElementById("password").value;
-                var password = "";
-                for (var i = 0; i < passwordInput.length; i++) {
-                    password = Math.abs(~~((password << 5) - password + passwordInput.charCodeAt(i)));
-                }
-                if (username == "admin" && password == "") {
-                    var randomAgent = document.getElementById("agent").value + Math.floor(Math.random() * 100);
-                    sessionStorage.setItem("agent", randomAgent);
-                    sessionStorage.setItem("area", "---");
-                    sessionStorage.setItem("store", "---");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if (
-                    (username == "madona.emad" && password == "1978402818") ||
-                    (username == "marina.ansf" && password == "422104985") ||
-                    (username == "mab.mahmoud" && password == "823144311") ||
-                    (username == "salma.abden" && password == "128209212")
-                ) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "شرق النيل");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "nada.tarek" && password == "1578568518") || (username == "mary.ashraf" && password == "258733594") || (username == "ahmed.mohye" && password == "1721340915")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "نادى التجديف");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "menna.saad" && password == "1727017165") || (username == "ahmed.asaad" && password == "1721337936") || (username == "mariem.jozif" && password == "668682119")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "بيت الرحمه");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "ali.mahmoud" && password == "915582934") || (username == "salma.yasser" && password == "128211999") || (username == "hasnaa.sediik" && password == "2073648108")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "اخميم");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "sara.sabry" && password == "2103493715") || (username == "nadien.emad" && password == "506184118") || (username == "mahmoud.adel" && password == "502723077")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "المنشاه");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "osama.gamal" && password == "1098695995") || (username == "marina.atta" && password == "422104985") || (username == "alaa.osama" && password == "1483594561")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "جرجا - المصريه جروب");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "mahmoud.soliman" && password == "502729035") || (username == "antony.shehata" && password == "156754974")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "طهطا - المصريه جروب");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "asmaa.abdelhamid" && password == "152422377") || (username == "rawan.hamza" && password == "1518238974") || (username == "radwa.mahmoud" && password == "583107081")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "المراغه - المصريه جروب");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "martina.samir" && password == "1990197338") || (username == "mohamed.ali" && password == "374546358") || (username == "rasha.raaft" && password == "584890905")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "المراغه - فيوتشر");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "hager.rashed" && password == "1820507163") || (username == "shehab.atef" && password == "486041752")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "طما - فيوتشر");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if ((username == "nada.abdelnaser" && password == "1578568518") || (username == "amira.mohamed" && password == "482859881") || (username == "mostafa.naser" && password == "1307674497")) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "طما - كافريج");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if (
-                    (username == "engi.eldabaa" && password == "1819066171") ||
-                    (username == "clara.safwat" && password == "55703308") ||
-                    (username == "mohamed.ayman" && password == "374546358") ||
-                    (username == "mohamed.gebril" && password == "374543571")
-                ) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "برديس");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else if (
-                    (username == "1" && password == "2018522823") ||
-                    (username == "2" && password == "2018522823") ||
-                    (username == "3" && password == "2018522823") ||
-                    (username == "4" && password == "2018522823") ||
-                    (username == "5" && password == "2018522823") ||
-                    (username == "6" && password == "2018522823") ||
-                    (username == "7" && password == "2018522823") ||
-                    (username == "8" && password == "2018522823") ||
-                    (username == "9" && password == "2018522823") ||
-                    (username == "10" && password == "2018522823") ||
-                    (username == "11" && password == "2018522823") ||
-                    (username == "12" && password == "2018522823") ||
-                    (username == "13" && password == "2018522823") ||
-                    (username == "14" && password == "2018522823") ||
-                    (username == "15" && password == "2018522823") ||
-                    (username == "16" && password == "2018522823") ||
-                    (username == "17" && password == "2018522823") ||
-                    (username == "18" && password == "2018522823") ||
-                    (username == "19" && password == "2018522823") ||
-                    (username == "20" && password == "2018522823")
-                ) {
-                    sessionStorage.setItem("agent", document.getElementById("agent").value);
-                    sessionStorage.setItem("area", "Eslam Gomaa");
-                    sessionStorage.setItem("store", "Training Team");
-                    loginDiv.style.display = "none";
-                    mainDiv.style.display = "block";
-                    WelcomeAgent();
-                } else {
-                    document.getElementById("alert").style.display = "block";
-                }
+            function NextTransform() {
+                gsap.from("#Tab1", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab2", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab3", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab4", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab5", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab6", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab7", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab8", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab9", { duration: 0.2, xPercent: 50, opacity: 0 });
+                gsap.from("#Tab10", { duration: 0.2, xPercent: 50, opacity: 0 });
             }
         </script>
         <br />
