@@ -16,7 +16,8 @@
         </div>
         <div id="loginDiv" style="display: block;" class="protected">
             <div class="protected__alert" id="alert1">Enter Your BSS Username</div>
-            <div class="protected__alert" id="alert2">Choose Your Store Name</div>
+            <div class="protected__alert" id="alert2">Invalid Username</div>
+            <div class="protected__alert" id="alert3">Choose Your Store Name</div>
             <div class="protected__content">
                 <h1 class="protected__content__heading">Login to continue</h1>
                 <input class="protected__content__input" id="agent" type="text" placeholder="BSS Username" onkeypress="PressEnterToLogin()" />
@@ -264,7 +265,7 @@
                     loginDiv.style.display = "none";
                     mainDiv.style.display = "block";
                     WelcomeAgent();
-                } else if (username !== "admin" && username !== "" && store !== "Store Name") {
+                } else if (username !== "admin" && username !== "" && username.length >= "8" && store !== "Store Name") {
                     sessionStorage.setItem("agent", username);
                     sessionStorage.setItem("store", store);
                     sessionStorage.setItem("area", area);
@@ -275,10 +276,17 @@
                     document.getElementById("agent").focus();
                     document.getElementById("alert1").style.display = "block";
                     document.getElementById("alert2").style.display = "none";
+                    document.getElementById("alert3").style.display = "none";
+                } else if (username.length < "8") {
+                    document.getElementById("agent").focus();
+                    document.getElementById("alert1").style.display = "none";
+                    document.getElementById("alert2").style.display = "block";
+                    document.getElementById("alert3").style.display = "none";
                 } else {
                     document.getElementById("store").focus();
                     document.getElementById("alert1").style.display = "none";
-                    document.getElementById("alert2").style.display = "block";
+                    document.getElementById("alert2").style.display = "none";
+                    document.getElementById("alert3").style.display = "block";
                 }
             }
             function Logout() {
