@@ -881,7 +881,7 @@
         const allDivs = document.querySelectorAll(".question");
         const randomDivs = [...allDivs]
           .sort(() => 0.5 - Math.random())
-          .slice(0, 23);
+          .slice(0, 10);
         randomDivs.forEach((div) => {
           div.style.display = "block";
         });
