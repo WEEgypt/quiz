@@ -152,7 +152,7 @@
           />
         </div>
         <p class="notifications" id="Notifications" style="display: none"></p>
-        <p class="timer" id="Timer" style="display: none">( 30:00 )</p>
+        <p class="timer" id="Timer" style="display: none">( 10:00 )</p>
         <div id="TheQuiz" style="display: block">
           <div id="Tab1" class="tab">
             <div style="display: none" class="question">
@@ -636,7 +636,7 @@
         document.getElementById("Welcome").innerHTML =
           "Welcome " +
           sessionStorage.getItem("agent") +
-          ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 30 Minutes time frame, <br /> only One attempt available.";
+          ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 10 Minutes time frame, <br /> only One attempt available.";
         document.getElementById("AttendanceAgentName").value =
           sessionStorage.getItem("agent");
         document.getElementById("AttendanceTime").value =
@@ -677,7 +677,7 @@
       });
       function Start() {
         footer.style.display = "none";
-        var countDownDate = new Date().getTime() + 1800500;
+        var countDownDate = new Date().getTime() + 600166;
         var x = setInterval(function () {
           var now = new Date().getTime();
           var distance = countDownDate - now;
