@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Info Evaluation Test</title>
+        <link rel="icon" href="icon.png" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="protected protected__content" id="login" style="display: block;">
+            <p class="protected__content__heading">Login</p>
+            <p class="protected__alert" id="error" style="display: none;"></p>
+            <input class="protected__content__input" id="agent" type="text" placeholder="BSS Username" />
+            <select class="protected__content__input" id="store">
+                <option value="" selected disabled hidden>Store Name</option>
+                <option value="شرق النيل">شرق النيل</option>
+                <option value="شارع 15">شارع 15</option>
+                <option value="نادى التجديف">نادى التجديف</option>
+                <option value="بيت الرحمه">بيت الرحمه</option>
+                <option value="الشهيد">الشهيد</option>
+                <option value="المخبز الآلي">المخبز الآلي</option>
+                <option value="مجمع المحاكم">مجمع المحاكم</option>
+                <option value="اخميم">اخميم</option>
+                <option value="المنشاه">المنشاه</option>
+                <option value="دار السلام">دار السلام</option>
+                <option value="جرجا - المصريه جروب">جرجا - المصريه جروب</option>
+                <option value="جرجا - فيوتشر">جرجا - فيوتشر</option>
+                <option value="البلينا - تليكوم">البلينا - تليكوم</option>
+                <option value="البلينا - فيوتشر">البلينا - فيوتشر</option>
+                <option value="المراغه - المصريه جروب">المراغه - المصريه جروب</option>
+                <option value="المراغه - فيوتشر">المراغه - فيوتشر</option>
+                <option value="طما - فيوتشر">طما - فيوتشر</option>
+                <option value="طما - كافريج">طما - كافريج</option>
+                <option value="طهطا - المصريه جروب">طهطا - المصريه جروب</option>
+                <option value="طهطا - فيوتشر">طهطا - فيوتشر</option>
+                <option value="جهينه">جهينه</option>
+                <option value="برديس">برديس</option>
+                <option value="شارع الجلاء">شارع الجلاء</option>
+                <option value="شارع بورسعيد">شارع بورسعيد</option>
+                <option value="الشارع الجديد">الشارع الجديد</option>
+                <option value="الهلالى أسيوط">الهلالى أسيوط</option>
+                <option value="اسيوط الميدان">اسيوط الميدان</option>
+                <option value="سيتي اول - اسيوط">سيتي اول - اسيوط</option>
+                <option value="الرياض-برج ساويرس">الرياض-برج ساويرس</option>
+                <option value="منفلوط - القلعة">منفلوط - القلعة</option>
+                <option value="اسيوط حي الاربعين">اسيوط حي الاربعين</option>
+                <option value="النادي الرياضي ديروط">النادي الرياضي ديروط</option>
+                <option value="ش بور سعيد - ابنوب">ش بور سعيد - ابنوب</option>
+                <option value="أسيوط - يسري راغب">أسيوط - يسري راغب</option>
+                <option value="أسيوط - أبو تيج">أسيوط - أبو تيج</option>
+                <option value="أسيوط - البداري">أسيوط - البداري</option>
+                <option value="أسيوط ديروط 2">أسيوط ديروط 2</option>
+                <option value="أسيوط - القوصية 2">أسيوط - القوصية 2</option>
+                <option value="أسيوط - ساحل سليم">أسيوط - ساحل سليم</option>
+                <option value="أسيوط - صدفا">أسيوط - صدفا</option>
+                <option value="شارع الجمهورية اسيوط">شارع الجمهورية اسيوط</option>
+                <option value="النبوي المهندس">النبوي المهندس</option>
+                <option value="اسيوط ابراج النصر">اسيوط ابراج النصر</option>
+            </select>
+            <select class="protected__content__input" id="area">
+                <option value="" selected disabled hidden>Area Manager</option>
+                <option value="Eslam Gomaa">Eslam Gomaa</option>
+                <option value="Mostafa Galal">Mostafa Galal</option>
+                <option value="Ahmed Sayed">Ahmed Sayed</option>
+                <option value="Mostafa Abdelrheem">Mostafa Abdelrheem</option>
+            </select>
+            <button class="protected__content__btn" id="loginBtn">Login</button>
+        </div>
+
+        <div id="welcome" style="display: none;">
+            <button id="logout" onclick="signout()">Logout</button>
+            <p class="month" id="month"></p>
+            <img src="icon.png" alt="We Logo" />
+            <p class="welcomeMsg" id="welcomeMsg">Welcome</p>
+            <form method="post" id="quiz">
+                <input style="display: none;" id="attendanceTime" type="text" name="Attendance-Time" />
+                <input style="display: none;" id="agentName" type="text" name="Name" />
+                <input style="display: none;" id="firstSubmit" type="submit" />
+            </form>
+            <button class="start" id="start">Start</button>
+        </div>
+
+        <div id="tabs" style="display: none;">
+            <p class="timer" id="timer">( 10:00 )</p>
+            <br />
+            <p class="qNum" id="qNum">Question No. 1</p>
+            <div class="tab" id="tab1">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-1" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-1" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-1" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-1" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab2">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-2" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-2" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-2" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-2" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab3">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-3" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-3" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-3" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-3" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab4">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-4" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-4" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-4" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-4" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab5">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-5" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-5" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-5" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-5" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab6">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-6" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-6" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-6" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-6" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab7">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-7" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-7" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-7" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-7" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab8">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-8" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-8" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-8" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-8" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab9">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-9" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-9" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-9" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-9" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab10">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-10" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-10" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-10" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-10" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab11">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-11" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-11" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-11" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-11" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab12">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-12" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-12" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-12" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-12" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab13">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-13" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 13 اشهر انترنت </label><br />
+                    <input name="Q-13" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-13" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-13" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab14">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-14" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-14" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-14" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-14" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab15">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-15" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-15" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-15" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-15" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab16">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-16" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-16" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-16" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-16" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab17">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-17" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-17" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-17" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-17" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab18">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-18" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-18" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-18" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-18" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab19">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-19" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-19" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-19" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-19" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab20">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-20" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-20" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-20" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-20" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div id="buttons" style="display: none;">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+            <button id="lastClick" onclick="secSubmit();">Submit</button>
+        </div>
+        <p id="alert" style="display: none;"></p>
+        <div id="loading" style="display: none;" class="loader"></div>
+        <script src="main.js"></script>
+        <script src="transformer.js"></script>
+    </body>
+</html>
