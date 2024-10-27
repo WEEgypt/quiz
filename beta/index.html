@@ -9,66 +9,67 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div class="protected protected__content" id="login" style="display: block;">
-            <p class="protected__content__heading">Login</p>
+        <div class="protected" id="login" style="display: block;">
             <p class="protected__alert" id="error" style="display: none;"></p>
-            <input class="protected__content__input" id="agent" type="text" placeholder="BSS Username" />
-            <select class="protected__content__input" id="store">
-                <option value="" selected disabled hidden>Store Name</option>
-                <option value="شرق النيل">شرق النيل</option>
-                <option value="شارع 15">شارع 15</option>
-                <option value="نادى التجديف">نادى التجديف</option>
-                <option value="بيت الرحمه">بيت الرحمه</option>
-                <option value="الشهيد">الشهيد</option>
-                <option value="المخبز الآلي">المخبز الآلي</option>
-                <option value="مجمع المحاكم">مجمع المحاكم</option>
-                <option value="اخميم">اخميم</option>
-                <option value="المنشاه">المنشاه</option>
-                <option value="دار السلام">دار السلام</option>
-                <option value="جرجا - المصريه جروب">جرجا - المصريه جروب</option>
-                <option value="جرجا - فيوتشر">جرجا - فيوتشر</option>
-                <option value="البلينا - تليكوم">البلينا - تليكوم</option>
-                <option value="البلينا - فيوتشر">البلينا - فيوتشر</option>
-                <option value="المراغه - المصريه جروب">المراغه - المصريه جروب</option>
-                <option value="المراغه - فيوتشر">المراغه - فيوتشر</option>
-                <option value="طما - فيوتشر">طما - فيوتشر</option>
-                <option value="طما - كافريج">طما - كافريج</option>
-                <option value="طهطا - المصريه جروب">طهطا - المصريه جروب</option>
-                <option value="طهطا - فيوتشر">طهطا - فيوتشر</option>
-                <option value="جهينه">جهينه</option>
-                <option value="برديس">برديس</option>
-                <option value="شارع الجلاء">شارع الجلاء</option>
-                <option value="شارع بورسعيد">شارع بورسعيد</option>
-                <option value="الشارع الجديد">الشارع الجديد</option>
-                <option value="الهلالى أسيوط">الهلالى أسيوط</option>
-                <option value="اسيوط الميدان">اسيوط الميدان</option>
-                <option value="سيتي اول - اسيوط">سيتي اول - اسيوط</option>
-                <option value="الرياض-برج ساويرس">الرياض-برج ساويرس</option>
-                <option value="منفلوط - القلعة">منفلوط - القلعة</option>
-                <option value="اسيوط حي الاربعين">اسيوط حي الاربعين</option>
-                <option value="النادي الرياضي ديروط">النادي الرياضي ديروط</option>
-                <option value="ش بور سعيد - ابنوب">ش بور سعيد - ابنوب</option>
-                <option value="أسيوط - يسري راغب">أسيوط - يسري راغب</option>
-                <option value="أسيوط - أبو تيج">أسيوط - أبو تيج</option>
-                <option value="أسيوط - البداري">أسيوط - البداري</option>
-                <option value="أسيوط ديروط 2">أسيوط ديروط 2</option>
-                <option value="أسيوط - القوصية 2">أسيوط - القوصية 2</option>
-                <option value="أسيوط - ساحل سليم">أسيوط - ساحل سليم</option>
-                <option value="أسيوط - صدفا">أسيوط - صدفا</option>
-                <option value="شارع الجمهورية اسيوط">شارع الجمهورية اسيوط</option>
-                <option value="النبوي المهندس">النبوي المهندس</option>
-                <option value="اسيوط ابراج النصر">اسيوط ابراج النصر</option>
-            </select>
-            <select class="protected__content__input" id="area">
-                <option value="" selected disabled hidden>Area Manager</option>
-                <option value="Eslam Gomaa">Eslam Gomaa</option>
-                <option value="Mostafa Galal">Mostafa Galal</option>
-                <option value="Ahmed Sayed">Ahmed Sayed</option>
-                <option value="Mostafa Abdelrheem">Mostafa Abdelrheem</option>
-            </select>
-            <button class="protected__content__btn" id="loginBtn">Login</button>
+            <div class="protected__content">
+                <p class="protected__content__heading">Login</p>
+                <input class="protected__content__input" id="agent" type="text" placeholder="BSS Username" />
+                <select class="protected__content__input" id="store">
+                    <option value="" selected disabled hidden>Store Name</option>
+                    <option value="شرق النيل">شرق النيل</option>
+                    <option value="شارع 15">شارع 15</option>
+                    <option value="نادى التجديف">نادى التجديف</option>
+                    <option value="بيت الرحمه">بيت الرحمه</option>
+                    <option value="الشهيد">الشهيد</option>
+                    <option value="المخبز الآلي">المخبز الآلي</option>
+                    <option value="مجمع المحاكم">مجمع المحاكم</option>
+                    <option value="اخميم">اخميم</option>
+                    <option value="المنشاه">المنشاه</option>
+                    <option value="دار السلام">دار السلام</option>
+                    <option value="جرجا - المصريه جروب">جرجا - المصريه جروب</option>
+                    <option value="جرجا - فيوتشر">جرجا - فيوتشر</option>
+                    <option value="البلينا - تليكوم">البلينا - تليكوم</option>
+                    <option value="البلينا - فيوتشر">البلينا - فيوتشر</option>
+                    <option value="المراغه - المصريه جروب">المراغه - المصريه جروب</option>
+                    <option value="المراغه - فيوتشر">المراغه - فيوتشر</option>
+                    <option value="طما - فيوتشر">طما - فيوتشر</option>
+                    <option value="طما - كافريج">طما - كافريج</option>
+                    <option value="طهطا - المصريه جروب">طهطا - المصريه جروب</option>
+                    <option value="طهطا - فيوتشر">طهطا - فيوتشر</option>
+                    <option value="جهينه">جهينه</option>
+                    <option value="برديس">برديس</option>
+                    <option value="شارع الجلاء">شارع الجلاء</option>
+                    <option value="شارع بورسعيد">شارع بورسعيد</option>
+                    <option value="الشارع الجديد">الشارع الجديد</option>
+                    <option value="الهلالى أسيوط">الهلالى أسيوط</option>
+                    <option value="اسيوط الميدان">اسيوط الميدان</option>
+                    <option value="سيتي اول - اسيوط">سيتي اول - اسيوط</option>
+                    <option value="الرياض-برج ساويرس">الرياض-برج ساويرس</option>
+                    <option value="منفلوط - القلعة">منفلوط - القلعة</option>
+                    <option value="اسيوط حي الاربعين">اسيوط حي الاربعين</option>
+                    <option value="النادي الرياضي ديروط">النادي الرياضي ديروط</option>
+                    <option value="ش بور سعيد - ابنوب">ش بور سعيد - ابنوب</option>
+                    <option value="أسيوط - يسري راغب">أسيوط - يسري راغب</option>
+                    <option value="أسيوط - أبو تيج">أسيوط - أبو تيج</option>
+                    <option value="أسيوط - البداري">أسيوط - البداري</option>
+                    <option value="أسيوط ديروط 2">أسيوط ديروط 2</option>
+                    <option value="أسيوط - القوصية 2">أسيوط - القوصية 2</option>
+                    <option value="أسيوط - ساحل سليم">أسيوط - ساحل سليم</option>
+                    <option value="أسيوط - صدفا">أسيوط - صدفا</option>
+                    <option value="شارع الجمهورية اسيوط">شارع الجمهورية اسيوط</option>
+                    <option value="النبوي المهندس">النبوي المهندس</option>
+                    <option value="اسيوط ابراج النصر">اسيوط ابراج النصر</option>
+                </select>
+                <select class="protected__content__input" id="area">
+                    <option value="" selected disabled hidden>Area Manager</option>
+                    <option value="Eslam Gomaa">Eslam Gomaa</option>
+                    <option value="Mostafa Galal">Mostafa Galal</option>
+                    <option value="Ahmed Sayed">Ahmed Sayed</option>
+                    <option value="Mostafa Abdelrheem">Mostafa Abdelrheem</option>
+                </select>
+                <button class="protected__content__btn" id="loginBtn">Login</button>
+            </div>
         </div>
-
         <div id="welcome" style="display: none;">
             <button id="logout" onclick="signout()">Logout</button>
             <p class="month" id="month"></p>
@@ -81,7 +82,6 @@
             </form>
             <button class="start" id="start">Start</button>
         </div>
-
         <div id="tabs" style="display: none;">
             <p class="timer" id="timer">( 10:00 )</p>
             <br />
@@ -368,12 +368,17 @@
             </div>
         </div>
         <div id="buttons" style="display: none;">
-            <button id="prev">Previous</button>
-            <button id="next">Next</button>
             <button id="lastClick" onclick="secSubmit();">Submit</button>
+			<button id="next">Next</button>
+			<button id="prev">Previous</button>
         </div>
         <p id="alert" style="display: none;"></p>
         <div id="loading" style="display: none;" class="loader"></div>
+		<footer>
+		  <p class="footer" id="footer" style="display: none;">
+			Developed by: Mamdouh Khalaf .. "MUE Team"
+		  </p>
+		</footer>
         <script src="main.js"></script>
         <script src="transformer.js"></script>
     </body>

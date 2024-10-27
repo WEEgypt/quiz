@@ -29,7 +29,6 @@ body {
     max-width: 640px;
     width: inherit;
     margin: auto;
-    padding: 0px 24px 0px 24px;
 }
 
 *,
@@ -52,7 +51,14 @@ button {
     margin: 4px;
     cursor: pointer;
     border-radius: 4px;
-    float: right;
+}
+
+#next {
+	margin: 0px 0px 0px 34px;
+}
+
+#lastClick {
+	margin: 0px 0px 0px 34px;
 }
 
 #logout {
@@ -68,12 +74,12 @@ button {
     color: red;
     font-size: 24px;
     text-align: center;
+	margin: 0px 0px 24px 0px;
 }
 
 .qNum {
     font-size: 20px;
     text-align: center;
-    padding: 0px 0px 12px 0px;
     margin: unset;
     text-decoration: underline;
 }
@@ -118,6 +124,7 @@ label {
 
 .tab {
     direction: rtl;
+	padding: 12px 24px 12px 24px;
 }
 
 .loader {
@@ -134,6 +141,13 @@ label {
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
+
+.footer {
+    text-align: center;
+    font-size: 10px;
+    margin: 24px 0 12px 0px;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -182,6 +196,7 @@ label {
     background-color: #f2dede;
     border-color: #ebccd1;
     font-size: 18px;
+	margin: 0;
 }
 
 .protected__content__input {
@@ -216,6 +231,7 @@ label {
     width: 100px;
     height: 40px;
     margin: 2px 0px 0px 0px;
+	float: right;
 }
 
 .protected__content__btn:hover {
