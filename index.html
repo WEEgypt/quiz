@@ -1,892 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <title>Info Evaluation Test</title>
-    <link rel="icon" href="icon.png" />
-    <link rel="apple-touch-icon" href="icon.png" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="transformer.js"></script>
-  </head>
-
-  <body>
-    <div id="noQuiz" style="display: none">
-      <img src="icon.png" alt="We Logo" />
-      <p class="unavailable">The next quiz will be published soon.</p>
-    </div>
-    <div id="loginDiv" style="display: block" class="protected">
-      <div class="protected__alert" id="alert1">Enter Your BSS Username</div>
-      <div class="protected__alert" id="alert2">Invalid Username</div>
-      <div class="protected__alert" id="alert3">Choose Your Store Name</div>
-      <div class="protected__content">
-        <h1 class="protected__content__heading">Login to continue</h1>
-        <input
-          class="protected__content__input"
-          id="agent"
-          type="text"
-          placeholder="BSS Username"
-          onkeypress="PressEnterToLogin()"
-        />
-        <select
-          class="protected__content__input"
-          name="Store"
-          id="store"
-          onkeypress="PressEnterToLogin()"
-        >
-          <option value="" selected disabled hidden>Store Name</option>
-          <option value="Eslam Gomaa">شرق النيل</option>
-          <option value="Mostafa Galal">شارع 15</option>
-          <option value="Eslam Gomaa">نادى التجديف</option>
-          <option value="Eslam Gomaa">بيت الرحمه</option>
-          <option value="Mostafa Galal">الشهيد</option>
-          <option value="Mostafa Galal">المخبز الآلي</option>
-          <option value="Mostafa Galal">مجمع المحاكم</option>
-          <option value="Eslam Gomaa">اخميم</option>
-          <option value="Eslam Gomaa">المنشاه</option>
-          <option value="Mostafa Galal">دار السلام</option>
-          <option value="Eslam Gomaa">جرجا - المصريه جروب</option>
-          <option value="Mostafa Galal">جرجا - فيوتشر</option>
-          <option value="Mostafa Galal">البلينا - تليكوم</option>
-          <option value="Mostafa Galal">البلينا - فيوتشر</option>
-          <option value="Eslam Gomaa">المراغه - المصريه جروب</option>
-          <option value="Eslam Gomaa">المراغه - فيوتشر</option>
-          <option value="Eslam Gomaa">طما - فيوتشر</option>
-          <option value="Eslam Gomaa">طما - كافريج</option>
-          <option value="Eslam Gomaa">طهطا - المصريه جروب</option>
-          <option value="Mostafa Galal">طهطا - فيوتشر</option>
-          <option value="Mostafa Galal">جهينه</option>
-          <option value="Eslam Gomaa">برديس</option>
-          <option value="Ahmed Sayed">شارع الجلاء</option>
-          <option value="Mostafa Abdelrheem">شارع بورسعيد</option>
-          <option value="Ahmed Sayed">الشارع الجديد</option>
-          <option value="Mostafa Abdelrheem">الهلالى أسيوط</option>
-          <option value="Ahmed Sayed">اسيوط الميدان</option>
-          <option value="Mostafa Abdelrheem">سيتي اول - اسيوط</option>
-          <option value="Ahmed Sayed">الرياض-برج ساويرس</option>
-          <option value="Ahmed Sayed">منفلوط - القلعة</option>
-          <option value="Mostafa Abdelrheem">اسيوط حي الاربعين</option>
-          <option value="Ahmed Sayed">النادي الرياضي ديروط</option>
-          <option value="Mostafa Abdelrheem">ش بور سعيد - ابنوب</option>
-          <option value="Ahmed Sayed">أسيوط - يسري راغب</option>
-          <option value="Mostafa Abdelrheem">أسيوط - أبو تيج</option>
-          <option value="Mostafa Abdelrheem">أسيوط - البداري</option>
-          <option value="Ahmed Sayed">أسيوط ديروط 2</option>
-          <option value="Ahmed Sayed">أسيوط - القوصية 2</option>
-          <option value="Mostafa Abdelrheem">أسيوط - ساحل سليم</option>
-          <option value="Mostafa Abdelrheem">أسيوط - صدفا</option>
-          <option value="Mostafa Abdelrheem">شارع الجمهورية اسيوط</option>
-          <option value="Mostafa Abdelrheem">النبوي المهندس</option>
-          <option value="Ahmed Sayed">اسيوط ابراج النصر</option>
-        </select>
-        <button
-          onclick="Login()"
-          id="button"
-          type="button"
-          class="protected__content__btn"
-        >
-          Login
-        </button>
-      </div>
-    </div>
-    <div id="mainDiv" style="display: none">
-      <div id="Header">
-        <br />
-        <button type="button" id="logout" onclick="Logout()">
-          <i class="fa fa-sign-out" style="font-size: 28px; color: #5b2c92"></i>
-        </button>
-        <h1>Info Evaluation Test</h1>
-        <p class="month" id="Month"></p>
-      </div>
-      <form method="post" name="Attendance" id="Attendance">
-        <input
-          type="text"
-          name="Agent-Name"
-          id="AttendanceAgentName"
-          style="display: none"
-        />
-        <input
-          type="text"
-          name="Attendance-Time"
-          id="AttendanceTime"
-          style="display: none"
-        />
-      </form>
-      <form method="post" name="InfoEvaluation" id="InfoEvaluation">
-        <div class="tab" id="StartDiv" style="display: block">
-          <img src="icon.png" alt="We Logo" />
-          <br />
-          <p class="welcome" id="Welcome"><br /></p>
-          <input
-            type="text"
-            name="Agent-Name"
-            id="AgentName"
-            style="display: none"
-          />
-          <input
-            type="text"
-            name="Submission-Time"
-            id="SubmissionTime"
-            style="display: none"
-          />
-          <input
-            type="text"
-            name="Store-Name"
-            id="StoreName"
-            style="display: none"
-          />
-          <input
-            type="text"
-            name="Area-Manager"
-            id="AreaManager"
-            style="display: none"
-          />
-          <input
-            type="text"
-            name="Quiz-Result"
-            id="QuizResult"
-            style="display: none"
-          />
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Info Evaluation Test</title>
+        <link rel="icon" href="icon.png" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="noQuiz" style="display: none;">
+            <img src="icon.png" alt="We Logo" />
+            <p class="unavailable">The next quiz will be published soon.</p>
         </div>
-        <p class="notifications" id="Notifications" style="display: none"></p>
-        <p class="timer" id="Timer" style="display: none">( 10:00 )</p>
-        <div id="TheQuiz" style="display: block">
-          <div id="Tab1" class="tab">
-            <div style="display: none" class="question">
-              <br />
-              <p>لا يعتبر اثبات قدره على الدفع</p>
-              <input name="Q-1" type="radio" value="A" />
-              <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
-              <input name="Q-1" type="radio" value="B" />
-              <label> - جواز سفر دوبلوماسي </label><br />
-              <input name="Q-1" type="radio" value="C" />
-              <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
-              <br />
-              <input type="text" id="A-1" value="C" style="display: none" />
-              <br />
+        <div class="protected" id="login" style="display: none;">
+            <p class="protected__alert" id="error" style="display: none;"></p>
+            <div class="protected__content">
+                <p class="protected__content__heading">Login to continue</p>
+                <input class="protected__content__input" id="agent" type="text" placeholder="BSS Username" onkeypress="pressEnterToLogin()" />
+                <select class="protected__content__input" id="store" onkeypress="pressEnterToLogin()">
+                    <option value="" selected disabled hidden>Store Name</option>
+                    <option value="Eslam Gomaa">شرق النيل</option>
+                    <option value="Mostafa Galal">شارع 15</option>
+                    <option value="Eslam Gomaa">نادى التجديف</option>
+                    <option value="Eslam Gomaa">بيت الرحمه</option>
+                    <option value="Mostafa Galal">الشهيد</option>
+                    <option value="Mostafa Galal">المخبز الآلي</option>
+                    <option value="Mostafa Galal">مجمع المحاكم</option>
+                    <option value="Eslam Gomaa">اخميم</option>
+                    <option value="Eslam Gomaa">المنشاه</option>
+                    <option value="Mostafa Galal">دار السلام</option>
+                    <option value="Eslam Gomaa">جرجا - المصريه جروب</option>
+                    <option value="Mostafa Galal">جرجا - فيوتشر</option>
+                    <option value="Mostafa Galal">البلينا - تليكوم</option>
+                    <option value="Mostafa Galal">البلينا - فيوتشر</option>
+                    <option value="Eslam Gomaa">المراغه - المصريه جروب</option>
+                    <option value="Eslam Gomaa">المراغه - فيوتشر</option>
+                    <option value="Eslam Gomaa">طما - فيوتشر</option>
+                    <option value="Eslam Gomaa">طما - كافريج</option>
+                    <option value="Eslam Gomaa">طهطا - المصريه جروب</option>
+                    <option value="Mostafa Galal">طهطا - فيوتشر</option>
+                    <option value="Mostafa Galal">جهينه</option>
+                    <option value="Eslam Gomaa">برديس</option>
+                    <option value="Ahmed Sayed">شارع الجلاء</option>
+                    <option value="Mostafa Abdelrheem">شارع بورسعيد</option>
+                    <option value="Ahmed Sayed">الشارع الجديد</option>
+                    <option value="Mostafa Abdelrheem">الهلالى أسيوط</option>
+                    <option value="Ahmed Sayed">اسيوط الميدان</option>
+                    <option value="Mostafa Abdelrheem">سيتي اول - اسيوط</option>
+                    <option value="Ahmed Sayed">الرياض-برج ساويرس</option>
+                    <option value="Ahmed Sayed">منفلوط - القلعة</option>
+                    <option value="Mostafa Abdelrheem">اسيوط حي الاربعين</option>
+                    <option value="Ahmed Sayed">النادي الرياضي ديروط</option>
+                    <option value="Mostafa Abdelrheem">ش بور سعيد - ابنوب</option>
+                    <option value="Ahmed Sayed">أسيوط - يسري راغب</option>
+                    <option value="Mostafa Abdelrheem">أسيوط - أبو تيج</option>
+                    <option value="Mostafa Abdelrheem">أسيوط - البداري</option>
+                    <option value="Ahmed Sayed">أسيوط ديروط 2</option>
+                    <option value="Ahmed Sayed">أسيوط - القوصية 2</option>
+                    <option value="Mostafa Abdelrheem">أسيوط - ساحل سليم</option>
+                    <option value="Mostafa Abdelrheem">أسيوط - صدفا</option>
+                    <option value="Mostafa Abdelrheem">شارع الجمهورية اسيوط</option>
+                    <option value="Mostafa Abdelrheem">النبوي المهندس</option>
+                    <option value="Ahmed Sayed">اسيوط ابراج النصر</option>
+                </select>
+                <button class="protected__content__btn" id="loginBtn">Login</button>
             </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                سداد اخر فواتير ارضي فقط بإنتظام تعتبر اثبات قوي للمقدره علي
-                الدفع للإشتراك علي نظام الفاتورة من وي
-              </p>
-              <input name="Q-2" type="radio" value="A" />
-              <label> - نعم </label><br />
-              <input name="Q-2" type="radio" value="B" />
-              <label> - لا </label><br />
-              <br />
-              <input type="text" id="A-2" value="B" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                بدءًا من وي جولد 600، يمكنك الاستفادة بخاصية تقسيط الهواتف بعد
-                مرور
-              </p>
-              <input name="Q-3" type="radio" value="A" />
-              <label> - 6 شهور </label><br />
-              <input name="Q-3" type="radio" value="B" />
-              <label> - 12 شهر </label><br />
-              <input name="Q-3" type="radio" value="C" />
-              <label> - 3 شهور </label><br />
-              <br />
-              <input type="text" id="A-3" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>تقدم باقة وي جولد موبايل 1000 باقة موبايل انترنت</p>
-              <input name="Q-4" type="radio" value="A" />
-              <label> - 100 جيجا </label><br />
-              <input name="Q-4" type="radio" value="B" />
-              <label> - 110 جيجا </label><br />
-              <input name="Q-4" type="radio" value="C" />
-              <label> - 120 جيجا </label><br />
-              <br />
-              <input type="text" id="A-4" value="B" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>يمكن للعميل المصري الواحد الاستفادة بحد اقصي بعدد</p>
-              <input name="Q-5" type="radio" value="A" />
-              <label> - 5 Voice & 5 Data </label><br />
-              <input name="Q-5" type="radio" value="B" />
-              <label> - 5 Voice & 10 Data </label><br />
-              <input name="Q-5" type="radio" value="C" />
-              <label> - 10 Voice & 5 Data </label><br />
-              <br />
-              <input type="text" id="A-5" value="C" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>السعر بعد الضريبه لباقه We Air 300</p>
-              <input name="Q-6" type="radio" value="A" />
-              <label> - 342 جنيه </label><br />
-              <input name="Q-6" type="radio" value="B" />
-              <label> - 414 جنيه </label><br />
-              <input name="Q-6" type="radio" value="C" />
-              <label> - 429 جنيه </label><br />
-              <br />
-              <input type="text" id="A-6" value="C" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>تقدم باقه كنترول تظبيط 70 عدد 500 وحده ومنهم</p>
-              <input name="Q-7" type="radio" value="A" />
-              <label> - 75 لكل الشبكات </label><br />
-              <input name="Q-7" type="radio" value="B" />
-              <label> - 45 لكل الشبكات </label><br />
-              <input name="Q-7" type="radio" value="C" />
-              <label> - 60 لكل الشبكات </label><br />
-              <br />
-              <input type="text" id="A-7" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                خدمة شراء صلاحية لخطوط الكنترول لمدة ٦ اشهر او سنه يمكن اضافتها
-                من السيستم و تسمي
-              </p>
-              <input name="Q-8" type="radio" value="A" />
-              <label> - park your line </label><br />
-              <input name="Q-8" type="radio" value="B" />
-              <label> - extned your line </label><br />
-              <input name="Q-8" type="radio" value="C" />
-              <label> - stop charging from balance </label><br />
-              <br />
-              <input type="text" id="A-8" value="B" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                إجمالي عدد الأيام لإيقاف الخط تماما بناءا علي عدم شحن العميل علي
-                الخط from Idle to Deactivation
-              </p>
-              <input name="Q-9" type="radio" value="A" />
-              <label> - 105 يوم </label><br />
-              <input name="Q-9" type="radio" value="B" />
-              <label> - 130 يوم </label><br />
-              <input name="Q-9" type="radio" value="C" />
-              <label> - 90 يوم </label><br />
-              <br />
-              <input type="text" id="A-9" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                مصاريف تحويل الأموال من محفظة وي باي إلى أي محفظة إلكترونية أخرى
-                داخل جمهورية مصر العربية كمثال من محفظة وي باي إلى محفظة ميزا
-                الذكية
-              </p>
-              <input name="Q-10" type="radio" value="A" />
-              <label> - 0.5 % (بحد أدنى 1 جنية وبحد أقصى 15 جنية) </label><br />
-              <input name="Q-10" type="radio" value="B" />
-              <label> - 1 جنيه كحد أقصى </label><br />
-              <input name="Q-10" type="radio" value="C" />
-              <label> - لا يوجد رسوم </label><br />
-              <br />
-              <input type="text" id="A-10" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>يمكن لعميل الفاتورة الاحتفاظ بملكيته للخط بعد</p>
-              <input name="Q-11" type="radio" value="A" />
-              <label> - 6 فواتير مسدده </label><br />
-              <input name="Q-11" type="radio" value="B" />
-              <label> - 12 شهر </label><br />
-              <input name="Q-11" type="radio" value="C" />
-              <label> - 12 فاتورة مسدده </label><br />
-              <br />
-              <input type="text" id="A-11" value="C" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                سوبر كيكس 100تقدم الباقة ........ وحده بالاضافه الي اكسترا 25%
-                علي باقات نايترو عند الاشتراك بباقات النيترو واشتراك منصة جوي
-                مجانا
-              </p>
-              <input name="Q-12" type="radio" value="A" />
-              <label> - 6,500 </label><br />
-              <input name="Q-12" type="radio" value="B" />
-              <label> - 4800 </label><br />
-              <input name="Q-12" type="radio" value="C" />
-              <label> - 5500 </label><br />
-              <br />
-              <input type="text" id="A-12" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>متاح للعميل استبدال شريحه ...... في الشهر و....... في السنه</p>
-              <input name="Q-13" type="radio" value="A" />
-              <label> - 3 - 7 </label><br />
-              <input name="Q-13" type="radio" value="B" />
-              <label> - 2 - 7 </label><br />
-              <input name="Q-13" type="radio" value="C" />
-              <label> - 3 - 5 </label><br />
-              <br />
-              <input type="text" id="A-13" value="B" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>يستفاد العميل بقسيمة شراء سنوية بدء من باقة وي جولد</p>
-              <input name="Q-14" type="radio" value="A" />
-              <label> - 600 </label><br />
-              <input name="Q-14" type="radio" value="B" />
-              <label> - 400 </label><br />
-              <input name="Q-14" type="radio" value="C" />
-              <label> - 200 </label><br />
-              <br />
-              <input type="text" id="A-14" value="B" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                بدء من باقة كيكس ....... يمكنك الاستفاده بقسائم شراء مع كل 3
-                تجديدات متتالية
-              </p>
-              <input name="Q-15" type="radio" value="A" />
-              <label> - 45 </label><br />
-              <input name="Q-15" type="radio" value="B" />
-              <label> - 65 </label><br />
-              <input name="Q-15" type="radio" value="C" />
-              <label> - 40 </label><br />
-              <br />
-              <input type="text" id="A-15" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                تقدم باقة Nitro 450 موبايل انترنت .......... صالحة لمدة 3 اشهر
-              </p>
-              <input name="Q-16" type="radio" value="A" />
-              <label> - 55 GB </label><br />
-              <input name="Q-16" type="radio" value="B" />
-              <label> - 100 GB </label><br />
-              <input name="Q-16" type="radio" value="C" />
-              <label> - 50 GB </label><br />
-              <br />
-              <input type="text" id="A-16" value="C" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>يمكن طلب .......... لوقف الحساب خارج الباقة للإنترنت فقط</p>
-              <input name="Q-17" type="radio" value="A" />
-              <label> - #913* </label><br />
-              <input name="Q-17" type="radio" value="B" />
-              <label> - #912* </label><br />
-              <input name="Q-17" type="radio" value="C" />
-              <label> - #617* </label><br />
-              <br />
-              <input type="text" id="A-17" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>تقدم باقة WE Air 300</p>
-              <input name="Q-18" type="radio" value="A" />
-              <label> - 200,000 ميجابايت </label><br />
-              <input name="Q-18" type="radio" value="B" />
-              <label> - 90,000 ميجابايت </label><br />
-              <input name="Q-18" type="radio" value="C" />
-              <label> - 105,000 ميجابايت </label><br />
-              <br />
-              <input type="text" id="A-18" value="C" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                الحد الأقصى للتعاملات الشهرية علي محفظة وي باي ........ جنيه
-                مصري
-              </p>
-              <input name="Q-19" type="radio" value="A" />
-              <label> - 200,000 جنيه </label><br />
-              <input name="Q-19" type="radio" value="B" />
-              <label> - 100,000 جنيه </label><br />
-              <input name="Q-19" type="radio" value="C" />
-              <label> - 500,000 جنيه </label><br />
-              <br />
-              <input type="text" id="A-19" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>طلب الغاء خط وي جولد علي CSA</p>
-              <input name="Q-20" type="radio" value="A" />
-              <label> - Request - Consumer - Deactivation - We gold </label
-              ><br />
-              <input name="Q-20" type="radio" value="B" />
-              <label> - Request - Consumer - Rateplan- Remove suspension </label
-              ><br />
-              <br />
-              <input type="text" id="A-20" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                يحصل عملاء وي جولد على 2 باقة إنترنت تجوال على مدار السنة كل
-                باقة صالحة لمده .... و يستطيع العميل الاشتراك في باقة التجوال
-                المجانية الثانية فى أى وقت في السنة
-              </p>
-              <input name="Q-21" type="radio" value="A" />
-              <label> - 3 ايام </label><br />
-              <input name="Q-21" type="radio" value="B" />
-              <label> - شهر </label><br />
-              <input name="Q-21" type="radio" value="C" />
-              <label> - اسبوع </label><br />
-              <br />
-              <input type="text" id="A-21" value="C" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>
-                بدء من باقة جولد 400 لايستطيع العميل التغيير لباقة جولد اقل الا
-                بعد مرور .......... وفاتورة مسدده
-              </p>
-              <input name="Q-22" type="radio" value="A" />
-              <label> - 6 شهور </label><br />
-              <input name="Q-22" type="radio" value="B" />
-              <label> - 12 شهر </label><br />
-              <input name="Q-22" type="radio" value="C" />
-              <label> - 9 شهور </label><br />
-              <br />
-              <input type="text" id="A-22" value="A" style="display: none" />
-              <br />
-            </div>
-            <div style="display: none" class="question">
-              <br />
-              <p>يحظر التعاقد علي خدمات للعملاء الاجانب التي تقل اعمارهم عن</p>
-              <input name="Q-23" type="radio" value="A" />
-              <label> - 16 سنه </label><br />
-              <input name="Q-23" type="radio" value="B" />
-              <label> - 18 سنه </label><br />
-              <input name="Q-23" type="radio" value="C" />
-              <label> - 15 سنه </label><br />
-              <br />
-              <input type="text" id="A-23" value="C" style="display: none" />
-              <br />
-            </div>
-          </div>
-          <input
-            style="display: none"
-            id="submit"
-            type="submit"
-            value="Submit"
-          />
-          <br />
-          <br />
-          <div id="BtnRow" style="overflow: auto">
-            <button type="button" id="nextBtn" onclick="nextPrev(1)">
-              Next
-            </button>
-            <button type="button" id="prevBtn" onclick="nextPrev(-1)">
-              Previous
-            </button>
-          </div>
         </div>
-        <div id="Loading" style="display: none" class="loader"></div>
-      </form>
-    </div>
-    <br />
-    <footer>
-      <p id="footer" class="footer">
-        Developed by: Mamdouh Khalaf .. "MUE Team"
-      </p>
-    </footer>
-    <script>
-      var day = new Date().getDate();
-      if (day <= 31) {
-        Check();
-      } else {
-        noQuiz.style.display = "block";
-        loginDiv.style.display = "none";
-        footer.style.display = "none";
-      }
-      function Check() {
-        if (sessionStorage.getItem("agent") !== null) {
-          loginDiv.style.display = "none";
-          mainDiv.style.display = "block";
-          WelcomeAgent();
-        } else {
-          document.getElementById("agent").focus();
-          footer.style.display = "none";
-        }
-      }
-      function PressEnterToLogin() {
-        if (event.which == 13 || event.keyCode == 13) {
-          Login();
-        }
-      }
-      function Login() {
-        var username = document
-          .getElementById("agent")
-          .value.replace(/ /gi, "");
-        var store =
-          document.getElementById("store").options[
-            document.getElementById("store").selectedIndex
-          ].text;
-        var area = document.getElementById("store").value;
-        if (username == "admin") {
-          var randomAgent =
-            document.getElementById("agent").value +
-            Math.floor(Math.random() * 100);
-          sessionStorage.setItem("agent", randomAgent);
-          sessionStorage.setItem("store", "---");
-          sessionStorage.setItem("area", "---");
-          loginDiv.style.display = "none";
-          mainDiv.style.display = "block";
-          WelcomeAgent();
-        } else if (
-          username !== "admin" &&
-          username !== "" &&
-          username.length >= "8" &&
-          store !== "Store Name"
-        ) {
-          sessionStorage.setItem("agent", username);
-          sessionStorage.setItem("store", store);
-          sessionStorage.setItem("area", area);
-          loginDiv.style.display = "none";
-          mainDiv.style.display = "block";
-          WelcomeAgent();
-        } else if (username == "") {
-          document.getElementById("agent").focus();
-          document.getElementById("alert1").style.display = "block";
-          document.getElementById("alert2").style.display = "none";
-          document.getElementById("alert3").style.display = "none";
-        } else if (username.length < "8") {
-          document.getElementById("agent").focus();
-          document.getElementById("alert1").style.display = "none";
-          document.getElementById("alert2").style.display = "block";
-          document.getElementById("alert3").style.display = "none";
-        } else {
-          document.getElementById("store").focus();
-          document.getElementById("alert1").style.display = "none";
-          document.getElementById("alert2").style.display = "none";
-          document.getElementById("alert3").style.display = "block";
-        }
-      }
-      function Logout() {
-        sessionStorage.removeItem("agent");
-        sessionStorage.removeItem("store");
-        sessionStorage.removeItem("area");
-        location.reload();
-      }
-      function WelcomeAgent() {
-        footer.style.display = "block";
-        var month = new Date().getMonth() + 1;
-        var year = new Date().getFullYear();
-        if (month == 1) {
-          month = "January";
-        }
-        if (month == 2) {
-          month = "February";
-        }
-        if (month == 3) {
-          month = "March";
-        }
-        if (month == 4) {
-          month = "April";
-        }
-        if (month == 5) {
-          month = "May";
-        }
-        if (month == 6) {
-          month = "June";
-        }
-        if (month == 7) {
-          month = "July";
-        }
-        if (month == 8) {
-          month = "August";
-        }
-        if (month == 9) {
-          month = "September";
-        }
-        if (month == 10) {
-          month = "October";
-        }
-        if (month == 11) {
-          month = "November";
-        }
-        if (month == 12) {
-          month = "December";
-        }
-        document.getElementById("Month").innerHTML = month + " " + year;
-        document.getElementById("Welcome").innerHTML =
-          "Welcome " +
-          sessionStorage.getItem("agent") +
-          ", <br /><br /> This Quiz consists of 10 Questions, <br /> with 10 Minutes time frame, <br /> only One attempt available.";
-        document.getElementById("AttendanceAgentName").value =
-          sessionStorage.getItem("agent");
-        document.getElementById("AttendanceTime").value =
-          new Date().toLocaleString("en-EG");
-        document.getElementById("AgentName").value =
-          sessionStorage.getItem("agent");
-        document.getElementById("StoreName").value =
-          sessionStorage.getItem("store");
-        document.getElementById("AreaManager").value =
-          sessionStorage.getItem("area");
-      }
-      document.getElementById("InfoEvaluation").onkeypress = function (e) {
-        var key = e.charCode || e.keyCode || 0;
-        if (key == 13) {
-          e.preventDefault();
-        }
-      };
-      const ScriptURL =
-        "https://script.google.com/macros/s/AKfycbyRm_j9DBYxYuvTb_ehhiQBJ5q-HA4OcwpWJuyQfO3nBxSx1bOv2ujFfhxz161RlExL/exec";
-      const AttendanceScriptURL = ScriptURL + "?sheetName=Attendance";
-      const QuizScriptURL = ScriptURL + "?sheetName=Results";
-      const attendanceForm = document.forms["Attendance"];
-      const quizForm = document.forms["InfoEvaluation"];
-      quizForm.addEventListener("submit", (e) => {
-        clearInterval(interval);
-        GetQuizResult();
-        document.getElementById("submit").disabled = true;
-        Header.style.display = "none";
-        BtnRow.style.display = "none";
-        Timer.style.display = "none";
-        Loading.style.display = "block";
-        e.preventDefault();
-        document.getElementById("SubmissionTime").value =
-          new Date().toLocaleString("en-EG");
-        fetch(QuizScriptURL, { method: "POST", body: new FormData(quizForm) })
-          .then((response) => QuizSubmitted())
-          .catch((error) => SubmitError());
-      });
-      function Start() {
-        footer.style.display = "none";
-        var countDownDate = new Date().getTime() + 600166;
-        var x = setInterval(function () {
-          var now = new Date().getTime();
-          var distance = countDownDate - now;
-          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          if (minutes < 10) {
-            minutes = "0" + minutes;
-          }
-          if (seconds < 10) {
-            seconds = "0" + seconds;
-          }
-          document.getElementById("Timer").innerHTML =
-            "( " + minutes + ":" + seconds + " )";
-          if (distance < 0) {
-            clearInterval(x);
-            GetQuizResult();
-            document.getElementById("Timer").innerHTML = "( 00:00 )";
-            document.getElementById("Timer").style.webkitFilter =
-              "opacity(0.5)";
-            document.getElementById("TheQuiz").style.webkitFilter =
-              "opacity(0.5)";
-            Loading.style.display = "block";
-            document.getElementById("SubmissionTime").value =
-              new Date().toLocaleString("en-EG");
-            fetch(QuizScriptURL, {
-              method: "POST",
-              body: new FormData(quizForm),
-            })
-              .then((response) => TimeOutSubmitted())
-              .catch((error) => SubmitError());
-          }
-        }, 1000);
-        window.interval = x;
-        sessionStorage.removeItem("agent");
-        sessionStorage.removeItem("store");
-        sessionStorage.removeItem("area");
-      }
-      var currentTab = 0;
-      showTab(currentTab);
-      function showTab(n) {
-        var x = document.getElementsByClassName("tab");
-        x[n].style.display = "block";
-        if (n == 0) {
-          document.getElementById("prevBtn").style.display = "none";
-          Timer.style.display = "none";
-          document.getElementById("nextBtn").innerHTML = "Start";
-          document.getElementById("nextBtn").style.width = "280px";
-        } else if (n == 1 && Timer.style.display == "none") {
-          document.getElementById("mainDiv").style.width = "inherit";
-          document.getElementById("nextBtn").innerHTML = "Submit";
-          Timer.style.display = "block";
-          Start();
-          document.getElementById("nextBtn").style.width = "70px";
-        }
-      }
-      function nextPrev(n) {
-        var x = document.getElementsByClassName("tab");
-        x[currentTab].style.display = "none";
-        currentTab = currentTab + n;
-        if (currentTab >= x.length) {
-          let allAnswered = true;
-          if (
-            (document.querySelector(`input[name="Q-1"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-1"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-2"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-2"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-3"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-3"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-4"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-4"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-5"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-5"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-6"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-6"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-7"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-7"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-8"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-8"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-9"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-9"]:checked') == null) ||
-            (document.querySelector(`input[name="Q-10"]`).closest(".question")
-              .style.display !== "none" &&
-              document.querySelector('input[name="Q-10"]:checked') == null)
-          ) {
-            alert("You must answer all questions!");
-            currentTab = currentTab - n;
-            showTab(currentTab);
-            return false;
-          }
-          document.getElementById("submit").click();
-          return false;
-        }
-        if (currentTab == 1 && Timer.style.display == "none") {
-          let text =
-            "You can access this quiz one-time only, are you ready now?";
-          if (confirm(text) == true) {
-            currentTab = currentTab - n;
-            showTab(currentTab);
-            document.getElementById("StartDiv").style.webkitFilter =
-              "opacity(0.5)";
-            document.getElementById("TheQuiz").style.webkitFilter =
-              "opacity(0.5)";
-            document.getElementById("Month").style.webkitFilter =
-              "opacity(0.5)";
-            document.getElementById("footer").style.webkitFilter =
-              "opacity(0.5)";
-            Loading.style.display = "block";
-            fetch(AttendanceScriptURL, {
-              method: "POST",
-              body: new FormData(attendanceForm),
-            })
-              .then((response) => StartQuiz(n))
-              .catch((error) => StartQuizError());
-          } else {
-            currentTab = currentTab - n;
-            showTab(currentTab);
-            return false;
-          }
-          showTab(currentTab);
-          NextTransform();
-        }
-      }
-      function StartQuiz(n) {
-        Loading.style.display = "none";
-        Header.style.display = "none";
-        document.getElementById("StartDiv").style.webkitFilter = "none";
-        document.getElementById("TheQuiz").style.webkitFilter = "none";
-        var x = document.getElementsByClassName("tab");
-        x[currentTab].style.display = "none";
-        currentTab = currentTab + n;
-        showTab(currentTab);
-      }
-      function StartQuizError() {
-        Loading.style.display = "none";
-        Header.style.display = "none";
-        StartDiv.style.display = "none";
-        TheQuiz.style.display = "none";
-        document.getElementById("mainDiv").style.width = "inherit";
-        Notifications.style.display = "block";
-        document.getElementById("Notifications").style.color = "red";
-        document.getElementById("Notifications").innerHTML =
-          "Not allowed to access this quiz multiple times!";
-        footer.style.display = "none";
-      }
-      function QuizSubmitted() {
-        Loading.style.display = "none";
-        clearInterval(interval);
-        TheQuiz.style.display = "none";
-        Timer.style.display = "none";
-        Notifications.style.display = "block";
-        document.getElementById("Notifications").style.color = "green";
-        document.getElementById("Notifications").innerHTML =
-          "Your answers have been submitted.";
-        footer.style.display = "none";
-      }
-      function SubmitError() {
-        Loading.style.display = "none";
-        clearInterval(interval);
-        TheQuiz.style.display = "none";
-        Timer.style.display = "none";
-        Notifications.style.display = "block";
-        document.getElementById("Notifications").style.color = "red";
-        document.getElementById("Notifications").innerHTML =
-          "Sorry, Something went wrong!";
-        footer.style.display = "none";
-      }
-      function TimeOutSubmitted() {
-        Loading.style.display = "none";
-        TheQuiz.style.display = "none";
-        Timer.style.display = "none";
-        Notifications.style.display = "block";
-        document.getElementById("Notifications").style.color = "orange";
-        document.getElementById("Notifications").innerHTML =
-          "Time out!, Submitted!";
-        footer.style.display = "none";
-      }
-      function GetQuizResult() {
-        let totalScore = 0;
-        for (let i = 1; i <= 23; i++) {
-          const selectedAnswer = document.querySelector(
-            `input[type='radio'][name=Q-${i}]:checked`
-          )?.value;
-          const correctAnswer = document.getElementById(`A-${i}`).value;
-          totalScore += selectedAnswer === correctAnswer ? 1 : 0;
-        }
-        document.getElementById("QuizResult").value = totalScore;
-      }
-      function NextTransform() {
-        gsap.from("#Tab1", { duration: 0.2, xPercent: 50, opacity: 0 });
-      }
-      document.addEventListener("DOMContentLoaded", function () {
-        const allDivs = document.querySelectorAll(".question");
-        const randomDivs = [...allDivs]
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 10);
-        randomDivs.forEach((div) => {
-          div.style.display = "block";
-        });
-      });
-    </script>
-    <br />
-  </body>
+        <div id="welcome" style="display: none;">
+            <button id="logout" onclick="signout()">Logout</button>
+            <p class="month" id="month"></p>
+            <img src="icon.png" alt="We Logo" />
+            <p class="welcomeMsg" id="welcomeMsg">Welcome</p>
+            <form method="post" id="quiz">
+                <input style="display: none;" id="attendanceTime" type="text" name="Attendance-Time" />
+                <input style="display: none;" id="agentName" type="text" name="Name" />
+                <input style="display: none;" id="firstSubmit" type="submit" />
+            </form>
+            <button class="start" id="start">Start</button>
+        </div>
+        <div id="tabs" style="display: none;">
+            <p class="timer" id="timer">( 10:00 )</p>
+            <br />
+            <p class="qNum" id="qNum">Question No. 1</p>
+            <div class="tab" id="tab1">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-1" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-1" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-1" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-1" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab2">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-2" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-2" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-2" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-2" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab3">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-3" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-3" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-3" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-3" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab4">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-4" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-4" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-4" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-4" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab5">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-5" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-5" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-5" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-5" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab6">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-6" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-6" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-6" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-6" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab7">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-7" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-7" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-7" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-7" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab8">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-8" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-8" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-8" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-8" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab9">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-9" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-9" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-9" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-9" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab10">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-10" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-10" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-10" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-10" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab11">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-11" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-11" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-11" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-11" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab12">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-12" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-12" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-12" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-12" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab13">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-13" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 13 اشهر انترنت </label><br />
+                    <input name="Q-13" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-13" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-13" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab14">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-14" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-14" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-14" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-14" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab15">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-15" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-15" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-15" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-15" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab16">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-16" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-16" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-16" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-16" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab17">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-17" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-17" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-17" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-17" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab18">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-18" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-18" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-18" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-18" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab19">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-19" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-19" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-19" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-19" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+            <div class="tab" id="tab20">
+                <div>
+                    <p>لا يعتبر اثبات قدره على الدفع</p>
+                    <input name="Q-20" type="radio" value="A" />
+                    <label> - انتظام الدفع اخر 3 اشهر انترنت </label><br />
+                    <input name="Q-20" type="radio" value="B" />
+                    <label> - جواز سفر دوبلوماسي </label><br />
+                    <input name="Q-20" type="radio" value="C" />
+                    <label> - فاتورة موبايل اعلي من 5الاف جنيه </label><br />
+                    <br />
+                    <input type="text" id="A-20" value="C" style="display: none;" />
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div id="buttons" style="display: none;">
+            <button id="lastClick" onclick="secSubmit();">Submit</button>
+            <button id="next">Next</button>
+            <button id="prev">Previous</button>
+        </div>
+        <p id="alert" style="display: none;"></p>
+        <div id="loading" style="display: none;" class="loader"></div>
+        <footer>
+            <p class="footer" id="footer" style="display: none;">
+                Developed by: Mamdouh Khalaf .. "MUE Team"
+            </p>
+        </footer>
+        <script src="main.js"></script>
+        <script src="transformer.js"></script>
+    </body>
 </html>

@@ -1,3 +1,20 @@
+window.onload = function () {
+    var day = new Date().getDate();
+    if (day <= 1) {
+        document.getElementById("noQuiz").style.display = "none";
+        document.getElementById("login").style.display = "block";
+    } else {
+        document.getElementById("noQuiz").style.display = "block";
+        document.getElementById("login").style.display = "none";
+    }
+};
+
+function pressEnterToLogin() {
+    if (event.which == 13 || event.keyCode == 13) {
+        signin();
+    }
+}
+
 document.getElementById("loginBtn").addEventListener("click", () => {
     signin();
 });
@@ -5,17 +22,16 @@ document.getElementById("loginBtn").addEventListener("click", () => {
 function signin() {
     var username = document.getElementById("agent").value.replace(/ /gi, "");
     var store = document.getElementById("store").value;
-    var area = document.getElementById("area").value;
     if (username == "admin") {
         var randomAgent = document.getElementById("agent").value + Math.floor(Math.random() * 100);
         login.style.display = "none";
         welcome.style.display = "block";
-		footer.style.display = "block";
+        footer.style.display = "block";
         welcomeAgent();
-    } else if (username !== "admin" && username !== "" && username.length >= "8" && store !== "" && area !== "") {
+    } else if (username !== "admin" && username !== "" && username.length >= "8" && store !== "") {
         login.style.display = "none";
         welcome.style.display = "block";
-		footer.style.display = "block";
+        footer.style.display = "block";
         welcomeAgent();
     } else if (username == "" || username.length < "8") {
         document.getElementById("agent").focus();
@@ -25,10 +41,6 @@ function signin() {
         document.getElementById("store").focus();
         document.getElementById("error").style.display = "block";
         document.getElementById("error").textContent = "Choose Your Store Name";
-    } else {
-        document.getElementById("area").focus();
-        document.getElementById("error").style.display = "block";
-        document.getElementById("error").textContent = "Choose Your Area Manager Name";
     }
 }
 
@@ -84,7 +96,7 @@ document.getElementById("start").addEventListener("click", () => {
     if (confirm(text) == true) {
         document.getElementById("firstSubmit").click();
         document.getElementById("welcome").style.display = "none";
-		document.getElementById("footer").style.display = "none";
+        document.getElementById("footer").style.display = "none";
         document.getElementById("loading").style.display = "inline-block";
     } else {
         return false;
@@ -114,8 +126,8 @@ quizForm.addEventListener("submit", async (e) => {
 async function addStoreAndArea() {
     const formData = new FormData();
     formData.append("agentID", agentID);
-    formData.append("Store", document.getElementById("store").value);
-    formData.append("Area", document.getElementById("area").value);
+    formData.append("Store", document.getElementById("store").options[document.getElementById("store").selectedIndex].text);
+    formData.append("Area", document.getElementById("store").value);
     try {
         const response = await fetch(scriptURL, { method: "POST", body: formData });
         const result = await response.json();
@@ -196,8 +208,9 @@ function alertError(errorMessage) {
     document.getElementById("timer").style.display = "none";
     document.getElementById("qNum").style.display = "none";
     document.getElementById("loading").style.display = "none";
+    console.error(`Error: ${errorMessage}`);
     document.getElementById("alert").style.display = "block";
-    document.getElementById("alert").textContent = `Error: ${errorMessage}`;
+    document.getElementById("alert").textContent = "Sorry, something went wrong. Your request may have been repeated.";
 }
 
 const tabs = Array.from(document.querySelectorAll(".tab"));
