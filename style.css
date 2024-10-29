@@ -53,14 +53,6 @@ button {
     border-radius: 4px;
 }
 
-#next {
-    margin: 0px 0px 0px 34px;
-}
-
-#lastClick {
-    margin: 0px 0px 0px 34px;
-}
-
 #alert {
     padding: 0px 24px 0px 24px;
 }
@@ -121,13 +113,22 @@ img {
 }
 
 label {
+    display: block;
     font-size: 18px;
-    padding-left: 2px;
     line-height: 1.3em;
+    padding: 4px 0px 4px 0px;
 }
 
-.tab {
+#tabs {
+    padding: 20px 0px 20px 0px;
+}
+
+#questionContainer {
     direction: rtl;
+    padding: 12px 24px 12px 24px;
+}
+
+#buttons {
     padding: 12px 24px 12px 24px;
 }
 
@@ -152,6 +153,17 @@ label {
     margin: 24px 0 12px 0px;
 }
 
+.unavailable {
+    color: #555;
+    padding: 24px 24px 0 24px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: 600;
+    font-family: monospace;
+    margin: auto;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -167,17 +179,6 @@ label {
     100% {
         transform: rotate(360deg);
     }
-}
-
-.unavailable {
-    color: #555;
-    padding: 24px 24px 0 24px;
-    font-size: 12px;
-    text-align: center;
-    line-height: 1.4;
-    font-weight: 600;
-    font-family: monospace;
-    margin: auto;
 }
 
 .protected {

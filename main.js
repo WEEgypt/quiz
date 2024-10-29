@@ -8,17 +8,14 @@ window.onload = function () {
         document.getElementById("login").style.display = "none";
     }
 };
-
 function pressEnterToLogin() {
     if (event.which == 13 || event.keyCode == 13) {
         signin();
     }
 }
-
 document.getElementById("loginBtn").addEventListener("click", () => {
     signin();
 });
-
 function signin() {
     var username = document.getElementById("agent").value.replace(/ /gi, "");
     var store = document.getElementById("store").value;
@@ -43,7 +40,6 @@ function signin() {
         document.getElementById("error").textContent = "Choose Your Store Name";
     }
 }
-
 function welcomeAgent() {
     var month = new Date().getMonth() + 1;
     var year = new Date().getFullYear();
@@ -84,13 +80,12 @@ function welcomeAgent() {
         month = "December";
     }
     document.getElementById("month").innerHTML = "Quiz - " + month + " " + year;
-    document.getElementById("welcomeMsg").innerHTML = "Welcome " + document.getElementById("agent").value + ", <br /><br /> This Quiz consists of 10 Questions, with 10 Minutes time frame, only One attempt available.";
+    agentName = document.getElementById("agent").value.split(".")[1] || document.getElementById("agent").value;
+    document.getElementById("welcomeMsg").innerHTML = "Welcome " + agentName + ", <br /><br /> This Quiz consists of 10 Questions, with 10 Minutes time frame, only One attempt available.";
 }
-
 function signout() {
     location.reload();
 }
-
 document.getElementById("start").addEventListener("click", () => {
     let text = "You can access this quiz one-time only, are you ready now?";
     if (confirm(text) == true) {
@@ -102,11 +97,55 @@ document.getElementById("start").addEventListener("click", () => {
         return false;
     }
 });
-
+let quizQuestions = [];
+let userAnswers = [];
+let currentQuestionIndex = 0;
+function selectRandomQuestions() {
+    const shuffled = questions.sort(() => 0.5 - Math.random());
+    quizQuestions = shuffled.slice(0, 10);
+    userAnswers = Array(quizQuestions.length).fill(null);
+}
+function showQuestion(index) {
+    const questionContainer = document.getElementById("questionContainer");
+    const question = quizQuestions[index];
+    questionContainer.innerHTML = `
+        <p>${question.question}</p>
+        ${question.options
+            .map(
+                (option, i) => `
+            <label>
+                <input type="radio" name="answer" value="${i}" ${userAnswers[index] === i ? "checked" : ""}>
+                ${option}
+            </label>
+        `
+            )
+            .join("")}
+    `;
+    document.querySelector('button[onclick="changeQuestion(-1)"]').style.display = index === 0 ? "none" : "inline-block";
+    document.querySelector('button[onclick="changeQuestion(1)"]').innerText = index === 9 ? "Submit" : "Next";
+}
+function changeQuestion(direction) {
+    const selectedOption = document.querySelector('input[name="answer"]:checked');
+    if (!selectedOption && direction === 1) {
+        alert("Please select an answer before proceeding.");
+        return;
+    }
+    if (selectedOption) {
+        userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+    }
+    currentQuestionIndex += direction;
+    if (currentQuestionIndex >= quizQuestions.length) {
+        submitQuiz();
+    } else if (currentQuestionIndex < 0) {
+        currentQuestionIndex = 0;
+    } else {
+        showQuestion(currentQuestionIndex);
+    }
+    document.getElementById("qNum").textContent = "Question No. " + (parseInt(currentQuestionIndex) + 1);
+}
 const scriptURL = "https://script.google.com/macros/s/AKfycbzrysbkVOvpCu2GEPKGuSE0tg3gTOMgICJrgZukHZgMk-fPRMam9yPfs2yCbTubT5A8/exec?sheetName=Result";
 const quizForm = document.forms["quiz"];
 const agentID = crypto.randomUUID();
-
 quizForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     document.getElementById("attendanceTime").value = new Date().toLocaleString("en-EG");
@@ -122,7 +161,6 @@ quizForm.addEventListener("submit", async (e) => {
         alertError(error.message);
     }
 });
-
 async function addStoreAndArea() {
     const formData = new FormData();
     formData.append("agentID", agentID);
@@ -137,13 +175,12 @@ async function addStoreAndArea() {
         alertError(error.message);
     }
 }
-
 let countdownInterval;
 function start() {
-    document.getElementById("welcome").style.display = "none";
-    document.getElementById("tabs").style.display = "block";
-    document.getElementById("buttons").style.display = "block";
     document.getElementById("loading").style.display = "none";
+    document.getElementById("tabs").style.display = "block";
+    selectRandomQuestions();
+    showQuestion(currentQuestionIndex);
     const countDownDate = new Date().getTime() + 600166;
     countdownInterval = setInterval(function () {
         const now = new Date().getTime();
@@ -156,33 +193,23 @@ function start() {
         if (distance < 0) {
             clearInterval(countdownInterval);
             document.getElementById("timer").innerHTML = "Time's up!";
-            secSubmit();
+            submitQuiz();
         }
     }, 1000);
 }
-
-async function secSubmit() {
-    tabs.forEach((tab) => {
-        tab.style.display = "none";
+async function submitQuiz() {
+    let score = 0;
+    quizQuestions.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) {
+            score++;
+        }
     });
     clearInterval(countdownInterval);
-    document.getElementById("buttons").style.display = "none";
-    document.getElementById("timer").style.display = "none";
-    document.getElementById("qNum").style.display = "none";
+    document.getElementById("tabs").style.display = "none";
     document.getElementById("loading").style.display = "inline-block";
-    getResult();
-}
-
-async function getResult() {
-    let totalScore = 0;
-    for (let i = 1; i <= 20; i++) {
-        const selectedAnswer = document.querySelector(`input[type='radio'][name=Q-${i}]:checked`)?.value;
-        const correctAnswer = document.getElementById(`A-${i}`).value;
-        totalScore += selectedAnswer === correctAnswer ? 1 : 0;
-    }
     const formData = new FormData();
     formData.append("agentID", agentID);
-    formData.append("Result", totalScore);
+    formData.append("Result", score);
     try {
         const response = await fetch(scriptURL, { method: "POST", body: formData });
         const result = await response.json();
@@ -192,90 +219,16 @@ async function getResult() {
         alertError(error.message);
     }
 }
-
 function submitted() {
     document.getElementById("loading").style.display = "none";
     document.getElementById("alert").style.display = "block";
     document.getElementById("alert").textContent = "Your submission has been received.";
 }
-
 function alertError(errorMessage) {
-    tabs.forEach((tab) => {
-        tab.style.display = "none";
-    });
     if (countdownInterval) clearInterval(countdownInterval);
-    document.getElementById("buttons").style.display = "none";
-    document.getElementById("timer").style.display = "none";
-    document.getElementById("qNum").style.display = "none";
+    document.getElementById("tabs").style.display = "none";
     document.getElementById("loading").style.display = "none";
-    console.error(`Error: ${errorMessage}`);
     document.getElementById("alert").style.display = "block";
+    document.getElementById("alert").style.color = "red";
     document.getElementById("alert").textContent = "Sorry, something went wrong. Your request may have been repeated.";
-}
-
-const tabs = Array.from(document.querySelectorAll(".tab"));
-const selectedTabs = [];
-const numToShow = 10;
-let currentIndex = 0;
-function selectRandomTabs() {
-    const indices = Array.from({ length: tabs.length }, (_, i) => i);
-    while (selectedTabs.length < numToShow) {
-        const randomIndex = Math.floor(Math.random() * indices.length);
-        selectedTabs.push(indices.splice(randomIndex, 1)[0]);
-    }
-}
-
-function showTab(index) {
-    if (index === selectedTabs.length - 1) {
-        document.getElementById("next").style.display = "none";
-        document.getElementById("lastClick").style.display = "inline-block";
-    } else {
-        document.getElementById("next").style.display = "inline-block";
-        document.getElementById("lastClick").style.display = "none";
-    }
-    if (index === 0) {
-        document.getElementById("prev").style.display = "none";
-        tabs.forEach((tab, i) => {
-            tab.style.display = i === selectedTabs[index] ? "block" : "none";
-        });
-    } else {
-        document.getElementById("prev").style.display = "inline-block";
-        tabs.forEach((tab, i) => {
-            tab.style.display = i === selectedTabs[index] ? "block" : "none";
-        });
-    }
-}
-
-document.getElementById("next").addEventListener("click", () => {
-    const currentTabElement = tabs[selectedTabs[currentIndex]];
-    const radioInputChecked = currentTabElement.querySelector('input[type="radio"]:checked');
-    if (!radioInputChecked) {
-        alert("Please select an answer before proceeding.");
-        return;
-    }
-    currentIndex = (currentIndex + 1) % selectedTabs.length;
-    showTab(currentIndex);
-    document.getElementById("qNum").textContent = "Question No. " + (parseInt(currentIndex) + 1);
-    NextTransform();
-});
-
-document.getElementById("prev").addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + selectedTabs.length) % selectedTabs.length;
-    showTab(currentIndex);
-    document.getElementById("qNum").textContent = "Question No. " + (parseInt(currentIndex) + 1);
-    BackTransform();
-});
-selectRandomTabs();
-showTab(currentIndex);
-
-function NextTransform() {
-    for (let i = 1; i <= 20; i++) {
-        gsap.from(`#tab${i}`, { duration: 0.2, xPercent: 50, opacity: 0 });
-    }
-}
-
-function BackTransform() {
-    for (let i = 1; i <= 20; i++) {
-        gsap.from(`#tab${i}`, { duration: 0.2, xPercent: -50, opacity: 0 });
-    }
 }
