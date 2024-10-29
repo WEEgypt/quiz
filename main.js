@@ -131,20 +131,20 @@ function showQuestion(index) {
   const questionContainer = document.getElementById("questionContainer");
   const question = quizQuestions[index];
   questionContainer.innerHTML = `
-        <p>${question.question}</p>
-        ${question.options
-          .map(
-            (option, i) => `
-            <label>
-                <input type="radio" name="answer" value="${i}" ${
-              userAnswers[index] === i ? "checked" : ""
-            }>
-                ${option}
-            </label>
-        `
-          )
-          .join("")}
-    `;
+      <p>${question.question}</p>
+      ${question.options
+        .map(
+          (option, i) => `
+          <label>
+              <input type="radio" name="answer" value="${i}" ${
+            userAnswers[index] === i ? "checked" : ""
+          }>
+              ${option}
+          </label>
+      `
+        )
+        .join("")}
+  `;
   document.querySelector('button[onclick="changeQuestion(-1)"]').style.display =
     index === 0 ? "none" : "inline-block";
   document.querySelector('button[onclick="changeQuestion(1)"]').innerText =
@@ -228,6 +228,7 @@ function start() {
       submitQuiz();
     }
   }, 1000);
+  window.addEventListener("beforeunload", confirmRefresh);
 }
 async function submitQuiz() {
   let score = 0;
@@ -250,6 +251,7 @@ async function submitQuiz() {
   } catch (error) {
     alertError(error.message);
   }
+  window.removeEventListener("beforeunload", confirmRefresh);
 }
 function submitted() {
   document.getElementById("loading").style.display = "none";
@@ -265,4 +267,8 @@ function alertError(errorMessage) {
   document.getElementById("alert").style.color = "red";
   document.getElementById("alert").textContent =
     "Sorry, something went wrong. Your request may have been repeated.";
+}
+function confirmRefresh(event) {
+  event.preventDefault();
+  event.returnValue = "";
 }
