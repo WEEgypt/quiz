@@ -1,104 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <title>Info Evaluation Test</title>
-        <link rel="icon" href="icon.png" />
-        <link rel="apple-touch-icon" href="icon.png" />
-        <link rel="stylesheet" href="style.css" />
-        <script src="questions.js"></script>
-    </head>
-    <body>
-        <div id="noQuiz" style="display: none;">
-            <img src="icon.png" alt="We Logo" />
-            <p class="unavailable">The next quiz will be published soon.</p>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Info Evaluation Test</title>
+    <link rel="icon" href="icon.png" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="questions.js"></script>
+  </head>
+  <body>
+    <div id="noQuiz" style="display: none">
+      <img src="icon.png" alt="We Logo" />
+      <p class="unavailable">The next quiz will be published soon.</p>
+    </div>
+    <div class="protected" id="login" style="display: none">
+      <p class="protected__alert" id="error" style="display: none"></p>
+      <div class="protected__content">
+        <p class="protected__content__heading">Login to continue</p>
+        <input
+          class="protected__content__input"
+          id="agent"
+          type="text"
+          placeholder="BSS Username"
+          onkeypress="pressEnterToLogin()"
+        />
+        <select
+          class="protected__content__input"
+          id="store"
+          onkeypress="pressEnterToLogin()"
+        >
+          <option value="" selected disabled hidden>Store Name</option>
+          <option value="Eslam Gomaa">شرق النيل</option>
+          <option value="Mostafa Galal">شارع 15</option>
+          <option value="Eslam Gomaa">نادى التجديف</option>
+          <option value="Eslam Gomaa">بيت الرحمه</option>
+          <option value="Mostafa Galal">الشهيد</option>
+          <option value="Mostafa Galal">المخبز الآلي</option>
+          <option value="Mostafa Galal">مجمع المحاكم</option>
+          <option value="Eslam Gomaa">اخميم</option>
+          <option value="Eslam Gomaa">المنشاه</option>
+          <option value="Mostafa Galal">دار السلام</option>
+          <option value="Eslam Gomaa">جرجا - المصريه جروب</option>
+          <option value="Mostafa Galal">جرجا - فيوتشر</option>
+          <option value="Mostafa Galal">البلينا - تليكوم</option>
+          <option value="Mostafa Galal">البلينا - فيوتشر</option>
+          <option value="Eslam Gomaa">المراغه - المصريه جروب</option>
+          <option value="Eslam Gomaa">المراغه - فيوتشر</option>
+          <option value="Eslam Gomaa">طما - فيوتشر</option>
+          <option value="Eslam Gomaa">طما - كافريج</option>
+          <option value="Eslam Gomaa">طهطا - المصريه جروب</option>
+          <option value="Mostafa Galal">طهطا - فيوتشر</option>
+          <option value="Mostafa Galal">جهينه</option>
+          <option value="Eslam Gomaa">برديس</option>
+          <option value="Ahmed Sayed">شارع الجلاء</option>
+          <option value="Mostafa Abdelrheem">شارع بورسعيد</option>
+          <option value="Ahmed Sayed">الشارع الجديد</option>
+          <option value="Mostafa Abdelrheem">الهلالى أسيوط</option>
+          <option value="Ahmed Sayed">اسيوط الميدان</option>
+          <option value="Mostafa Abdelrheem">سيتي اول - اسيوط</option>
+          <option value="Ahmed Sayed">الرياض-برج ساويرس</option>
+          <option value="Ahmed Sayed">منفلوط - القلعة</option>
+          <option value="Mostafa Abdelrheem">اسيوط حي الاربعين</option>
+          <option value="Ahmed Sayed">النادي الرياضي ديروط</option>
+          <option value="Mostafa Abdelrheem">ش بور سعيد - ابنوب</option>
+          <option value="Ahmed Sayed">أسيوط - يسري راغب</option>
+          <option value="Mostafa Abdelrheem">أسيوط - أبو تيج</option>
+          <option value="Mostafa Abdelrheem">أسيوط - البداري</option>
+          <option value="Ahmed Sayed">أسيوط ديروط 2</option>
+          <option value="Ahmed Sayed">أسيوط - القوصية 2</option>
+          <option value="Mostafa Abdelrheem">أسيوط - ساحل سليم</option>
+          <option value="Mostafa Abdelrheem">أسيوط - صدفا</option>
+          <option value="Mostafa Abdelrheem">شارع الجمهورية اسيوط</option>
+          <option value="Mostafa Abdelrheem">النبوي المهندس</option>
+          <option value="Ahmed Sayed">اسيوط ابراج النصر</option>
+        </select>
+        <button class="protected__content__btn" id="loginBtn">Login</button>
+      </div>
+    </div>
+    <div id="welcome" style="display: none">
+      <button id="logout" onclick="signout()">Logout</button>
+      <p class="month" id="month"></p>
+      <img src="icon.png" alt="We Logo" />
+      <p class="welcomeMsg" id="welcomeMsg">Welcome</p>
+      <form method="post" id="quiz">
+        <input
+          style="display: none"
+          id="attendanceTime"
+          type="text"
+          name="Attendance-Time"
+        />
+        <input style="display: none" id="agentName" type="text" name="Name" />
+        <input style="display: none" id="firstSubmit" type="submit" />
+      </form>
+      <button class="start" id="start">Start</button>
+    </div>
+    <div id="tabs" style="display: none">
+      <p class="timer" id="timer">( 10:00 )</p>
+      <br />
+      <p class="qNum" id="qNum">Question No. 1</p>
+      <div id="quizContainer">
+        <div id="questionContainer"></div>
+        <div id="buttons">
+          <button id="nextButton" onclick="changeQuestion(1)">Next</button>
+          <button
+            id="prevButton"
+            onclick="changeQuestion(-1)"
+            style="display: none"
+          >
+            Previous
+          </button>
         </div>
-        <div class="protected" id="login" style="display: none;">
-            <p class="protected__alert" id="error" style="display: none;"></p>
-            <div class="protected__content">
-                <p class="protected__content__heading">Login to continue</p>
-                <input class="protected__content__input" id="agent" type="text" placeholder="BSS Username" onkeypress="pressEnterToLogin()" />
-                <select class="protected__content__input" id="store" onkeypress="pressEnterToLogin()">
-                    <option value="" selected disabled hidden>Store Name</option>
-                    <option value="Eslam Gomaa">شرق النيل</option>
-                    <option value="Mostafa Galal">شارع 15</option>
-                    <option value="Eslam Gomaa">نادى التجديف</option>
-                    <option value="Eslam Gomaa">بيت الرحمه</option>
-                    <option value="Mostafa Galal">الشهيد</option>
-                    <option value="Mostafa Galal">المخبز الآلي</option>
-                    <option value="Mostafa Galal">مجمع المحاكم</option>
-                    <option value="Eslam Gomaa">اخميم</option>
-                    <option value="Eslam Gomaa">المنشاه</option>
-                    <option value="Mostafa Galal">دار السلام</option>
-                    <option value="Eslam Gomaa">جرجا - المصريه جروب</option>
-                    <option value="Mostafa Galal">جرجا - فيوتشر</option>
-                    <option value="Mostafa Galal">البلينا - تليكوم</option>
-                    <option value="Mostafa Galal">البلينا - فيوتشر</option>
-                    <option value="Eslam Gomaa">المراغه - المصريه جروب</option>
-                    <option value="Eslam Gomaa">المراغه - فيوتشر</option>
-                    <option value="Eslam Gomaa">طما - فيوتشر</option>
-                    <option value="Eslam Gomaa">طما - كافريج</option>
-                    <option value="Eslam Gomaa">طهطا - المصريه جروب</option>
-                    <option value="Mostafa Galal">طهطا - فيوتشر</option>
-                    <option value="Mostafa Galal">جهينه</option>
-                    <option value="Eslam Gomaa">برديس</option>
-                    <option value="Ahmed Sayed">شارع الجلاء</option>
-                    <option value="Mostafa Abdelrheem">شارع بورسعيد</option>
-                    <option value="Ahmed Sayed">الشارع الجديد</option>
-                    <option value="Mostafa Abdelrheem">الهلالى أسيوط</option>
-                    <option value="Ahmed Sayed">اسيوط الميدان</option>
-                    <option value="Mostafa Abdelrheem">سيتي اول - اسيوط</option>
-                    <option value="Ahmed Sayed">الرياض-برج ساويرس</option>
-                    <option value="Ahmed Sayed">منفلوط - القلعة</option>
-                    <option value="Mostafa Abdelrheem">اسيوط حي الاربعين</option>
-                    <option value="Ahmed Sayed">النادي الرياضي ديروط</option>
-                    <option value="Mostafa Abdelrheem">ش بور سعيد - ابنوب</option>
-                    <option value="Ahmed Sayed">أسيوط - يسري راغب</option>
-                    <option value="Mostafa Abdelrheem">أسيوط - أبو تيج</option>
-                    <option value="Mostafa Abdelrheem">أسيوط - البداري</option>
-                    <option value="Ahmed Sayed">أسيوط ديروط 2</option>
-                    <option value="Ahmed Sayed">أسيوط - القوصية 2</option>
-                    <option value="Mostafa Abdelrheem">أسيوط - ساحل سليم</option>
-                    <option value="Mostafa Abdelrheem">أسيوط - صدفا</option>
-                    <option value="Mostafa Abdelrheem">شارع الجمهورية اسيوط</option>
-                    <option value="Mostafa Abdelrheem">النبوي المهندس</option>
-                    <option value="Ahmed Sayed">اسيوط ابراج النصر</option>
-                </select>
-                <button class="protected__content__btn" id="loginBtn">Login</button>
-            </div>
-        </div>
-        <div id="welcome" style="display: none;">
-            <button id="logout" onclick="signout()">Logout</button>
-            <p class="month" id="month"></p>
-            <img src="icon.png" alt="We Logo" />
-            <p class="welcomeMsg" id="welcomeMsg">Welcome</p>
-            <form method="post" id="quiz">
-                <input style="display: none;" id="attendanceTime" type="text" name="Attendance-Time" />
-                <input style="display: none;" id="agentName" type="text" name="Name" />
-                <input style="display: none;" id="firstSubmit" type="submit" />
-            </form>
-            <button class="start" id="start">Start</button>
-        </div>
-        <div id="tabs" style="display: none;">
-            <p class="timer" id="timer">( 10:00 )</p>
-            <br />
-            <p class="qNum" id="qNum">Question No. 1</p>
-            <div id="quizContainer">
-                <div id="questionContainer"></div>
-                <div id="buttons">
-                    <button id="nextButton" onclick="changeQuestion(1)">Next</button>
-                    <button id="prevButton" onclick="changeQuestion(-1)" style="display: none;">Previous</button>
-                </div>
-            </div>
-        </div>
-        <p id="alert" style="display: none;"></p>
-        <div id="loading" style="display: none;" class="loader"></div>
-        <footer>
-            <p class="footer" id="footer" style="display: none;">
-                Developed by: Mamdouh Khalaf .. "MUE Team"
-            </p>
-        </footer>
-        <script src="main.js"></script>
-    </body>
+      </div>
+    </div>
+    <p id="alert" style="display: none"></p>
+    <div id="loading" style="display: none" class="loader"></div>
+    <footer>
+      <p class="footer" id="footer" style="display: none">
+        Developed by: Mamdouh Khalaf .. "MUE Team"
+      </p>
+    </footer>
+    <script src="main.js"></script>
+  </body>
 </html>
