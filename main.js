@@ -1,6 +1,6 @@
 window.onload = function () {
   var day = new Date().getDate();
-  if (day <= 1) {
+  if (day <= 31) {
     document.getElementById("noQuiz").style.display = "none";
     document.getElementById("login").style.display = "block";
   } else {
@@ -16,31 +16,44 @@ function pressEnterToLogin() {
 document.getElementById("loginBtn").addEventListener("click", () => {
   signin();
 });
+let agentName;
+let store;
+let area;
 function signin() {
-  var username = document.getElementById("agent").value.replace(/ /gi, "");
-  var store = document.getElementById("store").value;
-  if (username == "admin") {
-    var randomAgent =
-      document.getElementById("agent").value + Math.floor(Math.random() * 100);
+  agentName = document.getElementById("agent").value.replace(/ /gi, "");
+  store =
+    document.getElementById("store").options[
+      document.getElementById("store").selectedIndex
+    ].text;
+  area = document.getElementById("store").value;
+  if (agentName == "admin") {
+    agentName =
+      document.getElementById("agent").value +
+      "_" +
+      Date.now() +
+      "_" +
+      Math.floor(Math.random() * 1000);
+    store = "-";
+    area = "-";
     login.style.display = "none";
     welcome.style.display = "block";
     footer.style.display = "block";
     welcomeAgent();
   } else if (
-    username !== "admin" &&
-    username !== "" &&
-    username.length >= "8" &&
-    store !== ""
+    agentName !== "admin" &&
+    agentName !== "" &&
+    agentName.length >= "8" &&
+    store !== "Store Name"
   ) {
     login.style.display = "none";
     welcome.style.display = "block";
     footer.style.display = "block";
     welcomeAgent();
-  } else if (username == "" || username.length < "8") {
+  } else if (agentName == "" || agentName.length < "8") {
     document.getElementById("agent").focus();
     document.getElementById("error").style.display = "block";
     document.getElementById("error").textContent = "Invalid Username";
-  } else if (store == "") {
+  } else if (store == "Store Name") {
     document.getElementById("store").focus();
     document.getElementById("error").style.display = "block";
     document.getElementById("error").textContent = "Choose Your Store Name";
@@ -86,9 +99,7 @@ function welcomeAgent() {
     month = "December";
   }
   document.getElementById("month").innerHTML = "Quiz - " + month + " " + year;
-  agentName =
-    document.getElementById("agent").value.split(".")[1] ||
-    document.getElementById("agent").value;
+  agentName = agentName.split(".")[1] || agentName;
   document.getElementById("welcomeMsg").innerHTML =
     "Welcome " +
     agentName +
@@ -168,8 +179,7 @@ quizForm.addEventListener("submit", async (e) => {
   document.getElementById("attendanceTime").value = new Date().toLocaleString(
     "en-EG"
   );
-  document.getElementById("agentName").value =
-    document.getElementById("agent").value;
+  document.getElementById("agentName").value = agentName;
   const formData = new FormData(quizForm);
   formData.append("agentID", agentID);
   try {
@@ -184,13 +194,8 @@ quizForm.addEventListener("submit", async (e) => {
 async function addStoreAndArea() {
   const formData = new FormData();
   formData.append("agentID", agentID);
-  formData.append(
-    "Store",
-    document.getElementById("store").options[
-      document.getElementById("store").selectedIndex
-    ].text
-  );
-  formData.append("Area", document.getElementById("store").value);
+  formData.append("Store", store);
+  formData.append("Area", area);
   try {
     const response = await fetch(scriptURL, { method: "POST", body: formData });
     const result = await response.json();
