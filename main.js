@@ -99,10 +99,10 @@ function welcomeAgent() {
     month = "December";
   }
   document.getElementById("month").innerHTML = "Quiz - " + month + " " + year;
-  agentName = agentName.split(".")[1] || agentName;
+  firstName = agentName.split(".")[1] || agentName;
   document.getElementById("welcomeMsg").innerHTML =
     "Welcome " +
-    agentName +
+    firstName +
     ", <br /><br /> This Quiz consists of 10 Questions, with 10 Minutes time frame, only One attempt available.";
 }
 function signout() {
